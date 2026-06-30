@@ -1,0 +1,2555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <title>Есть контакт! Модуль 1</title>
+<link rel="stylesheet" href="module1-desktop.css" media="(min-width: 900px)">
+<link rel="stylesheet" href="module1-mobile.css" media="(max-width: 899px)">
+     <link rel="stylesheet" href="module1.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none" aria-hidden="true" focusable="false">
+  <symbol id="sims-plumbob" viewBox="0 0 28 40"><path fill="#34d399" d="M14 2L26 17L14 38L2 17z"/><path fill="#047857" opacity=".35" d="M14 11l6 6.5L14 23l-6-6.5z"/></symbol>
+  <symbol id="sims-star" viewBox="0 0 32 32"><path fill="#facc15" stroke="#ca8a04" stroke-width="1" d="M16 5l3.4 7.4L27 14l-7 5.5L22 27l-6-3.7-6 3.7 2-7.5-7-5.5 7.4-1.6z"/></symbol>
+  <symbol id="sims-check" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/><path d="M10 16l4 4 8-8" fill="none" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="sims-sparkle" viewBox="0 0 32 32"><path fill="#4ade80" d="M16 3l2.2 7.5 7.3 2.2-7.3 2.2L16 22l-2.2-7.1-7.3-2.2 7.3-2.2z"/><circle cx="24" cy="23" r="2.5" fill="#86efac"/><circle cx="9" cy="21" r="2" fill="#bbf7d0"/></symbol>
+  <symbol id="sims-save" viewBox="0 0 32 32"><rect x="7" y="6" width="18" height="20" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.3"/><rect x="10" y="9" width="12" height="6" rx="1" fill="#bae6fd"/><rect x="11" y="18" width="10" height="5" rx="1" fill="#fff" stroke="#94a3b8"/></symbol>
+  <symbol id="sims-download" viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="3" fill="#f1f5f9" stroke="#64748b" stroke-width="1.3"/><path d="M16 11v8m0 0l-3.5-3.5M16 19l3.5-3.5M11 23h10" stroke="#334155" stroke-width="1.8" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="sims-laptop" viewBox="0 0 32 32"><rect x="6" y="8" width="20" height="13" rx="2" fill="#e2e8f0" stroke="#475569" stroke-width="1.2"/><path d="M4 23h24" stroke="#475569" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="sims-target" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="#22c55e" stroke-width="2"/><circle cx="16" cy="16" r="7" fill="none" stroke="#16a34a" stroke-width="2"/><circle cx="16" cy="16" r="2.5" fill="#ef4444"/></symbol>
+  <symbol id="sims-card" viewBox="0 0 32 32"><rect x="5" y="9" width="22" height="14" rx="2" fill="#fff" stroke="#64748b" stroke-width="1.2"/><rect x="8" y="12" width="10" height="2" rx="1" fill="#cbd5e1"/><rect x="8" y="16" width="16" height="1.5" rx="0.5" fill="#e2e8f0"/></symbol>
+  <symbol id="sims-phone" viewBox="0 0 32 32"><rect x="10" y="5" width="12" height="22" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.3"/><circle cx="16" cy="23" r="1.5" fill="#64748b"/></symbol>
+  <symbol id="sims-bag" viewBox="0 0 32 32"><path d="M8 12h16l-1 18H9L8 12z" fill="#fef3c7" stroke="#ca8a04" stroke-width="1.3"/><path d="M11 12V9a5 5 0 0110 0v3" fill="none" stroke="#ca8a04" stroke-width="1.5"/></symbol>
+  <symbol id="sims-trophy" viewBox="0 0 32 32"><path d="M8 8h16v4a8 8 0 01-16 0V8z" fill="#fbbf24" stroke="#ca8a04" stroke-width="1.2"/><path d="M12 24h8v4H12zm-2-8h12v4H10z" fill="#fde68a" stroke="#ca8a04" stroke-width="1"/></symbol>
+  <symbol id="sims-pin" viewBox="0 0 32 32"><path d="M16 4a6 6 0 016 6c0 5-6 14-6 14S10 15 10 10a6 6 0 016-6z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2"/><circle cx="16" cy="10" r="2" fill="#fff"/></symbol>
+  <symbol id="sims-map" viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="18" rx="2" fill="#ecfdf5" stroke="#22c55e" stroke-width="1.2"/><path d="M8 22l6-8 5 5 5-12 6 10" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="sims-lock" viewBox="0 0 32 32"><rect x="9" y="14" width="14" height="12" rx="2" fill="#e2e8f0" stroke="#64748b" stroke-width="1.3"/><path d="M10 14V11a6 6 0 0112 0v3" fill="none" stroke="#64748b" stroke-width="1.5"/></symbol>
+  <symbol id="sims-chat" viewBox="0 0 32 32"><rect x="5" y="7" width="18" height="12" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/><path d="M10 19l-4 6 2-6" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/></symbol>
+  <symbol id="sims-book" viewBox="0 0 32 32"><path d="M7 6h8v20H7a3 3 0 01-3-3V9a3 3 0 013-3z" fill="#fef9c3" stroke="#ca8a04" stroke-width="1"/><path d="M17 6h8a3 3 0 013 3v14a3 3 0 01-3 3h-8V6z" fill="#fff" stroke="#ca8a04" stroke-width="1"/></symbol>
+  <symbol id="sims-hanger" viewBox="0 0 32 32"><path d="M6 18h20l-4-6a4 4 0 00-8 0l-8 6z" fill="none" stroke="#0f766e" stroke-width="2" stroke-linejoin="round"/><path d="M16 8v4" stroke="#0f766e" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="sims-ticket" viewBox="0 0 32 32"><rect x="6" y="10" width="20" height="12" rx="2" fill="#fef3c7" stroke="#ca8a04" stroke-width="1.2"/><circle cx="16" cy="16" r="2" fill="#fff" stroke="#ca8a04"/></symbol>
+  <symbol id="sims-clipboard" viewBox="0 0 32 32"><rect x="9" y="8" width="14" height="18" rx="2" fill="#fff" stroke="#64748b" stroke-width="1.2"/><rect x="12" y="5" width="8" height="5" rx="1" fill="#e2e8f0" stroke="#64748b"/><path d="M12 14h8M12 18h8M12 22h5" stroke="#94a3b8" stroke-width="1.2"/></symbol>
+  <symbol id="sims-drink" viewBox="0 0 32 32"><path d="M11 6h10l-2 20h-6L11 6z" fill="#bae6fd" stroke="#0284c7" stroke-width="1.2"/><ellipse cx="16" cy="7" rx="5" ry="1.5" fill="#e0f2fe"/></symbol>
+  <symbol id="sims-lunch" viewBox="0 0 32 32"><rect x="7" y="10" width="18" height="12" rx="2" fill="#fef3c7" stroke="#ca8a04"/><path d="M10 14h12" stroke="#ca8a04"/></symbol>
+  <symbol id="sims-snack" viewBox="0 0 32 32"><circle cx="11" cy="16" r="3" fill="#fcd34d"/><circle cx="16" cy="14" r="3.5" fill="#fbbf24"/><circle cx="21" cy="16" r="3" fill="#fde68a"/></symbol>
+  <symbol id="sims-hand" viewBox="0 0 32 32"><path d="M8 18c0-2 2-3 4-2l2 1V12c0-2 2-3 4-2v12l2 1c2 1 4 0 4-2v-6" fill="#fde68a" stroke="#ca8a04" stroke-width="1.2" stroke-linejoin="round"/></symbol>
+  <symbol id="sims-wc" viewBox="0 0 32 32"><rect x="6" y="6" width="8" height="20" rx="1" fill="#e0f2fe" stroke="#0284c7"/><rect x="18" y="6" width="8" height="20" rx="1" fill="#fce7f3" stroke="#db2777"/></symbol>
+  <symbol id="sims-mic" viewBox="0 0 32 32"><rect x="14" y="8" width="4" height="12" rx="2" fill="#94a3b8"/><path d="M10 22h12M16 22v4" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="sims-brain" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="10" ry="8" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.2"/><path d="M11 14h10M11 18h8" stroke="#7c3aed" stroke-width="1"/></symbol>
+  <symbol id="sims-ear" viewBox="0 0 32 32"><path d="M10 14c0-4 3-7 7-7s7 3 7 7v6c0 3-2 5-5 5h-2" fill="#fde68a" stroke="#ca8a04" stroke-width="1.3"/></symbol>
+  <symbol id="sims-hug" viewBox="0 0 32 32"><circle cx="12" cy="14" r="5" fill="#bae6fd" stroke="#0284c7"/><circle cx="20" cy="14" r="5" fill="#fce7f3" stroke="#db2777"/><path d="M10 22c2 3 10 3 12 0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="sims-chart" viewBox="0 0 32 32"><rect x="5" y="6" width="22" height="18" rx="2" fill="#f0fdf4" stroke="#22c55e"/><path d="M9 20l4-6 4 3 6-9" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="sims-trash" viewBox="0 0 32 32"><rect x="9" y="11" width="14" height="16" rx="2" fill="#fee2e2" stroke="#ef4444"/><path d="M7 11h18M12 8h8l1 3" stroke="#ef4444" stroke-width="1.3" fill="none"/></symbol>
+  <symbol id="sims-link" viewBox="0 0 32 32"><path d="M13 19l-2 2a4 4 0 010-6l3-3a4 4 0 016 0" fill="none" stroke="#0284c7" stroke-width="1.8"/><path d="M19 13l2-2a4 4 0 010 6l-3 3a4 4 0 01-6 0" fill="none" stroke="#0284c7" stroke-width="1.8"/></symbol>
+  <symbol id="sims-party" viewBox="0 0 32 32"><path d="M6 26L14 8l6 4 4 14H6z" fill="#4ade80" stroke="#16a34a"/><circle cx="22" cy="10" r="2" fill="#fbbf24"/></symbol>
+  <symbol id="sims-sticky" viewBox="0 0 32 32"><rect x="8" y="6" width="16" height="18" rx="1" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.2"/><path d="M10 11h12" stroke="#ca8a04"/></symbol>
+  <symbol id="sims-pencil" viewBox="0 0 32 32"><path d="M7 25l4-1 14-14-3-3L8 21l-1 4z" fill="#fde68a" stroke="#ca8a04"/><path d="M6 26l3-3" stroke="#ca8a04"/></symbol>
+  <symbol id="sims-cross" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/><path d="M11 11l10 10M21 11l-10 10" stroke="#b91c1c" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="sims-pointer" viewBox="0 0 32 32"><path d="M8 8l8 18 3-7 7-2L8 8z" fill="#38bdf8" stroke="#0369a1" stroke-width="1" stroke-linejoin="round"/></symbol>
+  <symbol id="sims-fish" viewBox="0 0 32 32"><ellipse cx="14" cy="16" rx="9" ry="5" fill="#bae6fd" stroke="#0284c7"/><path d="M23 16l5-3v6l-5-3z" fill="#0284c7"/></symbol>
+  <symbol id="sims-neutral" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="#e2e8f0" stroke="#94a3b8"/><circle cx="12" cy="14" r="1.5" fill="#64748b"/><circle cx="20" cy="14" r="1.5" fill="#64748b"/><path d="M11 20h10" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="sims-block" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="#fecaca" stroke="#ef4444" stroke-width="1.5"/><path d="M11 11l10 10M21 11l-10 10" stroke="#b91c1c" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="sims-grad" viewBox="0 0 32 32"><path d="M6 24L16 6l10 18H6z" fill="#86efac" stroke="#16a34a" stroke-width="1.2"/><circle cx="16" cy="18" r="3" fill="#fff"/></symbol>
+  <symbol id="sims-bolt" viewBox="0 0 32 32"><path d="M18 4L8 18h6l-2 10 12-16h-7l1-8z" fill="#facc15" stroke="#ca8a04" stroke-width="1"/></symbol>
+  <symbol id="sims-final" viewBox="0 0 32 32"><path d="M5 5h3v22H5z" fill="#475569"/><path d="M8 7l18 6-18 6V7z" fill="#ef4444"/><path d="M8 19l12 4 6-10" fill="none" stroke="#b91c1c" stroke-width="1.5" stroke-linecap="round"/><circle cx="25" cy="9" r="3" fill="#fbbf24" stroke="#ca8a04" stroke-width="1"/></symbol>
+</svg>
+<div id="app">
+<!-- Кнопка и меню навигации -->
+<div id="main-menu-toggle"><span></span></div>
+<div id="main-menu">
+<h4>Модуль 1 — Навигация</h4>
+<div class="menu-section">
+<ul class="menu-list">
+<li data-goto="screen-1">Добро пожаловать!</li>
+<li data-goto="screen-2">Тест</li>
+<li data-goto="screen-3-0">Знакомство со Златой</li>
+<li data-goto="screen-10">Подготовка </li>
+<li data-goto="screen-11">Для чего нетворкинг тебе?</li>
+<li data-goto="screen-12">Нити нетворкинга</li>
+<li data-goto="screen-13">Страхи</li>
+<li data-goto="screen-14">Колесо баланса</li>
+<li data-goto="screen-15">Колесо баланса: результат</li>
+<li data-goto="screen-16">Сколько знакомств тебе нужно?</li>
+<li data-goto="screen-16-1">Где ты будешь знакомиться?</li>
+<li data-goto="screen-17">Ставим чёткую цель</li>
+<li data-goto="screen-19">Визитка</li>
+<li data-goto="screen-20">Фото профиля</li>
+<li data-goto="screen-20-1">Статус профиля</li>
+<li data-goto="screen-21">Крючок-самопрезентация</li>
+<li data-goto="screen-21-1">Что в сумке у нетворкера?</li>
+</ul>
+</div>
+<div style="padding:6px; border-top:1px solid #e2e8f0; margin-top:4px;">
+<a href="map.html" style="font-size:12px; color:var(--accent-soft); text-decoration:none;">← К карте</a>
+</div>
+</div>
+
+
+<header>
+<div class="logo">
+<a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:10px; color:inherit;">
+<div>
+<div style="color:#ffffff; font-weight:700;">Есть контакт!</div>
+<div style="font-size:11px; color:#4ade80; font-weight:400;">Модуль 1: Подготовка — залог успеха</div>
+</div>
+</a>
+</div>
+<div class="header-stats" style="display:none;">
+<div class="header-bar">
+<span class="header-stat-label">Прогресс</span>
+<div class="bar-track" style="width:120px; height:6px;">
+<div class="bar-fill" id="hud-progress-bar"></div>
+</div>
+<span class="header-stat-value" id="hud-progress-value">0%</span>
+</div>
+<div class="header-chip" style="display:inline-flex;align-items:center;gap:4px;"><svg class="sims-icon" width="16" height="16" aria-hidden="true"><use href="#sims-star"/></svg> <span id="hud-score">0</span></div>
+</div>
+<div class="meta">
+<div class="pill" id="screen-pill">1 / 24</div>
+</div>
+</header>
+
+
+<main>
+<!-- HUD / Статы -->
+<!-- Основной контейнер экранов -->
+<section id="screen-container">
+
+
+     <!-- Экран 1. Обложка курса -->
+<div class="screen active" id="screen-1">
+
+ <!-- СОСТОЯНИЕ 1: Обложка -->
+<div id="screen-1-cover" class="s1-cover">
+  <div class="s1-cover-img">
+    <picture>
+      <!-- Мобильная вертикальная (до 600px) -->
+      <source 
+        media="(max-width: 600px)" 
+        srcset="img/m1/cover-bg.jpg"
+      >
+      <!-- Десктоп горизонтальная -->
+      <img 
+        src="img/m1/screen1-illus.png" 
+        alt="Есть контакт!"
+      >
+    </picture>
+  </div>
+ <div class="s1-round-btn-wrap" id="s1-round-wrap">
+  <button class="s1-round-btn" id="btn-screen1-start">
+    <div class="s1-round-btn-inner">
+           <span class="s1-round-btn-text">Начать</span>
+    </div>
+  </button>
+  <span class="s1-round-btn-hint">нажми, чтобы начать</span>
+</div>
+  </div>
+
+  <!-- СОСТОЯНИЕ 2: Оверлей с теорией -->
+  <div id="screen-1-overlay" class="s1-overlay" style="display:none;">
+
+
+  <!-- Затемнённая картинка на фоне -->
+<div class="s1-overlay-bg">
+  <picture>
+    <source 
+      media="(max-width: 600px)" 
+      srcset="images/cover-mobile.jpg"
+    >
+    <img src="img/m1/cover-bg.jpg" alt="">
+  </picture>
+</div>
+
+    <!-- Карточка с текстом -->
+    <div class="s1-overlay-card">
+      <div class="s1-overlay-scroll">
+             <h2>Добро пожаловать!</h2>
+        <p>Стоишь на конференции с кофе в руке, листаешь ленту и думаешь:</p>
+        <p><span class="marker-highlight"><span class="zlata-sims-ico" style="margin-right:4px;" aria-hidden="true"><svg width="18" height="18"><use href="#sims-chat"/></svg></span><i>Ну вот, опять никого не знаю, никто ко мне не подходит</i></span></p>
+        <p>А через два часа уезжаешь так ни с кем толком и не познакомившись. Знакомая ситуация?</p>
+        <p>Давай сделаем так, чтобы в следующий раз ты уезжал как минимум с 3 живыми знакомствами и ощущением, что «это было круто». Для этого ты освоишь 3 навыка:</p>
+        <ol>
+          <li><b>начинать разговор первым</b> — без натужного «Как вам конференция?» с нервной улыбкой</li>
+          <li><b>представляться так, чтобы тебя запомнили</b> — и это за 1 минуту с эффектом: «А, это та девушка, которая помогает запускать исследования без сюрпризов»</li>
+          <li><b>не терять контакты</b> — знать, что написать, когда написать и как напомнить о себе так, чтобы это было ненавязчиво.</li>
+        </ol>
+        <div class="s1-ready-box">
+          <p><span class="zlata-sims-ico" style="margin-right:6px;vertical-align:middle;" aria-hidden="true"><svg width="20" height="20"><use href="#sims-sparkle"/></svg></span>Готов начать обучение?</p>
+        </div>
+        <div class="actions-row" style="margin-top:16px;">
+          <button class="btn" data-next="screen-2">Готов!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+  <!-- Экран 2. Тест -->
+  <div class="screen" id="screen-2">
+    <button class="btn secondary nav-back" data-prev>← Назад</button>
+
+    <div class="panel" style="max-width:100%;">
+      <span class="panel-tag">Тест</span>
+      <h2>Тест: твой уровень нетворкинга</h2>
+      <p id="quiz-intro-text">Ответь на 10 вопросов — узнаешь, насколько ты готов к эффективному нетворкингу.</p>
+<p class="small-label" id="quiz-intro-hint">Вопросы появляются по два. Выбери по одному варианту ответа на каждый.</p>
+
+      <div class="quiz-progress" id="quiz-progress">Вопрос 1 из 10</div>
+      <div id="quiz-area"></div>
+      <!-- Результат теста — карточка -->
+<div id="quiz-result" class="quiz-result" style="display:none;">
+  <div class="result-card">
+
+    <div class="result-card-top">
+      <div class="result-confetti" aria-hidden="true"><svg class="sims-icon" width="40" height="40"><use href="#sims-sparkle"/></svg></div>
+      <div class="result-badge">Твой результат</div>
+    </div>
+
+    <div class="result-emoji" id="result-emoji" aria-hidden="true"><svg class="sims-icon" width="44" height="44"><use href="#sims-check"/></svg></div>
+
+    <div class="result-score">
+      <span class="result-score-current" id="result-current">0</span>
+      <span class="result-score-sep">/</span>
+      <span class="result-score-max" id="result-max">50</span>
+    </div>
+
+    <div class="result-bar-wrap">
+      <div class="result-bar-track">
+        <div class="result-bar-fill" id="result-bar" style="width:0%"></div>
+      </div>
+      <span class="result-percent" id="result-percent">0%</span>
+    </div>
+
+    <div class="result-level-badge" id="result-level">Уровень</div>
+
+    <p class="result-desc" id="result-desc"></p>
+
+    <button class="btn result-cta" id="result-continue">
+      Продолжить →
+    </button>
+
+  </div>
+</div>
+    </div>
+  </div>
+
+  <!-- ===== ЭКРАН 3-0: Знакомство со Златой ===== -->
+<div id="screen-3-0" class="screen">
+  <div class="screen-layout">
+
+    <div class="scene">
+      <div class="scene-header"></div>
+      <div class="scene-main">
+        <div style="position:relative; width:100%; height:100%;">
+          <img
+            src="img/m1/intro-bg.jpg"
+            alt="Злата"
+            style="width:100%; height:100%; object-fit:cover; object-position:top center; border-radius:14px;"
+          >
+
+          <!-- Диалоговое облако -->
+         <div style="
+  position: absolute;
+  top: 3%;
+  left: 52%;
+  background: #ffffff;
+  border: 2px solid #22c55e;
+  border-radius: 20px 20px 20px 4px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #166534;
+  box-shadow: 0 4px 16px rgba(34,197,94,0.25);
+  white-space: nowrap;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform-origin: bottom left;
+">
+  Привет! 
+
+  <!-- Хвостик — вниз-влево к губам -->
+  <div style="
+    position: absolute;
+    bottom: -14px;
+    left: 8px;
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 14px solid #22c55e;
+  "></div>
+  <div style="
+    position: absolute;
+    bottom: -11px;
+    left: 9px;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #ffffff;
+  "></div>
+</div>
+
+
+        </div><!-- закрытие position:relative -->
+      </div><!-- закрытие .scene-main -->
+    </div><!-- закрытие .scene -->
+
+    <!-- Панель -->
+    <div class="panel">
+      <span class="panel-tag">Знакомство</span>
+
+      <div style="margin-bottom:8px;">
+        <div style="font-size:16px; font-weight:700; color:var(--text);">Злата</div>
+        <div style="font-size:12px; color:var(--text-soft);">Специалист по маркетингу</div>
+      </div>
+
+      <div style="
+        position:relative;
+        background: rgba(34,197,94,0.06);
+        border: 1px solid rgba(34,197,94,0.2);
+        border-radius: 16px 16px 16px 16px;
+        padding: 14px 16px;
+        margin-top: 4px;
+      ">
+        <p style="font-size:14px; line-height:1.65; color:var(--text); margin:0;">
+          Привет, меня зовут <strong>Злата</strong>!
+        </p>
+        <p style="font-size:14px; line-height:1.65; color:var(--text); margin-top:10px;">
+          Я недавно в компании, работаю в отделе маркетинга, продвигаю наши препараты.
+          Через две недели мне предстоит посетить мою первую большую конференцию.
+          Руководитель поручил завести как можно больше знакомств с партнёрами.
+          Но о нетворкинге я знаю лишь понаслышке, так что надо прокачивать!
+        </p>
+        <p style="font-size:14px; line-height:1.65; color:var(--text-soft); margin-top:10px; font-style:italic;">
+          Злата немного переживает, но у неё есть цель, энергия и решимость попробовать.
+          Узнаёшь себя? Тогда вам точно по пути!
+        </p>
+      </div>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+        <span class="indicator-chip">Опыт нетворкинга: 0</span>
+      </div>
+
+      <div class="actions-row" style="margin-top:16px;">
+        <button class="btn" data-next="screen-3">
+          Познакомиться →
+        </button>
+      </div>
+
+    </div><!-- закрытие .panel -->
+  </div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-3-0 -->
+     
+<!-- Экран 3. Знакомство со Златой -->
+<div class="screen screen-card" id="screen-3">
+  <button class="btn secondary nav-back" data-prev>← Назад</button>
+
+  <div style="display:flex; justify-content:center; padding:10px 0;">
+
+    <!-- Карточка с флипом -->
+    <div class="zlata-card-wrapper" id="zlata-card-wrapper">
+      <div class="zlata-card" id="zlata-card">
+
+        <!-- ЛИЦЕВАЯ СТОРОНА -->
+        <div class="zlata-front">
+          <!-- Аватар -->
+          <div class="zlata-avatar">
+          <div class="zlata-avatar-circle">
+  <img src="img/m1/zlata.png" alt="Злата">
+                </div>
+</div>
+                
+                <!-- Инфо -->
+          <div class="zlata-name">Злата Ковальчук</div>
+          <div class="zlata-role">Специалист отдела маркетинга</div>
+          <div class="zlata-badge-new">Недавно в компании</div>
+
+          <!-- Цитата -->
+          <div class="zlata-quote">
+            «Я продвигаю препараты, которые реально помогают людям»
+          </div>
+
+          <!-- Инвентарь -->
+          <div class="zlata-inventory">
+            <div class="zlata-inv-item active" id="inv-laptop" title="Ноутбук — нажми!">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-laptop"/></svg></span>
+              <small>Ноутбук</small>
+            </div>
+            <div class="zlata-inv-item locked" id="inv-goal" title="Цель — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-target"/></svg></span>
+              <small>Цель</small>
+            </div>
+            <div class="zlata-inv-item locked" id="inv-bizcard" title=" — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-card"/></svg></span>
+              <small>Визитка</small>
+            </div>
+            <div class="zlata-inv-item locked" id="inv-phone" title="Телефон — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-phone"/></svg></span>
+              <small>Телефон</small>
+            </div>
+            <div class="zlata-inv-item locked" id="inv-bag" title="Сумка — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-bag"/></svg></span>
+              <small>Сумка</small>
+            </div>
+            <div class="zlata-inv-item locked" id="inv-map" title="Карта — откроется позже">
+             <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-final"/></svg></span>
+  <small>Финал</small>
+            </div>
+          </div>
+ <!-- Уровень нетворкинга -->
+          <div class="zlata-nw-bar">
+            <div class="zlata-nw-header">
+              <span class="zlata-nw-label">Прогресс подготовки к нетворкингу</span>
+              <span class="zlata-nw-value" id="zlata-nw-value">5%</span>
+            </div>
+            <div class="zlata-nw-track">
+              <div class="zlata-nw-fill" id="zlata-nw-fill" style="width:5%;"></div>
+            </div>
+          </div>
+          <div class="zlata-flip-hint">Нажми на карточку, чтобы узнать больше о Злате →</div>
+            </div><!-- закрытие zlata-front -->
+
+        <!-- ОБРАТНАЯ СТОРОНА -->
+        <div class="zlata-back">
+          <div class="zlata-back-scroll">
+                       
+            <!-- Суперсилы -->
+            <div class="zlata-superpowers">
+              <div class="zlata-sp-title">⚡ Суперсилы Златы</div>
+              <div class="zlata-sp-subtitle">У Златы есть 3 суперсилы:</div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-ear"/></svg></span>
+                <div>
+                  <strong>Умеет слушать</strong>
+                  <span>— не перебивает, искренне интересуется</span>
+                </div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-brain"/></svg></span>
+                <div>
+                  <strong>Быстро учится</strong>
+                  <span>— осваивает новое со скоростью, от которой нервничает Wi-Fi</span>
+                </div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-hug"/></svg></span>
+                <div>
+                  <strong>Искренность</strong>
+                  <span>— люди чувствуют, что ей не всё равно</span>
+                </div>
+              </div>
+            </div>
+                      <div class="zlata-instruction">
+              <span class="zlata-sims-ico" style="margin-right:6px;vertical-align:middle;" aria-hidden="true"><svg width="20" height="20"><use href="#sims-laptop"/></svg></span>Нажми на <strong>ноутбук</strong> Златы, чтобы ознакомиться с предстоящим мероприятием
+            </div>
+
+            <div class="zlata-flip-hint">← Нажми, чтобы вернуться</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Экран 10. Рабочий стол ноутбука -->
+<div class="screen" id="screen-10">
+<div class="screen-layout">
+<div class="scene">
+<div class="scene-header">
+</div>
+<div class="scene-main">
+<div style="width:100%; height:100%; border-radius:14px; background:linear-gradient(135deg,#0f172a,#1e293b); position:relative; display:flex; flex-direction:column; overflow:hidden;">
+<!-- Панель сверху -->
+<div style="background:#334155; padding:6px 12px; display:flex; align-items:center; gap:8px; border-radius:14px 14px 0 0;">
+<div style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></div>
+<div style="width:10px;height:10px;border-radius:50%;background:#facc15;"></div>
+<div style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></div>
+<span style="color:#94a3b8;font-size:11px;margin-left:8px;">Рабочий стол Златы</span>
+</div>
+<!-- Папки -->
+<div class="laptop-folders-row" style="flex:1; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); align-items:center; justify-items:center; align-content:center; gap:16px; padding:20px 16px; width:100%; max-width:420px; margin:0 auto;">
+
+  <!-- Папка: Расписание -->
+  <div id="folder-schedule" class="laptop-folder" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;position:relative;width:100%;max-width:140px;min-height:110px;justify-content:flex-start;" title="Расписание конференции">
+    <div style="width:64px;height:52px;border-radius:4px 4px 8px 8px;background:linear-gradient(135deg,#facc15,#f59e0b);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);"><svg width="32" height="32" aria-hidden="true"><use href="#sims-clipboard"/></svg></div>
+    <div id="schedule-done-badge" style="display:none;position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:#22c55e;border:2px solid #1e293b;align-items:center;justify-content:center;font-size:10px;color:#fff;">✓</div>
+    <span style="color:#e2e8f0;font-size:11px;text-align:center;">Расписание<br>конференции</span>
+  </div>
+
+  <!-- Папка: Цель -->
+  <div id="folder-goal" class="laptop-folder" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;position:relative;width:100%;max-width:140px;min-height:110px;justify-content:flex-start;" title="Поставить цель">
+    <div style="width:64px;height:52px;border-radius:4px 4px 8px 8px;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);"><svg width="32" height="32" aria-hidden="true"><use href="#sims-target"/></svg></div>
+    <div id="goal-done-badge" style="display:none;position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:#22c55e;border:2px solid #1e293b;align-items:center;justify-content:center;font-size:10px;color:#fff;">✓</div>
+    <span style="color:#e2e8f0;font-size:11px;text-align:center;">Цель</span>
+  </div>
+
+  <!-- Папка: Карта мероприятия -->
+  <div id="folder-map" class="laptop-folder" style="display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;position:relative;width:100%;max-width:140px;min-height:110px;justify-content:flex-start;" title="Карта мероприятия">
+    <div style="width:64px;height:52px;border-radius:4px 4px 8px 8px;background:linear-gradient(135deg,#38bdf8,#0284c7);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);"><svg width="32" height="32" aria-hidden="true"><use href="#sims-map"/></svg></div>
+    <div id="map-done-badge" style="display:none;position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:#22c55e;border:2px solid #1e293b;align-items:center;justify-content:center;font-size:10px;color:#fff;">✓</div>
+    <span style="color:#e2e8f0;font-size:11px;text-align:center;">Карта<br>мероприятия</span>
+  </div>
+
+</div>
+<!-- Мысль Златы -->
+<div style="padding:8px 14px 10px; background:rgba(0,0,0,0.3); font-size:12px; color:#94a3b8; line-height:1.4;">
+  <span class="zlata-sims-ico" style="margin-right:6px;vertical-align:middle;" aria-hidden="true"><svg width="20" height="20"><use href="#sims-chat"/></svg></span>Надо подготовиться. Посмотрю расписание, поставлю цель и изучу карту мероприятия.
+</div>
+
+</div><!-- закрытие div рабочего стола (overflow:hidden) -->
+</div><!-- закрытие .scene-main -->
+</div><!-- закрытие .scene -->
+
+<div class="panel">
+  <div class="panel-tag">Теория</div>
+  <h2>Включаем режим подготовки</h2>
+  <p>Злата открыла ноутбук, чтобы подготовиться к конференции.</p>
+  <p>На рабочем столе три папки. Нажми на каждую:</p>
+  <ul>
+    <li><strong>Расписание конференции</strong> — узнаешь, как грамотно учесть его</li>
+    <li><strong>Цель</strong> — перейдёшь к упражнению</li>
+    <li><strong>Карта мероприятия</strong> — изучишь план площадки</li>
+  </ul>
+
+  <button type="button" class="btn m1-mobile-flow-next" id="btn-m10-to-task" style="display:none;width:100%;margin-top:12px;">Далее → к рабочему столу</button>
+
+  <div style="margin-top:24px; border-top:1px solid #f1f5f9; padding-top:16px;">
+    <p id="laptop-next-hint" style="
+      font-size:12px;
+      color:#94a3b8;
+      text-align:center;
+      margin:0 0 8px 0;
+      line-height:1.5;
+    "><span class="zlata-sims-ico" style="margin-right:6px;vertical-align:middle;" aria-hidden="true"><svg width="18" height="18"><use href="#sims-lock"/></svg></span>Открой все три папки, чтобы продолжить</p>
+
+    <button id="btn-laptop-next" style="
+      display:none;
+      width:100%;
+      padding:14px 24px;
+      font-size:15px;
+      font-weight:700;
+      color:#fff;
+      background:linear-gradient(135deg,#16a34a,#22c55e);
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      box-shadow:0 4px 16px rgba(34,197,94,0.4);
+      transition:all 0.2s ease;
+    "
+    onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(34,197,94,0.5)';"
+    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(34,197,94,0.4)';"
+    >
+      <span class="zlata-sims-ico" style="margin-right:6px;vertical-align:middle;" aria-hidden="true"><svg width="18" height="18"><use href="#sims-check"/></svg></span>Всё готово — Далее →
+    </button>
+  </div>
+</div><!-- закрытие .panel -->
+
+</div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-10 -->
+
+
+<!-- ↓ МОДАЛКА РАСПИСАНИЯ — ВНЕ экрана, на верхнем уровне ↓ -->
+<div class="modal-overlay" id="schedule-modal">
+  <div class="modal" style="max-width:460px;">
+    <h3 style="display:flex;align-items:center;gap:8px;"><svg width="22" height="22" aria-hidden="true"><use href="#sims-clipboard"/></svg> Расписание конференции</h3>
+    <p>Когда собираешься на конференцию или выставку, которая длится несколько дней, прежде всего изучи расписание. Посмотрим, какие сессии тебе наиболее интересны.</p>
+    <p style="margin-top:6px;">Особое внимание обрати на те события, проведение которых соответствует времени суток, когда ты наиболее комфортно чувствуешь себя в толпе.</p>
+    <p style="margin-top:6px;">Оставь как минимум час для того, чтобы побыть среди людей. За это время оцени ситуацию, обменяйся контактами с парой человек.</p>
+    <p style="margin-top:6px;">Можно знакомиться с людьми в перерывах между выступлениями или участвуя в пленарном заседании.</p>
+    <div class="actions-row" style="margin-top:12px; justify-content:flex-end;">
+      <button class="btn" id="schedule-modal-ok">ОК</button>
+    </div>
+  </div>
+</div>
+
+
+ <!-- Экран 11. Для чего нетворкинг тебе? -->
+<div class="screen" id="screen-11">
+  <div class="screen-layout">
+    <div class="scene">
+      <div class="scene-header">
+        <span class="tagline">Для чего нетворкинг тебе ?</span>
+      </div>
+      <div class="scene-main">
+        <div class="fake-illustration" style="background:none; border:none; overflow:hidden;">
+          <img src="img/m1/purpose.png" alt="Для чего нетворкинг" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-tag">Теория</div>
+      <h2>Упражнение: для чего тебе нетворкинг?</h2>
+      <p>Можешь ли ты уже сформулировать, для чего лично тебе нужен нетворкинг?</p>
+      <div style="margin-top: 6px;">
+        <div class="field-label">Твой ответ</div>
+        <textarea id="networking-purpose" placeholder="Например: «Хочу находить партнёров для проектов и быстрее расти в карьере»"></textarea>
+      </div>
+      <div class="actions-row">
+        <button class="btn" id="btn-purpose-submit">Ответить</button>
+      </div>
+      <div class="modal-overlay" id="purpose-modal">
+        <div class="modal" style="position:relative; overflow:visible;">
+          <div id="purpose-saved-float" class="float-saved" style="display:flex;align-items:center;gap:6px;justify-content:center;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-save"/></svg> Твой ответ сохранён!</div>
+          <h3>Спасибо!</h3>
+          <p>Продолжим работать над целью и сделаем её более конкретной!</p>
+          <div class="actions-row" style="margin-top: 10px; justify-content: flex-start;">
+            <button class="btn secondary" id="btn-purpose-save" style="display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-save"/></svg> Сохранить ответ</button>
+            <button class="btn" id="purpose-modal-continue">Продолжить</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- закрытие .panel -->
+  </div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-11 -->
+
+<!-- Экран 12. Нити нетворкинга -->
+<div class="screen" id="screen-12">
+  <div class="fear-fullscreen" style="display:flex; flex-direction:column; align-items:center; padding:24px 20px; overflow-y:auto;">
+
+    <div style="text-align:center; margin-bottom:16px;">
+          <h2 style="font-size:22px; margin:0;">Три нити нетворкинга</h2>
+      <p style="color:var(--text-soft); margin-top:6px; max-width:500px; line-height:1.5;">
+        Нетворкинг строится на трёх принципах. Собери каждое слово из бусин-букв, чтобы узнать их.
+      </p>
+    </div>
+
+    <!-- Этапы -->
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+      <div class="beads-dot" id="dot-1">1</div>
+      <div style="width:28px; height:2px; background:#e2e8f0;"></div>
+      <div class="beads-dot" id="dot-2">2</div>
+      <div style="width:28px; height:2px; background:#e2e8f0;"></div>
+      <div class="beads-dot" id="dot-3">3</div>
+    </div>
+
+    <div style="font-size:14px; color:var(--text-soft); margin-bottom:8px;">
+      Этап <span id="beads-stage-label">1</span> из 3
+    </div>
+
+    <!-- Подсказка -->
+    <div id="beads-hint" style="font-size:16px; font-weight:700; letter-spacing:4px; color:var(--accent-soft); min-height:24px; margin-bottom:12px;"></div>
+
+    <!-- Пул букв -->
+    <div style="font-size:12px; color:var(--text-soft); margin-bottom:4px;">Буквы (перетащи вниз):</div>
+    <div id="beads-pool" style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center; min-height:56px; padding:10px 8px; border-radius:14px; border:2px dashed #cbd5e1; background:#f8fafc; width:100%; box-sizing:border-box; margin-bottom:14px;"></div>
+
+    <!-- Целевая зона -->
+    <div style="font-size:12px; color:var(--text-soft); margin-bottom:4px;">Собери слово здесь:</div>
+    <div id="beads-target" style="display:flex; flex-wrap:wrap; gap:6px; justify-content:center; min-height:56px; padding:10px 8px; border-radius:14px; border:2px dashed rgba(34,197,94,0.5); background:rgba(34,197,94,0.04); width:100%; box-sizing:border-box; margin-bottom:14px;"></div>
+
+    <!-- Фидбек -->
+    <div id="beads-feedback" style="font-size:14px; min-height:24px; text-align:center; color:var(--accent-soft); line-height:1.5; max-width:460px; margin-bottom:12px;"></div>
+
+    <!-- Кнопки -->
+    <div style="display:flex; gap:12px; margin-bottom:16px;">
+      <button class="btn secondary" id="beads-reset" style="padding:10px 22px;">Сбросить</button>
+      <button class="btn" id="beads-check" style="padding:10px 22px;">Проверить</button>
+    </div>
+
+    <!-- Теория внизу -->
+<div id="beads-theory" style="display:none; max-width:500px; width:100%; padding:16px 18px; border-radius:14px; background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.2); margin-top:8px;">
+  <h3 style="font-size:15px; margin:0 0 8px; display:flex; align-items:center; gap:8px;"><svg width="20" height="20" aria-hidden="true"><use href="#sims-book"/></svg> Что значат эти слова?</h3>
+  <ol style="font-size:13px; line-height:1.6; padding-left:18px; margin:0;">
+    <li><strong>Установка</strong> — смелость начать, сделать первый шаг к знакомству</li>
+    <li><strong>Удержание</strong> — искусство поддерживать контакт тёплым</li>
+    <li><strong>Ценность</strong> — результат, к которому приводят первые два шага</li>
+  </ol>
+</div>
+
+    <div style="margin-top:16px;">
+      <button class="btn secondary nav-back" data-prev style="padding:10px 22px;">← Назад</button>
+    </div>
+
+  </div>
+
+  <!-- Модалка завершения -->
+  <div class="modal-overlay" id="beads-summary-modal">
+    <div class="modal" style="text-align:center; max-width:440px;">
+      <div style="display:flex;justify-content:center;margin-bottom:8px;" aria-hidden="true"><svg width="42" height="42"><use href="#sims-sparkle"/></svg></div>
+      <h3 style="font-size:20px;">Все три нити собраны!</h3>
+      <p style="line-height:1.6; margin-top:8px;">
+        <strong>Установка</strong> → <strong>Удержание</strong> → <strong>Ценность</strong><br>
+        Это фундамент нетворкинга. Теперь переходим к работе со страхами.
+      </p>
+      <div style="display:flex; justify-content:center; margin-top:14px;">
+        <button class="btn" id="beads-summary-continue" data-next="screen-13" style="padding:12px 28px; font-size:16px;">Продолжить →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+<!-- Экран 13. Сними маски своих страхов -->
+<div class="screen" id="screen-13">
+  <div class="fear-fullscreen" id="fears-container">
+
+    <!-- Шаг 1: Выбор масок -->
+    <div id="fears-step1">
+      <div style="text-align: center; margin-bottom: 20px;">
+             <h2 style="font-size: 24px; margin-top: 8px;">Сними маски своих страхов</h2>
+        <p style="color: var(--text-soft); margin-top: 6px;">Выбери те, которые про тебя. Нажми на маску — она снимется.</p>
+      </div>
+
+ <div class="fear-masks-grid" id="fear-masks-grid">
+  <div class="fear-mask" data-fear="say">
+    <div class="fear-mask-face">
+      <div class="fm-eyes"><span class="fm-eye"></span><span class="fm-eye"></span></div>
+      <div class="fm-mouth fm-mouth-zip"></div>
+    </div>
+    <div class="fear-mask-text">Не знаю, что сказать</div>
+  </div>
+
+  <div class="fear-mask" data-fear="reject">
+    <div class="fear-mask-face">
+      <div class="fm-eyes"><span class="fm-eye fm-eye-sad"></span><span class="fm-eye fm-eye-sad"></span></div>
+      <div class="fm-mouth fm-mouth-sad"></div>
+    </div>
+    <div class="fear-mask-text">Меня отвергнут</div>
+  </div>
+
+  <div class="fear-mask" data-fear="worth">
+    <div class="fear-mask-face">
+      <div class="fm-eyes"><span class="fm-eye fm-eye-small"></span><span class="fm-eye fm-eye-small"></span></div>
+      <div class="fm-mouth fm-mouth-flat"></div>
+    </div>
+    <div class="fear-mask-text">Я недостаточно важен(на)</div>
+  </div>
+
+  <div class="fear-mask" data-fear="incompetent">
+    <div class="fear-mask-face">
+      <div class="fm-eyes"><span class="fm-eye fm-eye-wide"></span><span class="fm-eye fm-eye-wide"></span></div>
+      <div class="fm-mouth fm-mouth-o"></div>
+    </div>
+    <div class="fear-mask-text">Покажусь некомпетентным</div>
+  </div>
+
+  <div class="fear-mask" data-fear="pushy">
+    <div class="fear-mask-face">
+      <div class="fm-eyes"><span class="fm-eye"></span><span class="fm-eye"></span></div>
+      <div class="fm-mouth fm-mouth-grimace"></div>
+    </div>
+    <div class="fear-mask-text">Буду навязчивым</div>
+  </div>
+
+  <div class="fear-mask" data-fear="everyone">
+    <div class="fear-mask-face">
+      <div class="fm-eyes"><span class="fm-eye fm-eye-look"></span><span class="fm-eye fm-eye-look"></span></div>
+      <div class="fm-mouth fm-mouth-flat"></div>
+    </div>
+    <div class="fear-mask-text">Все уже знают друг друга</div>
+  </div>
+
+  <div class="fear-mask" data-fear="awkward">
+    <div class="fear-mask-face">
+      <div class="fm-eyes"><span class="fm-eye fm-eye-squint"></span><span class="fm-eye fm-eye-squint"></span></div>
+      <div class="fm-mouth fm-mouth-wavy"></div>
+    </div>
+    <div class="fear-mask-text">Потом будет неловко</div>
+  </div>
+
+  <div class="fear-mask fear-mask-custom" data-fear="custom">
+    <div class="fear-mask-face fm-face-custom">
+      <div class="fm-eyes"><span class="fm-eye fm-eye-dot"></span><span class="fm-eye fm-eye-dot"></span></div>
+      <div class="fm-mouth fm-mouth-plus">+</div>
+    </div>
+    <div class="fear-mask-text">Свой вариант</div>
+    <input type="text" class="fear-custom-input" placeholder="Напиши свой страх..." style="display:none;">
+  </div>
+</div>
+
+      <!-- Валидации -->
+      <div id="fears-validations" style="display:none; margin-top: 20px;">
+        <h3 style="text-align: center; font-size: 18px; margin-bottom: 12px; display:flex; align-items:center; justify-content:center; gap:8px;"><svg width="22" height="22" aria-hidden="true"><use href="#sims-hug"/></svg> Ты не один</h3>
+        <div class="fears-validation-list" id="fears-validation-list"></div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+        <button class="btn" id="btn-unmask" style="display:none; padding: 12px 28px; font-size: 16px;">Снять маски </button>
+        <button class="btn secondary" id="btn-no-fear" style="padding: 12px 28px; font-size: 16px;">Мне ничего не страшно</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+     
+     <!-- Экран 13-S. Как ты будешь с этим справляться? -->
+<div class="screen" id="screen-13-s">
+  <div class="fear-fullscreen" style="overflow-y:auto; padding:24px 20px;">
+
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h2 style="font-size: 22px; margin-top: 8px;">Как ты будешь с этим справляться?</h2>
+      <p style="color: var(--text-soft);">Запиши стратегию для каждого страха. Подсказки внутри.</p>
+    </div>
+
+    <div class="fears-strategy-list" id="fears-strategy-list"></div>
+
+    <div style="display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
+      <button class="btn secondary" id="btn-fears-save" style="padding: 12px 24px; font-size: 15px; display:inline-flex; align-items:center; gap:8px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-save"/></svg> Сохранить</button>
+      <button class="btn" id="btn-fears-done" style="padding: 12px 28px; font-size: 16px;">Готово</button>
+    </div>
+
+    <!-- Модалка -->
+    <div class="modal-overlay" id="fears-modal">
+      <div class="modal" style="text-align: center; max-width: 480px;">
+        <div style="display:flex; justify-content:center; margin-bottom: 8px;" aria-hidden="true"><svg width="48" height="48"><use href="#sims-final"/></svg></div>
+        <h3 style="font-size: 20px;">Ты справился!</h3>
+        <p style="line-height: 1.6; margin-top: 8px;">
+          Ты назвал своих призраков по имени, посмотрел им в глаза и написал план борьбы. Это один из самых мощных ритуалов подготовки к нетворкингу.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 14px;">
+          <button class="btn" data-next="screen-14" style="padding: 12px 28px; font-size: 16px;">Продолжить →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Экран 14. Колесо баланса -->
+<div class="screen" id="screen-14">
+  <div class="screen-layout">
+
+    <!-- СЦЕНА: только колесо -->
+    <div class="scene">
+      <div class="scene-header">
+        <span class="tagline">КОЛЕСО БАЛАНСА</span>
+      </div>
+      <div class="scene-main">
+        <svg id="wheelSvg" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%; height:100%; display:block; overflow:visible;">
+        </svg>
+      </div>
+    </div>
+
+    <!-- ПАНЕЛЬ: теория + кнопки оценки -->
+    <div class="panel">
+      <div class="m1-ms14-intro">
+      <div class="panel-tag">Теория</div>
+      <h2>Колесо баланса контактов</h2>
+      <p>
+        Прочитай название сферы и подумай:
+        «Есть ли у меня люди, к которым я могу обратиться в этой области?»
+      </p>
+      <p style="margin-top:4px;">Оцени от 1 до 10:</p>
+      <ul>
+        <li><strong>1–2</strong> — контактов почти нет</li>
+        <li><strong>3–4</strong> — есть пара человек, но связь слабая</li>
+        <li><strong>5–6</strong> — есть несколько знакомых, связь не системная</li>
+        <li><strong>7–8</strong> — есть надёжные контакты</li>
+        <li><strong>9–10</strong> — сильная сеть: активная связь, взаимная польза</li>
+      </ul>
+      <button type="button" class="btn m1-mobile-flow-next" id="btn-m14-to-rating" style="display:none;width:100%;margin-top:12px;">Далее</button>
+      </div>
+
+      <div class="m1-ms14-rate-block">
+      <div class="seg-control">
+        <div class="seg-control-title">
+          Текущая сфера: <span id="current-seg-name">Карьера</span>
+        </div>
+        <div class="seg-level-buttons" id="seg-level-buttons"></div>
+      </div>
+
+      <div class="actions-row" style="margin-top:6px;">
+        <button class="btn secondary" id="btn-wheel-reset" style="display:none;">
+          Оценить заново
+        </button>
+        <button class="btn" id="btn-wheel-finish" style="display:none;">
+          Готово
+        </button>
+      </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Экран 15. Твоё колесо баланса -->
+<div class="screen" id="screen-15">
+  <div class="screen-layout">
+
+    <!-- СЦЕНА -->
+    <div class="scene">
+      <div class="scene-header">
+        ТВОЁ КОЛЕСО БАЛАНСА
+      </div>
+      <div class="scene-main">
+        <svg id="resultWheelSvg"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 500 500"
+             preserveAspectRatio="xMidYMid meet"
+             style="overflow:visible; display:block;">
+        </svg>
+      </div>
+    </div>
+
+    <!-- ПАНЕЛЬ — всё содержимое внутри -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-tag">Упражнение</div>
+        <h2>Оцени важность каждой сферы</h2>
+      </div>
+      <!-- JS сюда вставит: инструкцию, ползунки, кнопку Рассчитать, результаты, кнопку Продолжить -->
+    </div>
+
+  </div>
+</div>
+     
+<!-- Экран 16. Сколько знакомств ты заведёшь -->
+<div class="screen" id="screen-16">
+  <div class="screen-layout">
+   <div class="scene" style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5, #f8fafc); border: none;">
+      <div class="scene-header">
+        <span class="tagline">Сколько знакомств тебе нужно?</span>
+      </div>
+      <div class="scene-main" style="flex-direction: column; gap: 16px; padding: 24px;">
+
+        <!-- Счётчик -->
+        <div id="people-counter" style="font-size: 48px; font-weight: 800; color: #94a3b8; text-align: center;">0</div>
+        <div style="font-size: 13px; color: var(--text-soft); text-align: center;">человек на следующем мероприятии</div>
+
+        <!-- Пул -->
+        <div style="text-align: center;">
+          <span style="font-size: 12px; color: var(--text-soft); display:inline-flex; align-items:center; gap:6px;"><svg width="14" height="14" aria-hidden="true"><use href="#sims-pointer"/></svg> Нажми на человечка, чтобы добавить в план</span>
+        </div>
+        <div id="people-pool" class="m1-people-pool" style="
+          display: flex; flex-wrap: wrap; gap: 10px;
+          justify-content: center; padding: 16px;
+          border-radius: 16px;
+          background: rgba(255,255,255,0.7);
+          border: 1px solid #e2e8f0;
+          min-height: 80px;
+        "></div>
+
+        <!-- Целевая зона -->
+        <div class="m1-people-plan-label-row" style="text-align: center;">
+          <span style="font-size: 12px; color: var(--accent-soft); font-weight: 600;">Твой план знакомств</span>
+        </div>
+        <div id="people-target" class="m1-people-target" style="
+          display: flex; flex-wrap: wrap; gap: 10px;
+          justify-content: center; padding: 16px;
+          border-radius: 16px;
+          background: rgba(34,197,94,0.06);
+          border: 2px dashed rgba(34,197,94,0.4);
+          min-height: 80px;
+          transition: all 0.3s ease;
+        "></div>
+
+        <!-- Кнопка и фидбек — под заданием -->
+        <div id="people-feedback" style="display:none; font-size:14px; line-height:1.5; padding:10px 14px; border-radius:12px; background:rgba(241,245,249,0.8); border:1px solid #e2e8f0; text-align:center;"></div>
+
+        <div class="m1-people-plan-footer" style="text-align: center;">
+          <button class="btn" id="btn-people-plan" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: 0 12px 30px rgba(59,130,246,0.4);">Запланировать</button>
+        </div>
+
+      </div>
+    </div>
+
+<div class="panel">
+  <div class="m1-ms16-theory">
+  <div class="panel-tag">Теория</div>
+  <h2 style="margin-top: 8px;">Сколько знакомств ты заведёшь?</h2>
+
+      <h3 style="margin-top: 6px;">Теория «6 рукопожатий»</h3>
+      <p>Представь: ты сидишь вечером с чаем, случайно открываешь профиль какой-то «звезды» фармы или науки и думаешь: «Ну вот, это вообще из другого мира. Как я до такого человека когда-нибудь доберусь?» Но постой:</p>
+      <p><strong>Между тобой и почти любым человеком на планете — всего несколько шагов знакомых.</strong></p>
+      <p>Не сотни, не тысячи, а примерно <strong>6 рукопожатий</strong>. Тебе не нужно знать всех, достаточно нескольких правильных людей, чтобы выйти куда угодно.</p>
+      <p>Теория шести рукопожатий гласит: <em>любой человек на Земле связан с любым другим через цепочку из примерно шести человек.</em></p>
+      <p>Формула простая:</p>
+      <div style="background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 10px; padding: 10px 12px; margin: 6px 0; font-size: 13px; color: var(--accent-soft); text-align: center;">
+        Ты → твой знакомый → его знакомый → его знакомый → … → нужный человек<br>
+        <span style="font-size: 12px; color: var(--text-soft);">Каждое звено в цепочке — это «рукопожатие».</span>
+      </div>
+
+      <div style="background: rgba(250, 204, 21, 0.08); border: 1px solid rgba(250, 204, 21, 0.35); border-radius: 10px; padding: 10px 12px; margin: 8px 0;">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <span style="font-size: 16px; line-height:0; display:inline-flex;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-star"/></svg></span>
+          <strong style="font-size: 13px; color: var(--accent-yellow);">Фан-факт</strong>
+        </div>
+        <p style="font-size: 13px; line-height: 1.45;">Это не просто красивая легенда.</p>
+        <p style="font-size: 13px; line-height: 1.45; margin-top: 4px;">Ещё в середине XX века психологи и социологи проводили эксперименты: просили людей переслать письмо незнакомцу в другой части страны, передавая его только знакомым. В среднем получалось около 5–6 шагов.</p>
+        <p style="font-size: 13px; line-height: 1.45; margin-top: 4px;">Потом, в эпоху соцсетей, крупные платформы анализировали реальные связи между миллионами людей и получали похожие цифры: цепочка между двумя случайными людьми — <strong>3–5 промежуточных контактов</strong>.</p>
+      </div>
+
+      <p>То есть:</p>
+      <ul>
+        <li>Мир действительно связан плотнее, чем кажется.</li>
+        <li>Наши сети знакомых перекрываются, создавая огромную «паутину» контактов.</li>
+      </ul>
+
+      <p style="margin-top: 8px;"><strong>У этого есть три важных следствия:</strong></p>
+      <p style="margin-top: 6px;"><strong style="color: var(--accent-soft);">1. Каждое знакомство ценнее, чем кажется.</strong><br>Ты знакомишься не только с человеком перед тобой, но и с его окружением.</p>
+      <p style="margin-top: 6px;"><strong style="color: var(--accent-soft);">2. Твоя задача — строить мосты между «островами».</strong><br>Особенно ценны контакты, которые связывают разные круги.</p>
+      <p style="margin-top: 6px;"><strong style="color: var(--accent-soft);">3. Качество важнее количества.</strong><br>Тебе нужны люди, которые реально готовы порекомендовать, познакомить, подсказать.</p>
+
+      <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; padding: 10px 12px; margin: 10px 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 16px;">❓</span>
+          <strong style="font-size: 14px; color: var(--accent-blue);">Итак, сколько знакомств ты планируешь завести?</strong>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="m1-ms16-after">
+      <p class="m1-ms16-task-hint">Нажимай на человечков ниже, чтобы добавить их в план, затем «Запланировать».</p>
+      <button type="button" class="btn m1-mobile-flow-next" id="btn-m16-to-task" style="display:none;width:100%;margin-top:12px;">Далее</button>
+
+      <div class="actions-row" id="screen-16-actions">
+        <button class="btn secondary nav-back" data-prev>← Назад</button>
+        <button class="btn"
+                id="btn-people-continue"
+                data-next="screen-16-1"
+                style="display:none;">
+          Продолжить →
+        </button>
+      </div>
+
+    </div><!-- m1-ms16-after -->
+    </div><!-- закрытие .panel -->
+  </div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-16 -->
+
+     
+<!-- Экран 16-1. Где ты будешь знакомиться -->
+<div class="screen" id="screen-16-1">
+  <div class="screen-layout">
+    <div class="scene" style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5, #f8fafc); border: none;">
+      <div class="scene-header">
+        <span class="tagline">Где ты будешь знакомиться?</span>
+      </div>
+      <div class="scene-main" style="flex-direction: column; gap: 10px; padding: 18px; align-items: stretch;">
+        <div style="display: flex; gap: 12px; width: 100%; flex: 1; min-height: 0;">
+
+          <div class="location-category" data-category="comfort" style="flex:1; display:flex; flex-direction:column; gap:6px; min-width:0;">
+            <div style="font-size: 12px; font-weight: 600; color: #16a34a; text-align:center; padding: 8px 6px; background: rgba(34,197,94,0.12); border-radius: 10px; border: 1px solid rgba(34,197,94,0.3);">
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-fish"/></svg> Как рыба в воде</span>
+            </div>
+            <div class="location-drop-zone" data-category="comfort" style="
+              flex:1; min-height: 80px; border-radius: 12px;
+              border: 2px dashed rgba(34,197,94,0.4);
+              background: rgba(34,197,94,0.04);
+              padding: 8px; display: flex; flex-wrap: wrap;
+              gap: 6px; align-content: flex-start;
+            "></div>
+          </div>
+
+          <div class="location-category" data-category="neutral" style="flex:1; display:flex; flex-direction:column; gap:6px; min-width:0;">
+            <div style="font-size: 12px; font-weight: 600; color: #ca8a04; text-align:center; padding: 8px 6px; background: rgba(250,204,21,0.12); border-radius: 10px; border: 1px solid rgba(250,204,21,0.3);">
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-neutral"/></svg> Нейтрально</span>
+            </div>
+            <div class="location-drop-zone" data-category="neutral" style="
+              flex:1; min-height: 80px; border-radius: 12px;
+              border: 2px dashed rgba(250,204,21,0.4);
+              background: rgba(250,204,21,0.04);
+              padding: 8px; display: flex; flex-wrap: wrap;
+              gap: 6px; align-content: flex-start;
+            "></div>
+          </div>
+
+          <div class="location-category" data-category="avoid" style="flex:1; display:flex; flex-direction:column; gap:6px; min-width:0;">
+            <div style="font-size: 12px; font-weight: 600; color: #dc2626; text-align:center; padding: 8px 6px; background: rgba(239,68,68,0.12); border-radius: 10px; border: 1px solid rgba(239,68,68,0.3);">
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-block"/></svg> Ноги моей тут не будет</span>
+            </div>
+            <div class="location-drop-zone" data-category="avoid" style="
+              flex:1; min-height: 80px; border-radius: 12px;
+              border: 2px dashed rgba(239,68,68,0.4);
+              background: rgba(239,68,68,0.04);
+              padding: 8px; display: flex; flex-wrap: wrap;
+              gap: 6px; align-content: flex-start;
+            "></div>
+          </div>
+
+        </div>
+        <div id="location-pool-mobile-slot" class="location-pool-mobile-slot"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+  <div class="m1-loc-theory">
+  <div class="panel-tag">Теория</div>
+  <h2>Где ты будешь знакомиться?</h2>
+  <p>У каждого есть свои места, где он чувствует себя как рыба в воде. Именно поэтому так сложно освоить «правильное поведение на вечеринках», если ты их не очень любишь.</p>
+  <p>Глупо пытаться научиться «очаровывать людей на конференциях», если одна только мысль о них вызывает мурашки.</p>
+  </div>
+
+  <div class="m1-loc-theory-assignment">
+      <p style="margin-top: 6px;"><strong>Задание:</strong> перетащи локации в подходящую категорию слева.</p>
+      <div style="font-size: 12px; color: var(--text-soft); margin-top: 8px;">Локации (перетащи в категорию):</div>
+  </div>
+
+  <div class="m1-loc-panel-rest">
+      <div class="m1-loc-panel-assignment">
+      <p style="margin-top: 6px;"><strong>Задание:</strong> перетащи локации в подходящую категорию слева.</p>
+      <div style="font-size: 12px; color: var(--text-soft); margin-top: 8px;">Локации (перетащи в категорию):</div>
+      </div>
+      <div id="location-pool-panel-anchor">
+      <div class="location-pool" id="location-pool" style="min-height: 80px; border-radius: 12px; border: 2px dashed rgba(148,163,184,0.4); background: rgba(248,250,252,0.8); padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; margin-top: 6px;"></div>
+      </div>
+
+      <button type="button" class="btn m1-mobile-flow-next" id="btn-m161-theory-next" style="display:none;width:100%;margin-top:12px;">Далее</button>
+
+      <div class="actions-row" style="margin-top: 10px;">
+        <button class="btn secondary nav-back" data-prev>Назад</button>
+        <button class="btn" id="btn-locations-done">Готово</button>
+      </div>
+
+      <div class="modal-overlay" id="locations-modal">
+        <div class="modal">
+          <h3>Отличная работа!</h3>
+          <div id="locations-feedback"></div>
+          <p class="m1-loc-modal-footer-static" style="margin-top: 8px;"><b>Теперь ты точно знаешь, какие места тебе приятны, а каких лучше избегать</b></p>
+                  <div class="actions-row" style="margin-top: 10px; justify-content: flex-end;">
+            <button type="button" class="btn" id="locations-continue">Продолжить</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- m1-loc-panel-rest -->
+    </div><!-- .panel -->
+  </div><!-- .screen-layout -->
+</div><!-- #screen-16-1 -->
+
+<div class="modal-overlay" id="locations-task-intro-modal">
+  <div class="modal" style="max-width:420px;">
+    <h3>Задание</h3>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">Перетащи каждую локацию в категорию: где тебе <strong>комфортно</strong>, где <strong>нейтрально</strong>, а куда <strong>лучше не ходить</strong> для знакомств.</p>
+    <div class="actions-row" style="margin-top:14px;justify-content:flex-end;">
+      <button type="button" class="btn" id="btn-locations-to-task">К заданию</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="locations-theory-intro-modal">
+  <div class="modal" style="max-width:420px;">
+    <span class="panel-tag">Теория</span>
+    <h2 style="margin-top:8px;">Где ты будешь знакомиться?</h2>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">У каждого есть свои места, где он чувствует себя как рыба в воде. Именно поэтому так сложно освоить «правильное поведение на вечеринках», если ты их не очень любишь.</p>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">Глупо пытаться научиться «очаровывать людей на конференциях», если одна только мысль о них вызывает мурашки.</p>
+    <div class="actions-row" style="margin-top:14px;">
+      <button type="button" class="btn" id="btn-locations-theory-intro-ok" style="width:100%;">Понятно</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="locations-practice-intro-modal">
+  <div class="modal" style="max-width:420px;">
+    <h3>Ты на шаг ближе!</h3>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">Перетащи локации в колонки слева: где тебе <strong>комфортно</strong>, где <strong>нейтрально</strong> и куда <strong>лучше не ходить</strong> для знакомств. Когда всё распределишь — нажми «Готово».</p>
+    <div class="actions-row" style="margin-top:14px;">
+      <button type="button" class="btn" id="btn-locations-practice-intro-continue" style="width:100%;">Продолжить</button>
+    </div>
+  </div>
+</div>
+ 
+  <!-- Экран 17. SMART цель — майнд-карта -->
+<div class="screen" id="screen-17">
+  <div class="smart-fullscreen">
+
+    <!-- Заголовок -->
+    <div class="smart-header">
+      <div style="display:flex;justify-content:center;" aria-hidden="true"><svg width="36" height="36"><use href="#sims-target"/></svg></div>
+      <h2>Ставим чёткую цель</h2>
+      <p style="color: var(--text-soft); max-width: 560px; line-height: 1.5;">
+        Сформулируй свою цель нетворкинга по модели SMART. Заполняй ветви по порядку — новая появится, когда предыдущая заполнена.
+      </p>
+    </div>
+
+    <!-- Прогресс -->
+    <div class="smart-progress">
+      <div class="smart-progress-dot" data-step="1">S</div>
+      <div class="smart-progress-line"></div>
+      <div class="smart-progress-dot" data-step="2">M</div>
+      <div class="smart-progress-line"></div>
+      <div class="smart-progress-dot" data-step="3">A</div>
+      <div class="smart-progress-line"></div>
+      <div class="smart-progress-dot" data-step="4">R</div>
+      <div class="smart-progress-line"></div>
+      <div class="smart-progress-dot" data-step="5">T</div>
+    </div>
+
+    <!-- Майнд-карта -->
+    <div class="smart-mind-map-wrap">
+
+      <!-- SVG линии от центра к ветвям -->
+      <svg class="smart-lines" id="smart-lines" aria-hidden="true"></svg>
+
+      <div class="smart-mind-map">
+
+        <!-- Центр -->
+        <div class="smart-center" id="smart-center">
+          <div class="smart-center-icon" aria-hidden="true"><svg width="28" height="28"><use href="#sims-target"/></svg></div>
+          <div class="smart-center-label">Моя SMART-цель</div>
+        </div>
+
+        <!-- Ветви -->
+        <div class="smart-branch smart-branch-s" data-step="1" data-branch="s">
+          <div class="smart-branch-header" style="--branch-color: #22c55e;">
+            <span class="smart-letter">S</span>
+            <span class="smart-branch-title">Specific<br><small>Конкретная</small></span>
+          </div>
+          <textarea class="smart-textarea" id="smart-s" data-branch="s" placeholder="Что именно ты хочешь достичь?"></textarea>
+        </div>
+
+        <div class="smart-branch smart-branch-m" data-step="2" data-branch="m">
+          <div class="smart-branch-header" style="--branch-color: #3b82f6;">
+            <span class="smart-letter">M</span>
+            <span class="smart-branch-title">Measurable<br><small>Измеримая</small></span>
+          </div>
+          <textarea class="smart-textarea" id="smart-m" data-branch="m" placeholder="Как ты поймёшь, что цель достигнута?"></textarea>
+        </div>
+
+        <div class="smart-branch smart-branch-a" data-step="3" data-branch="a">
+          <div class="smart-branch-header" style="--branch-color: #f59e0b;">
+            <span class="smart-letter">A</span>
+            <span class="smart-branch-title">Achievable<br><small>Достижимая</small></span>
+          </div>
+          <textarea class="smart-textarea" id="smart-a" data-branch="a" placeholder="Реально ли это? Какие ресурсы есть?"></textarea>
+        </div>
+
+        <div class="smart-branch smart-branch-r" data-step="4" data-branch="r">
+          <div class="smart-branch-header" style="--branch-color: #a855f7;">
+            <span class="smart-letter">R</span>
+            <span class="smart-branch-title">Relevant<br><small>Релевантная</small></span>
+          </div>
+          <textarea class="smart-textarea" id="smart-r" data-branch="r" placeholder="Зачем тебе это?"></textarea>
+        </div>
+
+        <div class="smart-branch smart-branch-t" data-step="5" data-branch="t">
+          <div class="smart-branch-header" style="--branch-color: #ef4444;">
+            <span class="smart-letter">T</span>
+            <span class="smart-branch-title">Time-bound<br><small>Ограниченная по времени</small></span>
+          </div>
+          <textarea class="smart-textarea" id="smart-t" data-branch="t" placeholder="Когда? К какой дате?"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Пример Златы -->
+    <div class="smart-example" id="smart-example-toggle">
+      <div class="smart-example-header" id="smart-example-header">
+        <span class="sims-hint-label"><strong>Посмотреть пример Златы</strong></span>
+        <span class="smart-example-arrow">▼</span>
+      </div>
+      <div class="smart-example-body" id="smart-example-body">
+        <div class="smart-example-row"><strong style="color:#22c55e;">S:</strong> Познакомиться с 3 специалистами из отдела маркетинга других компаний</div>
+        <div class="smart-example-row"><strong style="color:#3b82f6;">M:</strong> Обменяться визитками или контактами в мессенджере с 3 людьми</div>
+        <div class="smart-example-row"><strong style="color:#f59e0b;">A:</strong> Конференция на 150 человек, есть визитки и подготовленное представление</div>
+        <div class="smart-example-row"><strong style="color:#a855f7;">R:</strong> Нужны контакты для ускорения процесса регистрации препаратов</div>
+        <div class="smart-example-row"><strong style="color:#ef4444;">T:</strong> На конференции PharmaTech 15 октября 2026</div>
+      </div>
+    </div>
+
+    <!-- Кнопки — только "Назад" и "Ответить" -->
+    <div class="smart-actions">
+      <button class="btn secondary nav-back" data-prev>Назад</button>
+      <button class="btn" id="btn-smart-submit">Ответить</button>
+    </div>
+
+    <!-- Модалка предупреждения -->
+    <div class="modal-overlay" id="smart-warning-modal">
+      <div class="modal" style="text-align:center; max-width: 380px;">
+        <div style="display:flex;justify-content:center;margin-bottom:8px;" aria-hidden="true"><svg width="36" height="36"><use href="#sims-bolt"/></svg></div>
+        <h3>Заполни все пункты цели!</h3>
+        <p style="color: var(--text-soft); margin-top: 6px;">Каждая ветвь SMART-цели должна быть заполнена.</p>
+        <div style="margin-top: 14px;">
+          <button class="btn" id="smart-warning-ok">Понятно</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модалка ОС + кнопки сохранить/продолжить -->
+    <div class="modal-overlay" id="smart-feedback-modal">
+      <div class="modal" style="max-width: 520px;">
+        <div style="display:flex;justify-content:center;margin-bottom:8px;" aria-hidden="true"><svg width="42" height="42"><use href="#sims-sparkle"/></svg></div>
+        <h3 style="text-align: center; margin-bottom: 4px;">Отличная SMART-цель!</h3>
+        <p style="text-align:center; color:var(--text-soft); font-size:13px; margin-bottom:14px;">
+          Ты сформулировал свою цель по всем пяти критериям. Это уже половина успеха.
+        </p>
+
+        <div id="smart-feedback-content" style="margin-top: 8px; display:flex; flex-direction:column; gap:8px;"></div>
+
+        <div id="smart-saved-indicator" style="display:none; margin-top:12px; padding:8px 12px; border-radius:10px; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); color:#166534; font-size:13px; text-align:center; font-weight:600;">
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-save"/></svg> Ответ сохранён!</span>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 18px; flex-wrap:wrap;">
+          <button class="btn secondary" id="btn-smart-save" style="display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-save"/></svg> Сохранить ответ</button>
+          <button class="btn" id="btn-smart-continue">Продолжить →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Экран 17-1: карточка Златы — переход к визитке -->
+          <div class="screen screen-card" id="screen-17-1">
+   <div style="display:flex; justify-content:center; padding:10px 0;">
+
+    <div class="zlata-card-wrapper" id="zlata-card-wrapper-17">
+      <div class="zlata-card" id="zlata-card-17">
+
+        <!-- ЛИЦЕВАЯ СТОРОНА -->
+        <div class="zlata-front">
+          <div class="zlata-avatar">
+            <div class="zlata-avatar-circle">
+              <img src="img/m1/zlata.png" alt="Злата">
+            </div>
+          </div>
+
+          <div class="zlata-name">Злата Ковальчук</div>
+          <div class="zlata-role">Специалист отдела маркетинга</div>
+          <div class="zlata-badge-new">Цель поставлена</div>
+
+          <div class="zlata-quote">
+            «SMART-цель готова. Осталось подготовить визитку!»
+          </div>
+
+          <div class="zlata-inventory">
+            <div class="zlata-inv-item done" title="Ноутбук — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-laptop"/></svg></span>
+              <small>Ноутбук</small>
+            </div>
+            <div class="zlata-inv-item done" title="Цель — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-target"/></svg></span>
+              <small>Цель</small>
+            </div>
+            <div class="zlata-inv-item active" id="inv-bizcard-17" title="Визитка — нажми!" style="cursor:pointer;">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-card"/></svg></span>
+              <small>Визитка</small>
+            </div>
+            <div class="zlata-inv-item locked" title="Телефон — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-phone"/></svg></span>
+              <small>Телефон</small>
+            </div>
+            <div class="zlata-inv-item locked" title="Сумка — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-bag"/></svg></span>
+              <small>Сумка</small>
+            </div>
+            <div class="zlata-inv-item locked" title="Карта — откроется позже">
+             <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-final"/></svg></span>
+  <small>Финал</small>
+            </div>
+          </div>
+
+          <div class="zlata-nw-bar">
+            <div class="zlata-nw-header">
+              <span class="zlata-nw-label">Прогресс подготовки к нетворкингу</span>
+              <span class="zlata-nw-value">32%</span>
+            </div>
+            <div class="zlata-nw-track">
+              <div class="zlata-nw-fill" style="width:32%;"></div>
+            </div>
+          </div>
+
+          <div class="zlata-flip-hint" style="display:flex;align-items:center;gap:6px;"><svg width="16" height="16" aria-hidden="true"><use href="#sims-card"/></svg> Нажми на «Визитка» или переверни карточку →</div>
+        </div><!-- закрытие zlata-front -->
+
+        <!-- ОБРАТНАЯ СТОРОНА -->
+        <div class="zlata-back">
+          <div class="zlata-back-scroll">
+            <h3>Следующий шаг</h3>
+            <p>SMART-цель поставлена — отлично! Теперь пора подготовить главный инструмент нетворкера.</p>
+
+            <div class="zlata-superpowers">
+              <div class="zlata-sp-title"> Злата уже сделала:</div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon"></span>
+                <div><strong>Изучила расписание</strong><span> — знает, куда идти</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon"></span>
+                <div><strong>Поставила SMART-цель</strong><span> — знает, зачем идёт</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon"></span>
+                <div><strong>Визитка</strong><span> — следующий шаг!</span></div>
+              </div>
+            </div>
+              <div style="display:flex; justify-content:center; margin-top:16px;">
+              <div class="zlata-inv-item active" id="inv-bizcard-17-back" title="Визитка" style="cursor:pointer;">
+                <span></span>
+                <small>Создать визитку →</small>
+              </div>
+            </div>
+
+            <div class="zlata-flip-hint">← Нажми, чтобы вернуться</div>
+          </div>
+        </div><!-- закрытие zlata-back -->
+
+      </div><!-- закрытие .zlata-card -->
+    </div><!-- закрытие .zlata-card-wrapper -->
+
+  </div>
+        <div style="display:flex; justify-content:center; padding:16px 0 8px;">
+    <button class="btn secondary nav-back" data-prev>← Назад</button>
+  </div>
+</div><!-- закрытие #screen-17-1 -->
+      
+   <!-- Экран 19. Создание визитки -->
+<div class="screen" id="screen-19">
+  <div class="screen-layout">
+    <div class="scene">
+      <div class="scene-header">
+        <span class="tagline">Твоя визитка</span>
+      </div>
+      <div class="scene-main" style="flex-direction:column; align-items:stretch; padding:10px; gap:10px; overflow-y:auto;">
+
+        <!-- Твоя визитка -->
+        <div style="font-size:13px; font-weight:600; color:var(--text);">Заполни свою визитку</div>
+        <div class="bizcard-template" id="bc-template">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="flex:1; display:flex; flex-direction:column; gap:6px;">
+              <input type="text" placeholder="Имя и фамилия" class="bc-field" id="bc-name" style="font-size:15px; font-weight:600;">
+              <input type="text" placeholder="Должность + сфера" class="bc-field" id="bc-role">
+              <input type="text" placeholder="Название компании" class="bc-field" id="bc-company">
+            </div>
+            <div class="bizcard-drop-zone" id="bc-zone-logo" data-zone="logo">Перетащи<br>логотип</div>
+          </div>
+          <textarea rows="2" placeholder="Цепляющая подсказка про тебя (чем ты полезен?)" class="bc-field" id="bc-hook"></textarea>
+          <div class="bizcard-row">
+            <input type="email" placeholder="Email" class="bc-field" id="bc-email">
+            <input type="tel" placeholder="Телефон" class="bc-field" id="bc-phone">
+          </div>
+          <div class="bizcard-row">
+            <input type="text" placeholder="Профессиональный профиль (один канал)" class="bc-field" id="bc-profile" style="flex:1;">
+            <div class="bizcard-drop-zone" id="bc-zone-qr" data-zone="qr" style="width:46px;height:46px;font-size:8px;">QR-код</div>
+            <div class="bizcard-drop-zone" id="bc-zone-photo" data-zone="photo" style="width:46px;height:46px;font-size:8px;">Фото</div>
+          </div>
+        </div>
+
+        <!-- Ошибка телефона -->
+        <div id="bc-phone-error" style="display:none; font-size:12px; color:#ef4444; font-weight:600; padding:4px 8px; background:rgba(239,68,68,0.08); border-radius:8px; text-align:center;">
+          <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-phone"/></svg> Введи цифры!</span>
+        </div>
+
+        <!-- Элементы для перетаскивания -->
+        <div style="font-size:12px; color:var(--text-soft); font-weight:600;">Элементы (перетащи на визитку):</div>
+        <div class="drag-elements-panel" id="bc-drag-panel">
+          <div class="drag-el" draggable="true" data-el="logo" data-img="img/m1/bizcard-logo.png">
+            <img src="img/m1/bizcard-logo.png" style="width:28px;height:28px;border-radius:6px;object-fit:cover;border:1px solid #e2e8f0;"> Логотип компании
+          </div>
+          <div class="drag-el" draggable="true" data-el="qr" data-img="img/m1/bizcard-qr.png">
+            <img src="img/m1/bizcard-qr.png" style="width:28px;height:28px;border-radius:6px;object-fit:cover;border:1px solid #e2e8f0;"> QR-код на блог
+          </div>
+          <div class="drag-el" draggable="true" data-el="photo" data-img="img/m1/bizcard-photo.png">
+            <img src="img/m1/bizcard-photo.png" style="width:28px;height:28px;border-radius:6px;object-fit:cover;border:1px solid #e2e8f0;"> Фото
+          </div>
+        </div>
+
+        <!-- Обратная связь -->
+        <div id="bc-feedback" class="bizcard-feedback"></div>
+
+      </div><!-- закрытие .scene-main -->
+    </div><!-- закрытие .scene -->
+
+    <div class="panel">
+      <div class="m1-ms19-theory">
+      <div class="panel-tag">Теория</div>
+      <h2>Зачем нужна визитка</h2>
+      <p>Многие думают: «Да кому нужны визитки, есть же соцсети». Но в живом общении визитка решает сразу несколько задач:</p>
+      <ul>
+        <li><strong>Закрепляет знакомство</strong> — после десятка разговоров люди забывают имена. Визитка — это якорь.</li>
+        <li><strong>Облегчает продолжение общения</strong> — вместо «Я вам напишу…» можно сказать: «Вот мои контакты».</li>
+        <li><strong>Передаёт профессиональный образ</strong> — кто ты? Чем полезен?</li>
+        <li><strong>Помогает «положить тебя на нужную полочку»</strong> — через пару дней человек вспомнит, кто ты.</li>
+      </ul>
+
+      <h3 style="margin-top:8px;">Что должно быть на визитке</h3>
+      <p>Визитка отвечает на 3 вопроса: <strong>Кто ты? Чем полезен? Как связаться?</strong></p>
+      <p><strong>1. Имя и фамилия</strong> — крупно и читаемо.</p>
+      <p><strong>2. Должность + сфера</strong> — на человеческом языке.</p>
+      <p><strong>3. Компания</strong> — логотип + название.</p>
+      <p><strong>4. Контакты</strong> — email, телефон, один профессиональный профиль.</p>
+      <p><strong>5. Цепляющая подсказка</strong> — короткая фраза о твоей экспертизе.</p>
+      <p><strong>6. Дизайн</strong> — читаемость важнее красоты.</p>
+
+      <!-- Пример Златы -->
+      <div style="margin-top:12px; border-radius:14px; border:1px solid rgba(56,189,248,0.3); background:rgba(56,189,248,0.06);">
+        <div style="padding:12px 14px; font-size:14px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:6px;">
+          <span class="sims-hint-label" style="font-size:13px;">Пример: визитка Златы</span>
+        </div>
+        <div style="padding:0 14px 14px;">
+          <div class="bizcard-example" style="display:flex; flex-direction:column; justify-content:center;">
+            <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+              <div style="width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">EP</div>
+              <div>
+                <div class="bc-name">Злата Ковальчук</div>
+                <div class="bc-role">Специалист по продвижению, отдел маркетинга</div>
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--text-soft); margin-bottom:4px;">EndoPharma</div>
+            <div class="bc-hint">«Помогаю эндокринологам узнавать о препаратах, которые реально улучшают жизнь пациентов»</div>
+            <div class="bc-contacts" style="margin-top:8px; padding-top:8px; border-top:1px solid #e2e8f0;">
+              ✉ zlata.k@endopharma.ru<br>
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" aria-hidden="true"><use href="#sims-phone"/></svg> +7 (999) 123-45-67</span><br>
+              <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" aria-hidden="true"><use href="#sims-link"/></svg> vk.com/in/zlata-kovalchuk</span>
+            </div>
+          </div>
+          <div style="font-size:11px; color:var(--text-soft); margin-top:6px; line-height:1.4;">
+            Ничего лишнего. Имя, роль, компания, контакты и короткая фраза, по которой тебя запомнят. Обрати внимание: Злата не написала «маркетолог», а объяснила, <strong>чем она полезна</strong> врачам.
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn m1-mobile-flow-next" id="btn-m19-to-task" style="display:none;width:100%;margin-top:12px;">Далее</button>
+      </div><!-- m1-ms19-theory -->
+
+      <div class="m1-ms19-task">
+      <h3 class="m1-ms19-task-intro-mobile-hide" style="margin-top:12px;">Задание</h3>
+      <p class="m1-ms19-task-intro-mobile-hide">Заполни визитку слева, перетащи элементы на нужные места и нажми «Проверить».</p>
+
+      <div class="actions-row" style="margin-top:auto;">
+        <button class="btn secondary nav-back" data-prev>Назад</button>
+        <button class="btn" id="btn-bizcard-check">Проверить</button>
+        <button class="btn" id="btn-bizcard-next" style="display:none;" data-next="screen-19-1">Далее →</button>
+      </div>
+      </div><!-- m1-ms19-task -->
+
+    </div><!-- закрытие .panel -->
+
+  </div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-19 -->
+
+<div class="modal-overlay" id="bizcard-task-intro-modal">
+  <div class="modal" style="max-width:420px;">
+    <h3>Задание</h3>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">Заполни визитку, перетащи элементы на нужные места и нажми «Проверить».</p>
+    <div class="actions-row" style="margin-top:14px;justify-content:flex-end;">
+      <button type="button" class="btn" id="btn-bizcard-task-intro-ok">Понятно</button>
+    </div>
+  </div>
+</div>
+
+      <!-- Экран 19-1: карточка Златы — переход к фото профиля -->
+         <div class="screen screen-card" id="screen-19-1">
+  <button class="btn secondary nav-back" data-prev>← Назад</button>
+
+  <div style="display:flex; justify-content:center; padding:10px 0;">
+
+    <div class="zlata-card-wrapper" id="zlata-card-wrapper-19">
+      <div class="zlata-card" id="zlata-card-19">
+
+        <!-- ЛИЦЕВАЯ СТОРОНА -->
+        <div class="zlata-front">
+          <div class="zlata-avatar">
+            <div class="zlata-avatar-circle">
+              <img src="img/m1/zlata.png" alt="Злата">
+            </div>
+          </div>
+
+          <div class="zlata-name">Злата Ковальчук</div>
+          <div class="zlata-role">Специалист отдела маркетинга</div>
+          <div class="zlata-badge-new">Визитка готова</div>
+
+          <div class="zlata-quote">
+            «Визитка есть! Теперь нужно выбрать правильное фото для профиля.»
+          </div>
+
+          <div class="zlata-inventory">
+            <div class="zlata-inv-item done" title="Ноутбук — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-laptop"/></svg></span>
+              <small>Ноутбук</small>
+            </div>
+            <div class="zlata-inv-item done" title="Цель — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-target"/></svg></span>
+              <small>Цель</small>
+            </div>
+            <div class="zlata-inv-item done" title="Визитка — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-card"/></svg></span>
+              <small>Визитка</small>
+            </div>
+            <div class="zlata-inv-item active" id="inv-phone-19" title="Телефон — нажми!" style="cursor:pointer;">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-phone"/></svg></span>
+              <small>Телефон</small>
+            </div>
+            <div class="zlata-inv-item locked" title="Сумка — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-bag"/></svg></span>
+              <small>Сумка</small>
+            </div>
+            <div class="zlata-inv-item locked" title="Карта — откроется позже">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-final"/></svg></span>
+  <small>Финал</small>
+            </div>
+          </div>
+
+          <div class="zlata-nw-bar">
+            <div class="zlata-nw-header">
+              <span class="zlata-nw-label">Прогресс подготовки к нетворкингу</span>
+              <span class="zlata-nw-value">48%</span>
+            </div>
+            <div class="zlata-nw-track">
+              <div class="zlata-nw-fill" style="width:48%;"></div>
+            </div>
+          </div>
+
+          <div class="zlata-flip-hint" style="display:flex;align-items:center;gap:6px;"><svg width="16" height="16" aria-hidden="true"><use href="#sims-phone"/></svg> Нажми на «Телефон» или переверни карточку →</div>
+        </div><!-- закрытие zlata-front -->
+
+        <!-- ОБРАТНАЯ СТОРОНА -->
+        <div class="zlata-back">
+          <div class="zlata-back-scroll">
+            <h3>Следующий шаг</h3>
+            <p>Визитка готова — отлично! Теперь нужно позаботиться об онлайн-присутствии. Первое, что видит человек в твоём профиле — это фото.</p>
+
+            <div class="zlata-superpowers">
+              <div class="zlata-sp-title">Злата уже сделала:</div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-laptop"/></svg></span>
+                <div><strong>Изучила расписание</strong><span> — знает, куда идти</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon"></span>
+                <div><strong>Поставила SMART-цель</strong><span> — знает, зачем идёт</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon"></span>
+                <div><strong>Создала визитку</strong><span> — готова к знакомствам</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon"></span>
+                <div><strong>Фото профиля</strong><span> — следующий шаг!</span></div>
+              </div>
+            </div>
+                    <div style="display:flex; justify-content:center; margin-top:16px;">
+              <div class="zlata-inv-item active" id="inv-phone-19-back" title="Телефон" style="cursor:pointer;">
+                <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-phone"/></svg></span>
+                <small>Выбрать фото →</small>
+              </div>
+            </div>
+
+            <div class="zlata-flip-hint">← Нажми, чтобы вернуться</div>
+          </div>
+        </div><!-- закрытие zlata-back -->
+
+      </div><!-- закрытие .zlata-card -->
+    </div><!-- закрытие .zlata-card-wrapper -->
+
+  </div>
+</div><!-- закрытие #screen-19-1 -->
+      
+<!-- Экран 20. Фото для профиля -->
+<div class="screen" id="screen-20">
+  <div class="screen-layout">
+    <div class="scene">
+      <div class="scene-header">
+        <span class="tagline">Фото профиля</span>
+      </div>
+      <div class="scene-main" style="flex-direction:column; align-items:stretch; padding:10px; gap:8px; overflow-y:auto;">
+
+        <div class="photo-grid" id="photo-grid">
+          <div class="photo-card" data-photo="1">
+            <div class="photo-placeholder" style="padding:0; overflow:hidden;">
+              <img src="img/m1/profile-1.png" alt="Портрет в офисе" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="photo-label">Фото 1: Портрет в офисе</div>
+          </div>
+
+          <div class="photo-card" data-photo="2">
+            <div class="photo-placeholder" style="padding:0; overflow:hidden;">
+              <img src="img/m1/profile-2.png" alt="Селфи в лифте" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="photo-label">Фото 2: Селфи в лифте</div>
+          </div>
+
+          <div class="photo-card" data-photo="3">
+            <div class="photo-placeholder" style="padding:0; overflow:hidden;">
+              <img src="img/m1/profile-3.png" alt="С корпоратива" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="photo-label">Фото 3: С корпоратива</div>
+          </div>
+
+          <div class="photo-card" data-photo="4">
+            <div class="photo-placeholder" style="padding:0; overflow:hidden;">
+              <img src="img/m1/profile-4.png" alt="Командное фото" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="photo-label">Фото 4: Командное фото</div>
+          </div>
+
+          <div class="photo-card" data-photo="5">
+            <div class="photo-placeholder" style="padding:0; overflow:hidden;">
+              <img src="img/m1/profile-5.png" alt="С отпуска" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="photo-label">Фото 5: С отпуска</div>
+          </div>
+
+          <div class="photo-card" data-photo="6">
+            <div class="photo-placeholder" style="padding:0; overflow:hidden;">
+              <img src="img/m1/profile-6.png" alt="Вечернее фото" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <div class="photo-label">Фото 6: Вечернее фото</div>
+          </div>
+        </div><!-- закрытие .photo-grid -->
+
+        <div class="photo-feedback" id="photo-feedback"></div>
+
+        <div class="actions-row">
+          <button class="btn secondary nav-back" data-prev>Назад</button>
+       <button class="btn" id="btn-photo-check">Проверить</button>
+<button class="btn" id="btn-photo-next" style="display:none;" data-next="screen-20-1">Далее →</button>
+        </div>
+
+      </div><!-- закрытие .scene-main -->
+    </div><!-- закрытие .scene -->
+
+    <div class="panel">
+      <div class="m1-ms20-theory">
+      <div class="panel-tag">Теория</div>
+      <h2>Выбери фото для профиля Златы</h2>
+      <p>Перед тобой 6 фотографий Златы. Выбери ту, которая лучше всего подходит для профессионального профиля. Вспомни критерии из теории.</p>
+
+      <h3 style="margin-top:10px;">Аватарка для профиля</h3>
+      <p>Аватарка — это первое рукопожатие онлайн. Ещё до того, как человек прочитает статус, он уже что-то решил по фото.</p>
+      <p>Онлайн-профиль без хорошей фотографии:</p>
+      <ul>
+        <li>вызывает меньше доверия</li>
+        <li>реже получает ответы</li>
+        <li>хуже запоминается после встречи</li>
+      </ul>
+
+      <h3 style="margin-top:8px;">Принципы хорошей аватарки</h3>
+      <p><strong>1. Лицо — главный герой.</strong> Кадр по плечи или по грудь, смотрим в камеру.</p>
+      <p><strong>2. Чистый фон.</strong> Однотонная стена, размытый офис. Без бардака и толпы людей.</p>
+      <p><strong>3. Хороший свет.</strong> Естественный свет от окна, без резких теней.</p>
+      <p><strong>4. Одежда как на встрече.</strong> Чистая, аккуратная, спокойные цвета.</p>
+      <p><strong>5. Живое выражение лица.</strong> Лёгкая улыбка, доброжелательный взгляд.</p>
+
+      <h3 style="margin-top:8px;">Главные вопросы к фото:</h3>
+      <ul>
+        <li>Похож ли ты на себя в реальной жизни?</li>
+        <li>Хочется ли с тобой заговорить, глядя на это фото?</li>
+      </ul>
+
+      <hr style="border:none; border-top:1px dashed #cbd5e1; margin:12px 0;">
+
+      <h2 class="m1-ms20-task-assignment-hide" style="margin-top:4px;">Задание: Выбери фото для профиля Златы</h2>
+      <p class="m1-ms20-task-assignment-hide">Перед тобой 6 фотографий Златы. Выбери ту, которая лучше всего подходит для профессионального профиля, опираясь на критерии из теории.</p>
+
+      </div><!-- m1-ms20-theory -->
+
+      <div class="m1-ms20-theory-nav-mobile">
+        <button type="button" class="btn m1-mobile-flow-next" id="btn-m20-to-task" style="display:none;width:100%;margin-top:12px;">Далее</button>
+        <button type="button" class="btn secondary nav-back m1-ms20-theory-back-mobile" data-prev>Назад</button>
+      </div>
+
+    </div>
+   </div>
+  </div>
+
+<div class="modal-overlay" id="photo-task-intro-modal">
+  <div class="modal" style="max-width:420px;">
+    <h3>Задание</h3>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">Выбери фото для профиля Златы. Перед тобой 6 фотографий Златы. Выбери ту, которая лучше всего подходит для профессионального профиля, опираясь на критерии из теории.</p>
+    <div class="actions-row" style="margin-top:14px;justify-content:flex-end;">
+      <button type="button" class="btn" id="btn-photo-task-intro-ok">Понятно</button>
+    </div>
+  </div>
+</div>
+
+<!-- Экран 20-1. Статус профиля -->
+<div class="screen" id="screen-20-1">
+<div class="screen-layout">
+<div class="scene">
+<div class="scene-header">
+<span class="tagline">Статус профиля</span>
+</div>
+<div class="scene-main" style="flex-direction:column; align-items:stretch; padding:12px; gap:10px; overflow-y:auto;">
+
+    <!-- Верное фото с экрана 20 -->
+    <div style="display:flex; justify-content:center;">
+      <div style="width:160px; border-radius:12px; border:2px solid #22c55e; overflow:hidden; box-shadow:0 2px 12px rgba(34,197,94,0.15);">
+        <div style="aspect-ratio:4/3; overflow:hidden;">
+          <img src="img/m1/profile-1.png" alt="Выбранное фото" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <div style="padding:4px 6px; font-size:10px; text-align:center; background:#f0fdf4; color:#16a34a; font-weight:600;">Выбрано</div>
+      </div>
+    </div><!-- закрытие flex-контейнера фото -->
+
+    <!-- Статус -->
+    <div style="font-size:14px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:8px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-clipboard"/></svg> Твой статус</div>
+
+    <div id="status-preview" style="display:none; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border:1px solid rgba(34,197,94,0.3); border-radius:10px; padding:10px 12px; text-align:center;">
+      <div style="font-size:10px; color:#16a34a; font-weight:600; margin-bottom:4px;">СТАТУС</div>
+      <div id="status-text" style="font-size:14px; font-weight:600; color:var(--text); line-height:1.4;"></div>
+    </div>
+<div id="status-inline-feedback" style="display:none; font-size:13px; line-height:1.5; padding:10px 14px; border-radius:10px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.25); color:#166534;"></div>
+    <div id="status-form">
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div>
+          <label style="font-size:11px; font-weight:600; color:var(--text-soft);">Роль / Сфера</label>
+          <input type="text" id="status-role" placeholder="Например: Специалист по качеству в клинических исследованиях" class="bc-field" style="margin-top:2px;">
+        </div>
+        <div>
+          <label style="font-size:11px; font-weight:600; color:var(--text-soft);">Специализация</label>
+          <input type="text" id="status-spec" placeholder="Например: Аудиты, SOP, инспекции" class="bc-field" style="margin-top:2px;">
+        </div>
+        <div>
+          <label style="font-size:11px; font-weight:600; color:var(--text-soft);">Фокус / Интерес</label>
+          <input type="text" id="status-focus" placeholder="Например: Редкие заболевания, GMP" class="bc-field" style="margin-top:2px;">
+        </div>
+      </div>
+    </div>
+
+    <div id="status-feedback" style="font-size:12px; min-height:16px;"></div>
+
+    <div class="actions-row">
+      <button class="btn secondary nav-back" data-prev>Назад</button>
+      <button class="btn" id="btn-status-set">Установить статус</button>
+<button class="btn secondary" id="btn-status-retry" style="display:none;">Ещё раз</button>
+<button class="btn" id="btn-status-next" style="display:none;">Далее →</button>
+    </div>
+
+</div><!-- закрытие .scene-main -->
+</div><!-- закрытие .scene -->
+
+<div class="panel">
+  <div class="m1-ms201-theory">
+  <div class="panel-tag">Теория</div>
+  <h2>Статус в соцсети</h2>
+  <p>Статус — это твой мини-бейдж в мире нетворкинга. По нему человек за 1–2 секунды решает:</p>
+  <ul>
+    <li>кто ты по роли</li>
+    <li>к какой «полочке» тебя отнести</li>
+    <li>с какими вопросами к тебе можно обратиться</li>
+  </ul>
+
+  <h3 style="margin-top:8px;">Статус помогает:</h3>
+  <p><strong>Быть понятным</strong> — у человека не возникает вопроса: «А что он/она вообще делает?»</p>
+  <p><strong>Привлекать «своих» людей</strong> — если ты обозначаешь сферу и интерес, к тебе чаще приходят с релевантными предложениями.</p>
+  <p><strong>Стать «находкой» в нужный момент</strong> — кто-то думает: <span class="zlata-sims-ico" style="margin:0 2px;vertical-align:middle;" aria-hidden="true"><svg width="16" height="16"><use href="#sims-chat"/></svg></span><em>«Нужен человек, который шарит в фарме»</em> и, увидев твой статус, думает: «О, вот оно!»</p>
+
+  <h3 style="margin-top:8px;">Главное правило</h3>
+  <p>Статус — не пафос, а <strong>«подсказка, кто ты и чем полезен»</strong>.</p>
+
+  <p><strong>Плохие варианты:</strong></p>
+  <ul>
+    <li><i>Профессионал своего дела</i></li>
+    <li><i>Ищу себя</i></li>
+    <li><i>Work hard, dream big</i></li>
+  </ul>
+  <p style="font-size:11px; color:var(--text-soft);">Это ничего не говорит о том, чем ты реально занимаешься.</p>
+
+  <h3 style="margin-top:8px;">Из чего состоит хороший статус</h3>
+  <p><strong>Роль + Сфера/Контекст + Фокус/Интерес</strong></p>
+
+  <p><strong>Примеры:</strong></p>
+  <ul>
+    <li>Специалист по качеству в клинических исследованиях</li>
+    <li>Регистрационный менеджер в фарме</li>
+    <li>Специалист по качеству в клинике | Аудиты, SOP, инспекции</li>
+    <li>Помогаю запускать клинические исследования по GCP</li>
+    <li>Помогаю выводить фармпрепараты на рынок РФ и ЕАЭС</li>
+  </ul>
+
+  <h3 style="margin-top:8px;">Алгоритм</h3>
+  <p>Представь, что тебя спрашивают: «Ты в фарме/медицине чем занимаешься?» и нужно ответить одним предложением.</p>
+  <ul>
+    <li>Кем ты работаешь сейчас? (должность/роль)</li>
+    <li>В какой области? (клиника, качество, регистрация, производство, R&D, маркетинг)</li>
+    <li>Есть ли конкретный фокус? (редкие заболевания, цифровые решения, GMP)</li>
+  </ul>
+
+  <hr style="border:none; border-top:1px dashed #cbd5e1; margin:12px 0;">
+  <h2 class="m1-ms201-task-assignment-hide">Задание: Придумай свой статус</h2>
+  <p class="m1-ms201-task-assignment-hide">Заполни три поля ниже:</p>
+  <ol class="m1-ms201-task-assignment-hide">
+    <li>Напиши свою роль и сферу</li>
+    <li>Добавь специализацию</li>
+    <li>Укажи конкретный фокус/интерес</li>
+  </ol>
+  <p class="m1-ms201-task-assignment-hide">Нажми «Установить статус» — и увидишь, как он будет выглядеть.</p>
+
+  </div><!-- m1-ms201-theory -->
+
+  <div class="m1-ms201-theory-nav-mobile">
+    <button type="button" class="btn m1-mobile-flow-next" id="btn-m201-to-task" style="display:none;width:100%;margin-top:12px;">Далее</button>
+    <button type="button" class="btn secondary nav-back m1-ms201-theory-back-mobile" data-prev>Назад</button>
+  </div>
+
+</div><!-- закрытие .panel -->
+
+</div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-20-1 -->
+
+<div class="modal-overlay" id="status-task-intro-modal">
+  <div class="modal" style="max-width:420px;">
+    <h3>Задание</h3>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">Придумай свой статус. Заполни три поля: роль и сферу, специализацию и фокус. Нажми «Установить статус» — и увидишь, как он будет выглядеть.</p>
+    <div class="actions-row" style="margin-top:14px;justify-content:flex-end;">
+      <button type="button" class="btn" id="btn-status-task-intro-ok">Понятно</button>
+    </div>
+  </div>
+</div>
+      
+<!-- Экран 21. Онлайн доска -->
+<div class="screen" id="screen-21">
+  <div class="screen-layout">
+    <div class="scene">
+      <div class="scene-header">
+        <span class="tagline">Крючок-самопрезентация</span>
+      </div>
+      <div class="scene-main">
+        <button type="button" class="btn secondary m1-ms21-board-back-mobile" id="btn-m21-board-to-theory">← К вводу стикера</button>
+        <div class="board" id="sticky-board">
+          <!-- стикеры загружаются из Supabase -->
+        </div>
+      </div>
+    </div>
+
+   <div class="panel">
+  <div class="m1-ms21-theory-block">
+  <div class="panel-tag">Теория</div>
+  <h2>Создай свой крючок-самопрезентацию</h2>
+
+  <p><strong>Три секунды</strong> — именно столько у тебя есть, когда незнакомый человек открывает твой профиль.</p>
+  <p>Твоя задача — написать <strong>крючок-самопрезентацию</strong>: одну-две строчки для статуса, подписи или письма, после которых человек думает: <em>«Хочу узнать об этом человеке больше»</em></p>
+  <p class="m1-ms21-board-teaser">А на доске прикреплены стикеры предыдущих участников. Читай, вдохновляйся, ставь лайки участникам.</p>
+ 
+  <!-- Формулы -->
+  <div style="margin-top:4px; padding:12px 14px; border-radius:12px; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2);">
+    <div class="sims-hint-label" style="font-size:12px; font-weight:700; color:var(--accent-soft); margin-bottom:8px;">Подсказка — попробуй одну из формул:</div>
+    <div style="display:flex; flex-direction:column; gap:6px;">
+      <div style="font-size:12px; line-height:1.5; color:var(--text);">
+        Помогаю <span style="color:var(--accent-soft);">[кому]</span> + <span style="color:var(--accent-soft);">[делать что]</span> + <span style="color:var(--accent-soft);">[неожиданным способом или с неожиданным результатом]</span>
+      </div>
+      <div style="font-size:12px; line-height:1.5; color:var(--text);">
+        <span style="color:var(--accent-soft);">[Необычный факт о твоей работе]</span>. <span style="color:var(--accent-soft);">[Почему это важно]</span>
+      </div>
+      <div style="font-size:12px; line-height:1.5; color:var(--text);">
+        Пришёл(а) в фарму из <span style="color:var(--accent-soft);">[откуда]</span>. Теперь <span style="color:var(--accent-soft);">[что делаю иначе]</span>
+      </div>
+    </div>
+  </div>
+  </div><!-- m1-ms21-theory-block -->
+
+  <div class="m1-ms21-compose">
+  <div style="margin-top:10px;">
+    <div class="field-label">Твой стикер</div>
+    <textarea id="sticky-input" placeholder="Опиши себя так, чтобы это захотелось запомнить и пересказать"></textarea>
+  </div>
+
+  <button type="button" class="btn m1-mobile-flow-next" id="btn-m21-attach" style="width:100%;margin-top:10px;">Прикрепить</button>
+
+  <div id="my-sticky-preview" style="display:none; margin-top:8px; padding:10px 14px; border-radius:12px; background:linear-gradient(135deg,#fef9c3,#fef08a); border:2px solid #facc15;">
+    <div style="font-size:10px; font-weight:700; color:#ca8a04; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.05em; display:flex; align-items:center; gap:6px;"><svg width="14" height="14" aria-hidden="true"><use href="#sims-sticky"/></svg> Твой стикер сохранён</div>
+    <div class="my-sticky-text" style="font-size:13px; line-height:1.5; color:#374151;"></div>
+    <div style="font-size:10px; color:#ca8a04; margin-top:6px; opacity:0.7;">Сохранён на этом устройстве — всегда доступен</div>
+  </div>
+  </div><!-- m1-ms21-compose -->
+
+  <button type="button" class="btn m1-mobile-flow-next" id="btn-m21-theory-next" style="display:none;width:100%;margin-top:12px;">Далее</button>
+
+  <button class="btn secondary nav-back m1-ms21-nav-back-solo" data-prev>Назад</button>
+
+<div class="actions-row m1-ms21-sticky-actions" style="margin-top:10px;">
+    <button class="btn secondary nav-back m1-ms21-nav-back-inline" data-prev>Назад</button>
+    <button class="btn" id="btn-sticky-add">Добавить на доску</button>
+    <button class="btn secondary" id="btn-sticky-next" data-next="screen-21-0" style="display:none;">Далее</button>
+  </div>
+</div><!-- закрытие .panel -->
+  </div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-21 -->
+
+<!-- Модалка подтверждения удаления — ВНЕ экрана 21 -->
+<div class="modal-overlay" id="sticky-delete-modal">
+  <div class="modal" style="text-align:center; max-width:380px;">
+    <div style="display:flex;justify-content:center;margin-bottom:8px;" aria-hidden="true"><svg width="36" height="36"><use href="#sims-trash"/></svg></div>
+    <h3>Удалить стикер?</h3>
+    <p style="color:var(--text-soft); margin-top:6px;">Это действие нельзя отменить.</p>
+    <div style="display:flex; justify-content:center; gap:10px; margin-top:14px;">
+      <button class="btn secondary" id="sticky-delete-cancel">Отмена</button>
+      <button class="btn" id="sticky-delete-confirm" style="background:linear-gradient(135deg,#ef4444,#dc2626);">Удалить</button>
+    </div>
+  </div>
+</div>
+
+      <!-- Экран 21-0: карточка Златы — переход к сумке нетворкера -->
+                <div class="screen screen-card" id="screen-21-0">
+  <button class="btn secondary nav-back" data-prev>← Назад</button>
+
+  <div style="display:flex; justify-content:center; padding:10px 0;">
+
+    <div class="zlata-card-wrapper" id="zlata-card-wrapper-21">
+      <div class="zlata-card" id="zlata-card-21">
+
+        <!-- ЛИЦЕВАЯ СТОРОНА -->
+        <div class="zlata-front">
+          <div class="zlata-avatar">
+            <div class="zlata-avatar-circle">
+              <img src="img/m1/zlata.png" alt="Злата">
+            </div>
+          </div>
+
+          <div class="zlata-name">Злата Ковальчук</div>
+          <div class="zlata-role">Специалист отдела маркетинга</div>
+          <div class="zlata-badge-new">Крючок готов</div>
+
+          <div class="zlata-quote">
+            «Самопрезентация есть! Теперь собираю сумку — и на мероприятие!»
+          </div>
+
+          <div class="zlata-inventory">
+            <div class="zlata-inv-item done" title="Ноутбук — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-laptop"/></svg></span>
+              <small>Ноутбук</small>
+            </div>
+            <div class="zlata-inv-item done" title="Цель — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-target"/></svg></span>
+              <small>Цель</small>
+            </div>
+            <div class="zlata-inv-item done" title="Визитка — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-card"/></svg></span>
+              <small>Визитка</small>
+            </div>
+            <div class="zlata-inv-item done" title="Телефон — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-phone"/></svg></span>
+              <small>Телефон</small>
+            </div>
+            <div class="zlata-inv-item active" id="inv-bag-21" title="Сумка — нажми!" style="cursor:pointer;">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-bag"/></svg></span>
+              <small>Сумка</small>
+            </div>
+            <div class="zlata-inv-item locked" title="Карта — откроется позже">
+             <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-final"/></svg></span>
+  <small>Финал</small>
+            </div>
+          </div>
+
+          <div class="zlata-nw-bar">
+            <div class="zlata-nw-header">
+              <span class="zlata-nw-label">Прогресс подготовки к нетворкингу</span>
+              <span class="zlata-nw-value">80%</span>
+            </div>
+            <div class="zlata-nw-track">
+              <div class="zlata-nw-fill" style="width:80%;"></div>
+            </div>
+          </div>
+
+          <div class="zlata-flip-hint" style="display:flex;align-items:center;gap:6px;"><svg width="16" height="16" aria-hidden="true"><use href="#sims-bag"/></svg> Нажми на «Сумка» или переверни карточку →</div>
+        </div><!-- закрытие zlata-front -->
+
+        <!-- ОБРАТНАЯ СТОРОНА -->
+        <div class="zlata-back">
+          <div class="zlata-back-scroll">
+            <h3>Последний шаг!</h3>
+            <p>Крючок-самопрезентация готов. Осталось собрать сумку нетворкера и изучить карту мероприятия.</p>
+
+            <div class="zlata-superpowers">
+              <div class="zlata-sp-title">Злата уже сделала:</div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-laptop"/></svg></span>
+                <div><strong>Изучила расписание</strong><span> — знает, куда идти</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-target"/></svg></span>
+                <div><strong>Поставила SMART-цель</strong><span> — знает, зачем идёт</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-card"/></svg></span>
+                <div><strong>Создала визитку</strong><span> — готова к знакомствам</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-phone"/></svg></span>
+                <div><strong>Настроила профиль</strong><span> — фото и статус готовы</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-mic"/></svg></span>
+                <div><strong>Написала крючок</strong><span> — самопрезентация готова</span></div>
+              </div>
+              <div class="zlata-sp-item">
+                <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-bag"/></svg></span>
+                <div><strong>Сумка нетворкера</strong><span> — следующий шаг!</span></div>
+              </div>
+            </div>
+                  <div style="display:flex; justify-content:center; margin-top:16px;">
+              <div class="zlata-inv-item active" id="inv-bag-21-back" title="Сумка" style="cursor:pointer;">
+                <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-bag"/></svg></span>
+                <small>Собрать сумку →</small>
+              </div>
+            </div>
+
+            <div class="zlata-flip-hint">← Нажми, чтобы вернуться</div>
+          </div>
+        </div><!-- закрытие zlata-back -->
+
+      </div><!-- закрытие .zlata-card -->
+    </div><!-- закрытие .zlata-card-wrapper -->
+
+  </div>
+</div><!-- закрытие #screen-21-0 -->
+      
+<!-- Экран 21-1. Сумочка нетворкера -->
+<div class="screen" id="screen-21-1">
+  <div class="screen-layout">
+
+    <!-- СЦЕНА — сумка с предметами внутри -->
+    <div class="scene" style="padding:0; overflow:hidden;">
+      <div class="bag-scene">
+        <div class="bag-scene-intro">
+          <div class="panel-tag">Практика</div>
+          <h2>Собери сумку нетворкера</h2>
+          <p style="font-size:14px;line-height:1.55;color:var(--text-soft);margin:0 0 8px 0;">Нажми на каждый предмет, узнай зачем он нужен — и положи в сумку!</p>
+        </div>
+
+        <!-- Полка с предметами (до добавления) -->
+        <div class="bag-shelf-visual" id="bag-shelf-visual">
+          <!-- Предметы генерируются JS -->
+        </div>
+
+        <!-- Сумка — вид сверху -->
+        <div class="bag-visual-wrap">
+          <div class="bag-visual">
+            <!-- ↓ СУМКА — вставь ссылку на изображение сумки (вид сверху, открытая) -->
+            <img src="img/m1/bag.png" class="bag-img" alt="Сумка">
+            <!-- Зона внутри сумки куда падают предметы -->
+            <div class="bag-inside" id="bag-inside">
+              <!-- предметы появляются здесь -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ПАНЕЛЬ -->
+    <div class="panel">
+      <div id="bag-done-msg" style="display:none; padding:10px 14px; border-radius:12px; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); color:#166534; font-size:13px; line-height:1.5;">
+        <strong>Отлично!</strong> Сумка собрана. Ты готов к мероприятию!
+      </div>
+
+      <div class="actions-row" style="margin-top:auto;">
+        <button class="btn secondary" data-prev>Назад</button>
+        <button class="btn" id="btn-bag-go" style="display:none;" data-next="screen-21-1-1">Далее →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Модалка: вводная к сумке (мобилка) -->
+<div class="modal-overlay" id="bag-intro-modal">
+  <div class="modal" style="max-width:420px;">
+    <h3>Собери сумку нетворкера</h3>
+    <p style="font-size:14px;line-height:1.55;color:var(--text-soft);">Нажми на каждый предмет, узнай, зачем он нужен, — и перетащи в сумку. Когда всё соберёшь, появится кнопка «Далее».</p>
+    <div class="actions-row" style="margin-top:14px;justify-content:flex-end;">
+      <button type="button" class="btn" id="btn-bag-intro-ok">Понятно</button>
+    </div>
+  </div>
+</div>
+
+<!-- Модалка предмета -->
+<div class="modal-overlay" id="bag-modal">
+  <div class="modal" style="max-width:360px; text-align:center;">
+    <div id="bag-modal-img-wrap" style="margin-bottom:12px;">
+      <img id="bag-modal-img" src="" alt="" style="width:100px; height:100px; object-fit:contain; border-radius:16px;">
+    </div>
+    <h3 id="bag-modal-title" style="margin-bottom:8px;"></h3>
+    <p id="bag-modal-text" style="font-size:13px; line-height:1.6; color:var(--text-soft);"></p>
+    <div style="display:flex; gap:8px; justify-content:center; margin-top:14px;">
+      <button class="btn secondary" id="bag-modal-skip">Закрыть</button>
+      <button class="btn" id="bag-modal-take">Положить в сумку</button>
+    </div>
+  </div>
+</div>
+
+ <!-- Экран 21-1-1: карточка Златы — переход к карте мероприятия -->
+ <div class="screen screen-card" id="screen-21-1-1">
+  <button class="btn secondary nav-back" data-prev>← Назад</button>
+
+  <div style="display:flex; justify-content:center; padding:10px 0;">
+
+    <div class="zlata-card-wrapper" id="zlata-card-wrapper-211">
+      <div class="zlata-card" id="zlata-card-211">
+
+        <!-- ЛИЦЕВАЯ СТОРОНА -->
+        <div class="zlata-front">
+          <div class="zlata-avatar">
+            <div class="zlata-avatar-circle">
+              <img src="img/m1/zlata.png" alt="Злата">
+            </div>
+          </div>
+
+          <div class="zlata-name">Злата Ковальчук</div>
+          <div class="zlata-role">Специалист отдела маркетинга</div>
+          <div class="zlata-badge-new" style="display:flex;align-items:center;gap:6px;justify-content:center;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-grad"/></svg> Курс пройден!</div>
+
+          <div class="zlata-quote">
+            «Сумка собрана, Злата готова к конференции!»
+          </div>
+
+          <div class="zlata-inventory">
+            <div class="zlata-inv-item done" title="Ноутбук — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-laptop"/></svg></span>
+              <small>Ноутбук</small>
+            </div>
+            <div class="zlata-inv-item done" title="Цель — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-target"/></svg></span>
+              <small>Цель</small>
+            </div>
+            <div class="zlata-inv-item done" title="Визитка — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-card"/></svg></span>
+              <small>Визитка</small>
+            </div>
+            <div class="zlata-inv-item done" title="Телефон — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-phone"/></svg></span>
+              <small>Телефон</small>
+            </div>
+            <div class="zlata-inv-item done" title="Сумка — готово">
+              <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-bag"/></svg></span>
+              <small>Сумка</small>
+            </div>
+            <div class="zlata-inv-item active" id="inv-map-211" title="К финалу — нажми!" style="cursor:pointer;">
+  <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-final"/></svg></span>
+  <small>Финал</small>
+</div>
+          </div>
+
+          <div class="zlata-nw-bar">
+            <div class="zlata-nw-header">
+              <span class="zlata-nw-label">Прогресс подготовки к нетворкингу</span>
+              <span class="zlata-nw-value">95%</span>
+            </div>
+            <div class="zlata-nw-track">
+              <div class="zlata-nw-fill" style="width:95%;"></div>
+            </div>
+          </div>
+
+          <div class="zlata-flip-hint" style="display:flex;align-items:center;gap:6px;"><svg width="16" height="16" aria-hidden="true"><use href="#sims-final"/></svg> Нажми на «Финал» или переверни карточку →</div>
+        </div><!-- закрытие zlata-front -->
+
+        <!-- ОБРАТНАЯ СТОРОНА -->
+        <div class="zlata-back">
+          <div class="zlata-back-scroll">
+  <h3 style="display:flex;align-items:center;gap:10px;justify-content:center;"><svg width="26" height="26" aria-hidden="true"><use href="#sims-sparkle"/></svg> Поздравляю, курс пройден!</h3>
+  <p>Ты прошёл(а) весь путь подготовки к нетворкингу вместе со Златой. Теперь у тебя есть всё, чтобы уверенно идти на любое мероприятие!</p>
+
+  <div class="zlata-superpowers">
+    <div class="zlata-sp-title" style="display:flex;align-items:center;gap:8px;"><svg width="18" height="18" aria-hidden="true"><use href="#sims-check"/></svg> Что ты освоил(а):</div>
+    <div class="zlata-sp-item">
+      <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-target"/></svg></span>
+      <div><strong>SMART-цель</strong><span> — знаешь, зачем идёшь на мероприятие</span></div>
+    </div>
+    <div class="zlata-sp-item">
+      <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-card"/></svg></span>
+      <div><strong>Визитка и профиль</strong><span> — готов(а) к знакомствам офлайн и онлайн</span></div>
+    </div>
+    <div class="zlata-sp-item">
+      <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-mic"/></svg></span>
+      <div><strong>Крючок-самопрезентация</strong><span> — умеешь представляться так, чтобы запомнили</span></div>
+    </div>
+    <div class="zlata-sp-item">
+      <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-bag"/></svg></span>
+      <div><strong>Сумка нетворкера</strong><span> — знаешь, что взять с собой</span></div>
+    </div>
+    <div class="zlata-sp-item">
+      <span class="zlata-sp-icon zlata-sims-ico" aria-hidden="true"><svg width="20" height="20"><use href="#sims-map"/></svg></span>
+      <div><strong>Карта мероприятия</strong><span> — знаешь, где искать лучшие точки</span></div>
+    </div>
+  </div>
+
+  <div style="display:flex; justify-content:center; margin-top:16px;">
+    <div class="zlata-inv-item active" id="inv-map-211-back" title="К финалу" style="cursor:pointer;">
+      <span class="zlata-sims-ico" aria-hidden="true"><svg width="22" height="22"><use href="#sims-final"/></svg></span>
+      <small>Перейти к финалу →</small>
+    </div>
+  </div>
+
+  <div class="zlata-flip-hint">← Нажми, чтобы вернуться</div>
+</div>
+                    </div>
+        </div><!-- закрытие zlata-back -->
+
+      </div><!-- закрытие .zlata-card -->
+    </div><!-- закрытие .zlata-card-wrapper -->
+
+  </div>
+</div><!-- закрытие #screen-21-1-1 -->
+      
+<!-- Экран 21-2. Карта мероприятия -->
+<div class="screen" id="screen-21-2">
+  <div class="screen-layout">
+
+    <!-- СЦЕНА -->
+    <div class="scene">
+      <div class="scene-header">
+        <span class="tagline">Карта мероприятия</span>
+        <span class="badge" id="venue-counter" style="display:inline-flex;align-items:center;gap:6px;">Найдено: 0 из 3 <svg width="14" height="14" aria-hidden="true"><use href="#sims-star"/></svg></span>
+      </div>
+      <div class="scene-main" style="flex-direction:column; align-items:stretch; padding:0; overflow:hidden; flex:1;">
+
+        <div id="venue-success" style="display:none; padding:8px 14px; background:rgba(34,197,94,0.12); border-bottom:1px solid rgba(34,197,94,0.3); font-size:13px; color:#166534; text-align:center; font-weight:600;">
+          <span style="display:inline-flex;align-items:center;gap:8px;"><svg width="20" height="20" aria-hidden="true"><use href="#sims-sparkle"/></svg> Ты нашёл(а) все благоприятные точки! Теперь ты знаешь, где происходит магия нетворкинга.</span>
+        </div>
+
+       <div id="venue-map" style="flex:1; min-height:320px; overflow:hidden; background:linear-gradient(135deg,#f0fdf4 0%,#ecfdf5 50%,#f0f9ff 100%); display:flex; flex-direction:column; justify-content:space-between; padding:8px 0; border:1px solid #e2e8f0;">
+
+         <!-- ВХОД -->
+<div style="text-align:center; padding:4px 0;">
+  <span style="font-size:10px; color:#94a3b8; letter-spacing:0.15em; text-transform:uppercase; background:rgba(148,163,184,0.08); padding:3px 14px; border-radius:999px; border:1px solid #e2e8f0;">— вход —</span>
+</div>
+
+<!-- ЗОНА 1: РЕГИСТРАЦИЯ -->
+<div style="padding:6px 10px;">
+  <div style="font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#94a3b8; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <div style="flex:1; height:1px; background:#e2e8f0;"></div>
+    Зона регистрации
+    <div style="flex:1; height:1px; background:#e2e8f0;"></div>
+  </div>
+  <div style="display:flex; justify-content:stretch; align-items:stretch; gap:8px; width:100%;">
+    <div class="venue-obj" data-obj="0" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-hanger"/></svg></div>
+      <div class="venue-label">Гардероб</div>
+    </div>
+    <div class="venue-obj" data-obj="1" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-ticket"/></svg></div>
+      <div class="venue-label">Ресепшен</div>
+    </div>
+    <div class="venue-obj" data-obj="2" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-clipboard"/></svg></div>
+      <div class="venue-label">Организатор</div>
+    </div>
+  </div>
+</div>
+
+<!-- РАЗДЕЛИТЕЛЬ -->
+<div style="margin:0 10px; height:1px; background:linear-gradient(90deg,transparent,#e2e8f0,transparent); flex-shrink:0;"></div>
+
+<!-- ЗОНА 2: ОСНОВНОЙ ЗАЛ -->
+<div style="padding:6px 10px;">
+  <div style="font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#94a3b8; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <div style="flex:1; height:1px; background:#e2e8f0;"></div>
+    Основной зал
+    <div style="flex:1; height:1px; background:#e2e8f0;"></div>
+  </div>
+  <div style="display:flex; justify-content:stretch; align-items:stretch; gap:8px; width:100%;">
+    <div class="venue-obj" data-obj="3" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-drink"/></svg></div>
+      <div class="venue-label">Напитки (Бар)</div>
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; padding:8px 6px; border-radius:14px; border:1.5px dashed #e2e8f0; background:rgba(241,245,249,0.5); text-align:center; opacity:0.5; pointer-events:none;">
+      <div style="line-height:0;" aria-hidden="true"><svg width="26" height="26"><use href="#sims-mic"/></svg></div>
+      <div style="font-size:10px; color:#94a3b8; font-weight:600;">Сцена</div>
+    </div>
+    <div class="venue-obj" data-obj="4" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-lunch"/></svg></div>
+      <div class="venue-label">Еда</div>
+    </div>
+  </div>
+</div>
+
+<!-- РАЗДЕЛИТЕЛЬ -->
+<div style="margin:0 10px; height:1px; background:linear-gradient(90deg,transparent,#e2e8f0,transparent); flex-shrink:0;"></div>
+
+<!-- ЗОНА 3: ЗОНА ОТДЫХА -->
+<div style="padding:6px 10px 10px;">
+  <div style="font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#94a3b8; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+    <div style="flex:1; height:1px; background:#e2e8f0;"></div>
+    Зона отдыха
+    <div style="flex:1; height:1px; background:#e2e8f0;"></div>
+  </div>
+  <div style="display:flex; justify-content:stretch; align-items:stretch; gap:8px; width:100%;">
+    <div class="venue-obj" data-obj="5" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-snack"/></svg></div>
+      <div class="venue-label">Столик с<br>закусками</div>
+    </div>
+    <div class="venue-obj" data-obj="6" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-hand"/></svg></div>
+      <div class="venue-label">Давний<br>знакомый</div>
+    </div>
+    <div class="venue-obj" data-obj="7" style="flex:1;">
+      <div class="venue-emoji" aria-hidden="true"><svg width="28" height="28"><use href="#sims-wc"/></svg></div>
+      <div class="venue-label">Туалеты</div>
+    </div>
+  </div>
+</div>
+             
+<!-- Лайфхак -->
+<div id="venue-lifehack" style="display:none; padding:10px 14px; font-size:11px; line-height:1.5;">
+  <strong>Лайфхак: метод «Корова на выпасе»</strong><br>
+  Ходи к столу несколько раз — каждый поход меняет позицию в зале и даёт повод познакомиться с новыми людьми.
+</div>
+        </div><!-- закрытие #venue-map -->
+
+      </div><!-- закрытие .scene-main -->
+    </div><!-- закрытие .scene -->
+
+    <!-- ПАНЕЛЬ -->
+    <div class="panel">
+      <div class="panel-tag">Теория</div>
+      <h2>Карта мероприятия</h2>
+
+      <p>Ты приходишь на конференцию и думаешь:</p>
+      <div style="margin:4px 0 8px; padding:10px 14px; border-radius:10px; background:rgba(250,204,21,0.08); border-left:3px solid #facc15; font-size:13px; color:var(--text);">
+        <span class="zlata-sims-ico" style="margin-right:6px;vertical-align:middle;" aria-hidden="true"><svg width="18" height="18"><use href="#sims-chat"/></svg></span><em>Ну, познакомлюсь где-нибудь, посмотрим по ситуации</em>
+      </div>
+
+      <p>Это первая ошибка. Одни места созданы для знакомств — люди там расслаблены, никуда не спешат, открыты. Другие места — словно ловушки: ты подходишь, начинаешь говорить, и общение как-то не идёт.</p>
+
+      <div style="padding:10px 14px; border-radius:10px; background:rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.2); font-size:13px; line-height:1.5; color:var(--text);">
+        <strong style="color:var(--accent);">Важно:</strong> люди готовы знакомиться там, где стоят без конкретной цели — с кофе в руке, у стенда, в очереди. Это называется <strong>«зонами открытости»</strong>. На любой конференции их можно найти, если знать, куда смотреть.
+      </div>
+
+      <h3 style="margin-top:8px;">Три закона знакомства</h3>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0; background:#ffffff; font-size:13px; line-height:1.5;">
+          <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Закон 1: Человек не занят чем-то важным</div>
+          <div style="color:var(--text-soft);">Если человек смотрит в телефон, слушает доклад, разговаривает с кем-то или ест — он занят, ему не до знакомств. Лучше не мешать.</div>
+        </div>
+
+        <div style="padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0; background:#ffffff; font-size:13px; line-height:1.5;">
+          <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Закон 2: Есть естественный повод начать разговор</div>
+          <div style="color:var(--text-soft);">Лучшие места — те, где контекст сам подводит к беседе. Стенд с экспонатом — можно обсудить продукт. Очередь за едой — пошутить про выбор. Кофе-зона — спросить, что понравилось из докладов.</div>
+        </div>
+
+        <div style="padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0; background:#ffffff; font-size:13px; line-height:1.5;">
+          <div style="font-weight:700; color:var(--text); margin-bottom:4px;">Закон 3: Человек физически доступен</div>
+          <div style="color:var(--text-soft);">Закрытая поза, наушники, взгляд в пол — невербальные сигналы «не подходи». А открытая поза, взгляд по сторонам, лёгкая улыбка — человек открыт к разговору.</div>
+        </div>
+      </div>
+
+      <div style="padding:10px 14px; border-radius:10px; background:rgba(56,189,248,0.07); border:1px solid rgba(56,189,248,0.2); font-size:13px; line-height:1.5; color:var(--text); margin-top:8px;">
+        <strong style="color:#0284c7; display:inline-flex; align-items:center; gap:6px;"><svg width="16" height="16" aria-hidden="true"><use href="#sims-pin"/></svg> Инструкция:</strong> перед тобой — карта типичной конференции. Нажимай на каждый объект и узнай: это удачное место для знакомства или ловушка? У каждой локации — свой секрет. Некоторые ответы тебя удивят.
+      </div>
+
+      <div class="actions-row" style="margin-top:auto;">
+        <button class="btn secondary" data-prev>Назад</button>
+        <button class="btn" id="btn-venue-next" data-next="screen-10" style="display:none;">Далее →</button>
+      </div>
+    </div><!-- закрытие .panel -->
+
+  </div><!-- закрытие .screen-layout -->
+</div><!-- закрытие #screen-21-2 -->
+
+     <!-- Модалка объекта — ВНЕ экрана -->
+<div class="modal-overlay" id="venue-modal">
+  <div class="modal" style="max-width:380px;">
+    <h3 id="venue-modal-title"></h3>
+    <p id="venue-modal-text" style="line-height:1.5; font-size:13px; color:var(--text-soft);"></p>
+    <div class="actions-row" style="margin-top:10px; justify-content:flex-end;">
+      <button class="btn" id="venue-modal-ok">Понятно</button>
+    </div>
+  </div>
+</div>
+
+      <!-- Экран: Злата готова к конференции -->
+<div class="screen" id="screen-zlata-ready">
+  <div class="screen-layout">
+    <div class="scene">
+      <div class="scene-header">
+        <span class="tagline">Вечер перед конференцией</span>
+      </div>
+      <div class="scene-main">
+        <div class="fake-illustration" style="background:none; border:none; overflow:hidden;">
+          <img 
+            src="img/m1/final.png" 
+            alt="Злата готовится к конференции" 
+            style="width:100%; height:100%; object-fit:cover; border-radius:14px;"
+          >
+        </div>
+        <div class="m1-zlata-ready-mobile-stack">
+          <div class="panel-tag">Финал модуля</div>
+          <h2 style="display:flex;align-items:center;gap:10px;justify-content:center;"><svg width="28" height="28" aria-hidden="true"><use href="#sims-sparkle"/></svg> Злата готова!</h2>
+          <p>Вечер перед конференцией. Злата сидит на кухне с чаем.</p>
+          <p>На столе лежат распечатанная программа, подчёркнутые сессии, поставленная цель, сумка собрана, визитки сделаны.</p>
+          <p>Полная готовность!</p>
+          <div style="margin-top:12px; padding:14px 16px; border-radius:14px; background:linear-gradient(135deg, rgba(34,197,94,0.08), rgba(250,204,21,0.08)); border:1px solid rgba(34,197,94,0.25);">
+            <p style="font-size:15px; font-weight:700; color:var(--accent-soft); margin:0; line-height:1.6;">
+              Я готова покорять конференцию! А ты?
+            </p>
+          </div>
+          <div class="actions-row" style="margin-top:14px;">
+            <button class="btn secondary" data-prev>← Назад</button>
+            <button class="btn" id="btn-zlata-ready-next-mobile">Завершить модуль →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel m1-zlata-ready-panel-desktop">
+      <div class="panel-tag">Финал модуля</div>
+      <h2 style="display:flex;align-items:center;gap:10px;justify-content:center;"><svg width="28" height="28" aria-hidden="true"><use href="#sims-sparkle"/></svg> Злата готова!</h2>
+
+      <p>Вечер перед конференцией. Злата сидит на кухне с чаем.</p>
+      <p>На столе лежат распечатанная программа, подчёркнутые сессии, поставленная цель, сумка собрана, визитки сделаны.</p>
+         <p>Полная готовность!</p>
+
+      <div style="margin-top:12px; padding:14px 16px; border-radius:14px; background:linear-gradient(135deg, rgba(34,197,94,0.08), rgba(250,204,21,0.08)); border:1px solid rgba(34,197,94,0.25);">
+        <p style="font-size:15px; font-weight:700; color:var(--accent-soft); margin:0; line-height:1.6;">
+          Я готова покорять конференцию! А ты?
+        </p>
+             </div>
+
+ <div class="actions-row">
+  <button class="btn secondary" data-prev>← Назад</button>
+  <button class="btn" id="btn-zlata-ready-next">Завершить модуль →</button>
+</div>
+    </div>
+
+  </div>
+</div>
+      
+<div class="screen" id="screen-final">
+  <div style="max-width:500px; margin:0 auto; text-align:center; padding:40px 20px; display:flex; flex-direction:column; gap:16px; align-items:center;">
+    
+    <div style="display:flex;justify-content:center;" aria-hidden="true"><svg width="48" height="48"><use href="#sims-sparkle"/></svg></div>
+    <h2>Модуль 1 пройден!</h2>
+    <p style="color:var(--text-soft);">Ты подготовился к конференции: поставил цель, создал визитку, собрал сумочку и изучил карту мероприятия.</p>
+    
+    <div style="background:#f0fdf4; border-radius:12px; padding:14px 18px; border:1px solid rgba(34,197,94,0.3); width:100%;">
+      <div style="font-size:13px; font-weight:700; color:#16a34a; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.05em;">Итог модуля</div>
+      <div style="font-size:22px; font-weight:800; color:#15803d; text-align:center; padding:8px 0;">
+        Прогресс подготовки к нетворкингу — 100%
+      </div>
+      <div style="margin-top:10px; background:#dcfce7; border-radius:10px; overflow:hidden; height:12px;">
+        <div style="height:100%; width:100%; background:linear-gradient(90deg, #22c55e, #16a34a); border-radius:10px; animation: growBar 1s ease forwards;"></div>
+      </div>
+    </div>
+    
+    <!-- Кнопка PDF -->
+    <div class="final-actions-row" style="margin-top:20px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+      <button id="btn-download-pdf" type="button">
+        <span style="display:inline-flex;align-items:center;"><svg width="20" height="20" aria-hidden="true"><use href="#sims-download"/></svg></span>
+        <span>Скачать мои ответы (PDF)</span>
+      </button>
+    </div>
+    
+    <a href="map.html" class="btn" style="text-decoration:none; margin-top:10px;">Завершить модуль 1</a>
+    
+  </div>
+</div>
+
+</section><!-- закрытие #screen-container -->
+</main><!-- закрытие main -->
+</div><!-- закрытие #app -->
+      
+
+
+      <div id="sticky-tooltip"></div>
+
+     <div id="modals-portal"></div>
+
+<script src="course-progress.js"></script>
+<script src="scorm-api.js"></script>
+<script src="module1.js"></script>
+<style id="screen-visibility-fix">
+  .screen {
+    display: none !important;
+    flex: 1;
+    min-height: 0;
+  }
+  .screen.active {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    animation: fadeIn .35s ease-out;
+  }
+</style>
+
+</body>
+</html>

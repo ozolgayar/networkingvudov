@@ -1,0 +1,2482 @@
+/* ================================================
+   MODULE 1 — MOBILE OVERRIDES
+   Применяется при ширине <= 767px
+   ================================================ */
+
+@media (max-width: 767px) {
+
+  /* ===== БАЗОВЫЙ LAYOUT ===== */
+  body {
+    background: #f8fafc;
+    padding: 0;
+    margin: 0;
+    min-height: 100dvh;
+    display: block;
+  }
+
+  .screen {
+    position: relative;
+    width: 100%;
+    min-height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* ===== ХЕДЕР ===== */
+  .header,
+  header {
+    padding: 10px 16px;
+    border-radius: 0;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .header-title {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .header-chip {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  /* ===== ПРОГРЕСС-БАР ===== */
+  .progress-wrap {
+    padding: 0 16px 8px;
+  }
+
+  .progress-bar {
+    height: 5px;
+  }
+
+  .progress-label {
+    font-size: 11px;
+  }
+
+  /* ===== LAYOUT ЭКРАНОВ ===== */
+  .screen-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100dvh - 120px);
+  }
+
+  .screen-layout.single,
+  .screen-layout.wide-left,
+  .screen-layout.wide-right,
+  .screen-layout.triple {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== СЦЕНА ===== */
+  .scene {
+    padding: 16px 16px 8px;
+    border-right: none;
+    border-bottom: 1px solid rgba(226,232,240,0.6);
+    overflow-y: visible;
+    height: auto;
+    min-height: 0;
+  }
+
+  .scene-header {
+    margin-bottom: 12px;
+  }
+
+  .scene-header h2 {
+    font-size: 17px;
+    line-height: 1.35;
+  }
+
+  .scene-header p {
+    font-size: 13px;
+  }
+
+  .scene-main {
+    gap: 10px;
+  }
+
+  /* ===== ПАНЕЛЬ ===== */
+  .panel {
+    padding: 14px 16px;
+    overflow-y: visible;
+    height: auto;
+    min-height: 0;
+  }
+
+  .panel-title {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  /* ===== НАВИГАЦИЯ ===== */
+  .nav-row {
+    padding: 12px 16px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-back {
+    font-size: 12px;
+    padding: 8px 14px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ===== КНОПКИ ===== */
+  .btn {
+    padding: 11px 22px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-sm {
+    padding: 8px 16px;
+    font-size: 12px;
+    width: auto;
+  }
+
+  .btn-lg {
+    padding: 14px 32px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .btn-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-row .btn,
+  .btn-row .btn-sm {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ===== ИНПУТЫ ===== */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* предотвращает зум на iOS */
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+
+  /* ===== КАРТОЧКИ ===== */
+  .card {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  /* ===== ЧИПЫ ===== */
+  .chip {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .chips-wrap {
+    gap: 6px;
+  }
+
+  /* ===== ШКАЛА ===== */
+  .scale-wrap {
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .scale-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .scale-label {
+    font-size: 11px;
+  }
+
+  /* ===== БУСИНЫ ===== */
+  .bead {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .beads-pool,
+  .beads-target {
+    min-height: 64px;
+    padding: 10px 12px;
+    gap: 6px;
+    border-radius: 14px;
+  }
+
+  #screen-12 .bead {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  #screen-12 .beads-pool,
+  #screen-12 .beads-target {
+    min-height: 68px;
+    padding: 10px 12px;
+  }
+
+  /* ===== ЗЛАТА КАРТОЧКА ===== */
+  .zlata-card-wrapper {
+    max-width: 100%;
+    margin: 0;
+    height: auto;
+    min-height: 480px;
+  }
+
+  .zlata-front,
+  .zlata-back {
+    padding: 18px 14px;
+    min-height: 480px;
+    border-radius: 16px;
+  }
+
+  .zlata-avatar-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .zlata-name {
+    font-size: 17px;
+  }
+
+  .zlata-role {
+    font-size: 12px;
+  }
+
+  .zlata-quote {
+    font-size: 12px;
+    padding: 8px 10px;
+    margin-top: 10px;
+  }
+
+  .zlata-inventory {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .zlata-inv-item {
+    padding: 8px 4px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  .zlata-inv-item small {
+    font-size: 9px;
+  }
+
+  .zlata-superpowers {
+    padding: 10px 10px;
+    gap: 6px;
+  }
+
+  .zlata-sp-title {
+    font-size: 13px;
+  }
+
+  .zlata-sp-item {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .zlata-sp-icon {
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .zlata-nw-bar {
+    margin-top: 10px;
+  }
+
+  .zlata-nw-label,
+  .zlata-nw-value {
+    font-size: 11px;
+  }
+
+  .zlata-flip-hint {
+    font-size: 10px;
+  }
+
+  /* ===== МАСКИ СТРАХОВ ===== */
+  .fear-fullscreen {
+    padding: 16px 16px 24px;
+  }
+
+  .fear-masks-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .fear-mask {
+    padding: 12px 8px 10px;
+    border-radius: 14px;
+  }
+
+  .fear-mask-face {
+    width: 72px;
+    height: 82px;
+  }
+
+  .fm-eye {
+    width: 11px;
+    height: 11px;
+  }
+
+  .fm-eye::after {
+    width: 6px;
+    height: 6px;
+  }
+
+  .fear-mask-text {
+    font-size: 11px;
+  }
+
+  .fear-custom-input {
+    font-size: 12px;
+    padding: 5px 6px;
+  }
+
+  .fears-validation-list,
+  .fears-strategy-list {
+    max-width: 100%;
+  }
+
+  .fear-validation-item {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .fear-validation-icon {
+    font-size: 18px;
+  }
+
+  .fear-strategy-card {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .fear-strategy-title {
+    font-size: 14px;
+  }
+
+  .fear-strategy-validation {
+    font-size: 12px;
+  }
+
+  .fear-strategy-textarea {
+    font-size: 16px !important;
+    min-height: 72px;
+  }
+
+  /* ===== СМАРТ МАЙНД-КАРТА ===== */
+  .smart-fullscreen {
+    padding: 16px 14px 32px;
+  }
+
+  .smart-header h2 {
+    font-size: 18px;
+  }
+
+  .smart-mind-map {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+  }
+
+  .smart-center {
+    width: 110px;
+    height: 110px;
+    align-self: center;
+    order: -1;
+  }
+
+  .smart-center-icon {
+    font-size: 28px;
+  }
+
+  .smart-center-label {
+    font-size: 10px;
+  }
+
+  .smart-branch {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .smart-branch-s,
+  .smart-branch-m,
+  .smart-branch-a,
+  .smart-branch-r,
+  .smart-branch-t {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .smart-letter {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .smart-branch-title {
+    font-size: 12px;
+  }
+
+  .smart-branch-title small {
+    font-size: 10px;
+  }
+
+  .smart-textarea {
+    min-height: 70px;
+    font-size: 16px !important;
+    padding: 10px 12px;
+  }
+
+  .smart-example {
+    max-width: 100%;
+  }
+
+  .smart-example-header {
+    font-size: 13px;
+  }
+
+  .smart-example-row {
+    font-size: 12px;
+  }
+
+  .smart-actions {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .smart-saved-toast {
+    font-size: 13px;
+    padding: 10px 20px;
+    bottom: 20px;
+    width: calc(100% - 40px);
+    text-align: center;
+    border-radius: 16px;
+  }
+
+  /* ===== ВИЗИТКА ===== */
+  .bizcard-template {
+    max-width: 100%;
+    padding: 14px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+
+  .bizcard-template input.bc-field {
+    font-size: 16px !important;
+    padding: 8px 10px;
+  }
+
+  .bizcard-template input.bc-field:first-of-type {
+    font-size: 16px !important;
+  }
+
+  .bizcard-template textarea.bc-field {
+    font-size: 16px !important;
+  }
+
+  .bizcard-drop-zone {
+    width: 52px;
+    height: 52px;
+    font-size: 8px;
+  }
+
+  .drag-elements-panel {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .drag-el {
+    font-size: 12px;
+    padding: 7px 10px;
+    border-radius: 8px;
+  }
+
+  .bizcard-feedback {
+    font-size: 12px;
+  }
+
+  .bizcard-example .bc-name {
+    font-size: 13px;
+  }
+
+  .bizcard-example .bc-hint {
+    font-size: 11px;
+  }
+
+  .bizcard-example .bc-contacts {
+    font-size: 11px;
+  }
+
+  /* ===== СТИКЕРЫ ===== */
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 12px;
+    min-height: 280px;
+  }
+
+  .sticky {
+    border-radius: 4px;
+  }
+
+  .sticky > div:first-of-type {
+    font-size: 11px;
+    -webkit-line-clamp: 3;
+  }
+
+  .sticky-footer {
+    font-size: 9px;
+  }
+
+  .sticky-delete {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    opacity: 1;
+  }
+
+  /* ===== ЧЕЛОВЕЧКИ ===== */
+  .person-avatar {
+    width: 44px;
+    height: 60px;
+  }
+
+  /* ===== СУМКА НЕТВОРКЕРА ===== */
+  .bag-shelf-visual {
+    gap: 8px;
+    padding: 10px 12px;
+    min-height: 76px;
+    flex-wrap: wrap;
+  }
+
+  .bag-item-visual {
+    width: 56px;
+  }
+
+  .bag-item-visual img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bag-item-visual span {
+    font-size: 8px;
+  }
+
+  .bag-item-inside {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* ===== КАРТА МЕРОПРИЯТИЯ ===== */
+  #venue-map {
+    padding: 6px 0;
+    gap: 6px;
+  }
+
+  .venue-obj {
+    padding: 8px 4px;
+    border-radius: 10px;
+  }
+
+  .venue-emoji {
+    font-size: 20px;
+  }
+
+  .venue-label,
+  .venue-label-sm {
+    font-size: 9px;
+  }
+
+  /* ===== ОБЛОЖКА ЭКРАН 1 ===== */
+  #screen-1 {
+    height: 100dvh !important;
+    overflow: hidden !important;
+  }
+
+  .s1-cover {
+    height: 100dvh !important;
+    border-radius: 0 !important;
+  }
+
+  .s1-cover-img img {
+    object-position: top center !important;
+  }
+
+  .s1-cover-title {
+    font-size: 18px;
+  }
+
+  .s1-cover-subtitle {
+    font-size: 13px;
+  }
+
+  .s1-cover-btn {
+    font-size: 16px;
+    padding: 14px 36px;
+  }
+
+  /* ===== МОБИЛЬНОЕ ПРЕДУПРЕЖДЕНИЕ ===== */
+  #mobile-warning {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: linear-gradient(135deg, #f0fdf4, #eff6ff);
+    padding: 24px;
+  }
+
+  /* ===== ПОПАП ПОВОРОТА ===== */
+  .rotate-overlay {
+    display: none;
+  }
+
+  /* ===== ТУЛТИП СТИКЕРОВ ===== */
+  #sticky-tooltip {
+    display: none !important;
+  }
+
+  /* ===== КАРТОЧКИ СУДЕБ ===== */
+  .fate-card {
+    padding: 10px 12px;
+    min-width: 130px;
+    max-width: 160px;
+    border-radius: 12px;
+  }
+
+  .fate-title {
+    font-size: 12px;
+  }
+
+  .fate-metric {
+    font-size: 11px;
+  }
+
+  /* ===== ДОСКА ВАЖНОСТИ ===== */
+  .importance-row {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .importance-row .imp-label {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .importance-row .imp-value {
+    font-size: 13px;
+    width: 28px;
+  }
+
+  /* ===== ФОТО СЕТКА ===== */
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .photo-placeholder .ph-emoji {
+    font-size: 28px;
+  }
+
+  .photo-placeholder {
+    font-size: 11px;
+    padding: 10px 8px;
+  }
+
+  .photo-label {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  /* ===== ЭКРАН 16-1: СКРОЛЛ ===== */
+  #screen-16-1 .panel {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  /* ===== ЭКРАН 19: ВИЗИТКА ===== */
+  #screen-19.active {
+    overflow-y: auto !important;
+  }
+
+  #screen-19 .screen-layout {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  #screen-19 .scene,
+  #screen-19 .panel {
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+
+  /* ===== ЭКРАН 21-2: КАРТА МЕРОПРИЯТИЯ ===== */
+  #screen-21-2 .scene {
+    padding: 12px 12px 8px;
+  }
+
+  #screen-21-2 .panel {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  /* ===== FLOAT SAVED ===== */
+  .float-saved {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  /* ===== БУСИНЫ ЭТАПЫ ===== */
+  .beads-stage-dot {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .beads-formula-chip {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  /* ===== ЛОКАЦИИ ===== */
+  .location-chip {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  /* ===== КАРТОЧКИ НЕТВОРКИНГА ===== */
+  .nw-card {
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .nw-card-title {
+    font-size: 13px;
+  }
+
+  .nw-card-desc {
+    font-size: 11px;
+  }
+
+  /* ===== ПОЛОСКА НЕТВОРКИНГА ===== */
+  .zlata-nw-track {
+    height: 10px;
+  }
+
+  /* ===== ХЕДЕР СТАТИСТИКА ===== */
+  .header-stat-label {
+    font-size: 10px;
+  }
+
+  .header-stat-value {
+    font-size: 11px;
+  }
+
+  /* ===== ОБЩИЕ ОТСТУПЫ ===== */
+  .section-gap {
+    gap: 10px;
+  }
+
+  .inner-gap {
+    gap: 6px;
+  }
+
+  /* ===== ТЕКСТ ===== */
+  .text-sm { font-size: 12px; }
+  .text-xs { font-size: 10px; }
+
+  /* ===== ИКОНКИ ===== */
+  .icon-lg { font-size: 28px; }
+  .icon-md { font-size: 22px; }
+  .icon-sm { font-size: 16px; }
+
+  /* Тест: крупные зоны нажатия */
+  #screen-2 .quiz-opt {
+    min-height: 48px !important;
+    padding: 14px 16px !important;
+  }
+
+  /* Сумка: удобнее таскать пальцем */
+  #screen-21-1 .bag-item-visual {
+    min-width: 56px !important;
+    min-height: 64px !important;
+    padding: 6px !important;
+  }
+
+  #screen-21-1 .bag-item-visual img {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .badge#venue-counter {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  /* Знакомство со Златой: сначала текст (теория), ниже иллюстрация */
+  #screen-3-0 .screen-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  #screen-3-0 .panel {
+    order: -1;
+  }
+  #screen-3-0 .scene {
+    order: 1;
+    min-height: 240px;
+  }
+
+  /* Крючок: на мобиле теория сверху */
+  #screen-21 .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #screen-21 .panel {
+    order: -1;
+  }
+  #screen-21 .scene {
+    order: 2;
+    min-height: 260px;
+  }
+
+} /* конец @media (max-width: 767px) */
+
+
+/* ================================================
+   ПЛАНШЕТЫ — 768px до 1023px
+   ================================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  body {
+    background: #f1f5f9;
+    padding: 16px;
+  }
+
+  .screen {
+    border-radius: 20px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  .header,
+  header {
+    padding: 12px 24px;
+  }
+
+  .header-title {
+    font-size: 14px;
+  }
+
+  .progress-wrap {
+    padding: 0 24px 8px;
+  }
+
+  .screen-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 180px);
+    max-height: 640px;
+  }
+
+  .screen-layout.single {
+    grid-template-columns: 1fr;
+  }
+
+  .scene {
+    padding: 20px 24px;
+  }
+
+  .panel {
+    padding: 18px 22px;
+  }
+
+  .scene-header h2 {
+    font-size: 18px;
+  }
+
+  .nav-row {
+    padding: 12px 24px;
+  }
+
+  .nav-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .fear-masks-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .smart-mind-map {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .smart-center {
+    align-self: center;
+  }
+
+  .board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .bizcard-template {
+    max-width: 440px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  #screen-2 .quiz-opt {
+    min-height: 48px !important;
+    padding: 14px 18px !important;
+  }
+
+  #screen-21-1 .bag-item-visual {
+    min-width: 52px !important;
+    min-height: 60px !important;
+  }
+
+} /* конец @media планшеты */
+
+
+/* ================================================
+   ЛАНДШАФТНЫЙ РЕЖИМ НА МОБИЛКАХ
+   ================================================ */
+
+@media (max-width: 767px) and (orientation: landscape) {
+
+  .screen {
+    min-height: 100dvh;
+  }
+
+  .screen-layout {
+    flex-direction: row;
+    min-height: calc(100dvh - 100px);
+  }
+
+  .scene {
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(100dvh - 100px);
+    border-right: 1px solid rgba(226,232,240,0.6);
+    border-bottom: none;
+  }
+
+  .panel {
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(100dvh - 100px);
+  }
+
+  .s1-cover {
+    height: 100dvh !important;
+  }
+
+  .s1-cover-btn-wrap {
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .s1-cover-title {
+    font-size: 16px;
+  }
+
+  .s1-cover-subtitle {
+    font-size: 12px;
+  }
+
+  .s1-cover-btn {
+    font-size: 14px;
+    padding: 10px 28px;
+  }
+
+  .fear-masks-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .nav-btn {
+    width: auto;
+  }
+
+  .btn {
+    width: auto;
+  }
+
+  #screen-2.active {
+    padding-top: max(4px, env(safe-area-inset-top, 0px)) !important;
+  }
+
+  #screen-2 .quiz-q h3 {
+    font-size: 14px !important;
+  }
+
+} /* конец landscape */
+
+@media (max-width: 767px) {
+
+  .s1-overlay-card {
+    width: 94%;
+    max-height: 85%;
+    border-radius: 16px;
+  }
+
+  .s1-overlay-scroll {
+    padding: 20px 18px 20px;
+    gap: 10px;
+  }
+
+  .s1-overlay-scroll h2 {
+    font-size: 18px;
+  }
+
+  .s1-overlay-scroll p,
+  .s1-overlay-scroll ol li {
+    font-size: 13px;
+  }
+
+  .s1-ready-box p {
+    font-size: 14px !important;
+  }
+
+  .s1-overlay-scroll .btn {
+    padding: 13px 36px;
+    font-size: 15px;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  /* ===== РЕЗУЛЬТАТ ТЕСТА — мобилка ===== */
+
+  .qr-result-wrap {
+    padding: 8px 0 16px;
+  }
+
+  .qr-result-card {
+    max-width: 100% !important;
+    padding: 24px 20px 22px !important;
+    border-radius: 20px !important;
+    gap: 12px !important;
+    margin: 0 !important;
+  }
+
+  /* Эмодзи чуть меньше */
+  .qr-result-emoji {
+    font-size: 48px !important;
+  }
+
+  /* Заголовок */
+  .qr-result-title {
+    font-size: 10px !important;
+    padding: 3px 12px !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* Счёт */
+  .qr-result-score {
+    font-size: 52px !important;
+  }
+
+  /* Бейдж уровня */
+  .qr-result-badge {
+    font-size: 13px !important;
+    padding: 6px 18px !important;
+    width: 100% !important;
+    justify-content: center !important;
+    display: flex !important;
+  }
+
+  /* Прогресс-бар */
+  .qr-result-bar-wrap {
+    height: 8px !important;
+  }
+
+  /* Процент */
+  .qr-result-pct {
+    font-size: 12px !important;
+    margin-top: -6px !important;
+  }
+
+  /* Описание */
+  .qr-result-desc {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+  }
+
+  /* Кнопка */
+  .qr-result-btn {
+    max-width: 100% !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    border-radius: 14px !important;
+  }
+
+}
+
+@media (max-width: 767px) {
+  /* ===== ТЕСТ: мобилка ===== */
+
+  #screen-2 .panel {
+    padding: 18px 16px !important;
+  }
+
+  #screen-2 .quiz-q {
+    padding: 14px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  #screen-2 .quiz-q h3 {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+  }
+
+  #screen-2 .quiz-opt {
+    padding: 10px 13px !important;
+    font-size: 13px !important;
+    border-radius: 9px !important;
+  }
+
+  #screen-2 h2 {
+    font-size: 17px !important;
+  }
+
+  /* ===== Module 1: split-экраны — одна колонка (перебиваем grid из module1.css) ===== */
+  #screen-10 .screen-layout,
+  #screen-11 .screen-layout,
+  #screen-14 .screen-layout,
+  #screen-15 .screen-layout,
+  #screen-16 .screen-layout,
+  #screen-16-1 .screen-layout,
+  #screen-19 .screen-layout,
+  #screen-20 .screen-layout,
+  #screen-20-1 .screen-layout,
+  #screen-21 .screen-layout,
+  #screen-21-1 .screen-layout,
+  #screen-zlata-ready .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex: 1 1 auto !important;
+    gap: 12px !important;
+    padding: 12px 14px !important;
+    align-items: stretch !important;
+  }
+
+  #screen-19.active,
+  #screen-20.active,
+  #screen-20-1.active,
+  #screen-21.active {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+  }
+
+  #screen-10 .panel,
+  #screen-10 .scene,
+  #screen-11 .panel,
+  #screen-11 .scene,
+  #screen-14 .panel,
+  #screen-14 .scene,
+  #screen-15 .panel,
+  #screen-15 .scene,
+  #screen-16 .panel,
+  #screen-16 .scene,
+  #screen-16-1 .panel,
+  #screen-16-1 .scene,
+  #screen-19 .panel,
+  #screen-19 .scene,
+  #screen-20 .panel,
+  #screen-20 .scene,
+  #screen-20-1 .panel,
+  #screen-20-1 .scene,
+  #screen-21 .panel,
+  #screen-21 .scene,
+  #screen-21-1 .panel,
+  #screen-21-1 .scene,
+  #screen-zlata-ready .panel,
+  #screen-zlata-ready .scene {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 1 auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* ===== Module 1: пошаговые мобильные сценарии (теория → задание) ===== */
+  .m1-mobile-flow-next,
+  #btn-m10-to-task,
+  #btn-m14-to-rating,
+  #btn-m15-to-sliders,
+  #btn-m16-to-task,
+  #btn-m161-theory-next,
+  #btn-m19-to-task,
+  #btn-m20-to-task,
+  #btn-m201-to-task,
+  #btn-m21-theory-next,
+  #btn-m21-attach {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /* Не показываем «Далее» теории, когда уже в режиме задания / задания экрана 16 */
+  #screen-16.m1-ms16-task #btn-m16-to-task {
+    display: none !important;
+  }
+  #screen-16-1.m1-loc-step-task #btn-m161-theory-next {
+    display: none !important;
+  }
+
+  /* Рабочий стол: сначала текст, затем сцена (папки) */
+  #screen-10 .panel {
+    order: -1;
+  }
+  #screen-10 .scene {
+    order: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 260px;
+  }
+  #btn-m10-to-task {
+    display: none !important;
+  }
+
+  #screen-14 .screen-layout {
+    gap: 0 !important;
+  }
+  #screen-14 .scene {
+    order: -1;
+    position: relative;
+    top: auto;
+    z-index: 1;
+    background: #fff;
+    flex: 0 0 auto !important;
+    max-height: min(48vh, 300px);
+    min-height: 0;
+  }
+  #screen-14 .scene-main {
+    max-height: min(42vh, 260px);
+  }
+  /* Теория и блок оценки видны вместе; «Далее» не нужен */
+  #screen-14 .m1-ms14-rate-block,
+  #screen-14 .m1-ms14-intro {
+    display: block !important;
+  }
+  #btn-m14-to-rating {
+    display: none !important;
+  }
+  #screen-14 .panel {
+    max-height: none;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #screen-15:not(.m1-imp-step-sliders) .m1-imp-interactive-wrap {
+    display: none !important;
+  }
+  #screen-15.m1-imp-step-sliders #btn-m15-to-sliders {
+    display: none !important;
+  }
+
+  /* Экран 15: колесо сверху (липкое), под ним ползунки и остальное на всю ширину */
+  #screen-15 .screen-layout {
+    gap: 0 !important;
+  }
+  #screen-15 .scene {
+    order: -1 !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 6 !important;
+    flex: 0 0 auto !important;
+    max-height: min(42vh, 280px) !important;
+    background: #fff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06) !important;
+  }
+  #screen-15 .scene-main {
+    max-height: min(38vh, 240px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #screen-15 .scene-main svg {
+    max-height: min(36vh, 220px) !important;
+    width: auto !important;
+  }
+  #screen-15 .panel {
+    order: 1 !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+  #screen-15 .sliders-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-height: 0 !important;
+  }
+  #screen-15 #priority-results {
+    max-height: none !important;
+    flex: 0 1 auto !important;
+  }
+  #screen-15 #btn-wheel-next {
+    display: flex !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+    margin-bottom: 8px !important;
+    flex-shrink: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 48px !important;
+  }
+
+  #screen-16:not(.m1-ms16-task) .scene {
+    display: none !important;
+  }
+  /* Теория: «Далее» и «Назад» под текстом (m1-ms16-after не скрываем) */
+  #screen-16:not(.m1-ms16-task) .m1-ms16-after {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16:not(.m1-ms16-task) .m1-ms16-task-hint {
+    display: none !important;
+  }
+  #screen-16:not(.m1-ms16-task) #btn-people-continue {
+    display: none !important;
+  }
+  #screen-16:not(.m1-ms16-task) #btn-m16-to-task {
+    order: 1 !important;
+    width: 100% !important;
+  }
+  #screen-16:not(.m1-ms16-task) #screen-16-actions {
+    order: 2 !important;
+  }
+  #screen-16:not(.m1-ms16-task) .panel {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: calc(100dvh - 88px) !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+  }
+  #screen-16:not(.m1-ms16-task) .m1-ms16-theory {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+  }
+  #screen-16.m1-ms16-task .m1-ms16-theory {
+    display: none !important;
+  }
+  #screen-16.m1-ms16-task.active {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    min-height: 100dvh !important;
+    height: auto !important;
+    max-height: none !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #screen-16.m1-ms16-task .screen-layout {
+    flex: 0 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #screen-16.m1-ms16-task .panel {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    /* Перебить module1.css (#screen-16 .panel height: 100%) — иначе панель тянет высоту и flex сжимает .scene ниже контента */
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  #screen-16.m1-ms16-task .m1-ms16-after {
+    margin-top: 0 !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-bottom: max(24px, calc(12px + env(safe-area-inset-bottom, 0px))) !important;
+  }
+  #screen-16.m1-ms16-task .scene {
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    /* min-height: 0 давало flex-сжатие сцены «в ноль» под панель с height:100% — пул и счётчик пропадали */
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    max-height: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  /* Когда экран активен — не сжимать сцену (раньше min-height:0 ломало пул) */
+  #screen-16.m1-ms16-task.active .scene {
+    min-height: auto !important;
+    flex-shrink: 0 !important;
+  }
+  #screen-16 .scene-main {
+    gap: 8px !important;
+    padding: 10px 12px 12px !important;
+  }
+  #screen-16 #people-pool,
+  #screen-16 #people-target {
+    min-height: 96px !important;
+    max-height: none !important;
+    overflow: visible !important;
+    align-content: flex-start !important;
+    justify-content: center !important;
+    padding: 12px 10px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16 .person-avatar {
+    width: 48px !important;
+    height: 64px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16 .person-avatar img {
+    max-height: 56px !important;
+    object-fit: contain !important;
+  }
+  #screen-16 #btn-people-plan {
+    margin-top: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #screen-16 #screen-16-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+  }
+  #screen-16 #screen-16-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  #screen-16.m1-ms16-task #people-counter {
+    font-size: 30px !important;
+    line-height: 1.1 !important;
+    flex-shrink: 0 !important;
+  }
+  #screen-16.m1-ms16-task .scene-main > .m1-people-plan-footer {
+    margin-top: 12px !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16.m1-ms16-task #people-feedback {
+    flex-shrink: 1 !important;
+    min-height: 0 !important;
+    max-height: 22vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #screen-16 .m1-people-plan-label-row {
+    margin: 16px 0 8px !important;
+    padding: 8px 12px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(226, 232, 240, 0.95) !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
+  }
+  #screen-16.m1-ms16-task #people-pool,
+  #screen-16.m1-ms16-task #people-target {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-content: flex-start !important;
+    gap: 10px 8px !important;
+    max-width: 100% !important;
+    min-height: 88px !important;
+    flex: 0 1 auto !important;
+  }
+  #screen-16.m1-ms16-task .scene,
+  #screen-16.m1-ms16-task.active .scene {
+    overflow: visible !important;
+  }
+  #screen-16.m1-ms16-task .scene-main,
+  #screen-16.m1-ms16-task.active .scene-main {
+    flex: none !important;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    flex-basis: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  #screen-16.m1-ms16-task .panel #screen-16-actions {
+    margin-top: 12px !important;
+  }
+
+  /* «Продолжить» сверху, «Назад» снизу (итоговый каскад дублируется в module1.css @767 из‑за порядка подключения стилей) */
+  #screen-16 #screen-16-actions [data-prev] {
+    order: 2 !important;
+  }
+  #screen-16 #screen-16-actions #btn-people-continue {
+    order: 1 !important;
+    margin-left: 0 !important;
+  }
+
+  /* 16-1: в теории показываем сцену с колонками и пул в панели (как на ПК), «Далее» ведёт сразу в задание */
+  #screen-16-1:not(.m1-loc-step-task) .scene {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    max-height: 44vh !important;
+    min-height: 200px !important;
+    overflow: hidden !important;
+    order: -1 !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) #location-pool-panel-anchor {
+    display: block !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) #location-pool {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-content: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    min-height: 88px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-panel-assignment {
+    display: none !important;
+  }
+  #screen-16-1.m1-loc-step-task .m1-loc-theory-assignment {
+    display: none !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-panel-rest {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) #btn-locations-done {
+    display: none !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .panel {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-height: calc(100dvh - 88px) !important;
+    max-height: 100dvh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-theory {
+    flex: 0 1 auto !important;
+    max-height: min(42vh, 360px) !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) #btn-m161-theory-next {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-panel-rest .actions-row {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-panel-rest .actions-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  #screen-16-1.m1-loc-step-task .m1-loc-theory {
+    display: none !important;
+  }
+  #screen-16-1.m1-loc-step-task .scene {
+    order: -1;
+  }
+  #screen-16-1.m1-loc-step-task .m1-loc-panel-rest {
+    order: 1;
+    width: 100%;
+  }
+  #screen-16-1.m1-loc-step-task .location-pool-mobile-slot {
+    margin-top: 10px;
+    min-height: 76px;
+    border-radius: 12px;
+    border: 2px dashed rgba(148, 163, 184, 0.45);
+    background: rgba(248, 250, 252, 0.95);
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .location-pool-mobile-slot {
+    display: none !important;
+  }
+  #screen-16-1.m1-loc-step-task .scene-main > div:first-child {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+  #screen-16-1.m1-loc-step-task .location-category {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  #screen-16-1.m1-loc-step-task.active {
+    min-height: 100dvh !important;
+    overflow: hidden !important;
+    max-height: 100dvh !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16-1.m1-loc-step-task .screen-layout {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  #screen-16-1.m1-loc-step-task .scene {
+    order: -1 !important;
+    flex: 0 0 auto !important;
+    min-height: 200px !important;
+    max-height: 48vh !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #screen-16-1.m1-loc-step-task .scene-main {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 10px 12px !important;
+  }
+  #screen-16-1.m1-loc-step-task .scene-main > div:first-child {
+    flex: 1 1 auto !important;
+    min-height: 120px !important;
+    overflow: hidden !important;
+  }
+  #screen-16-1.m1-loc-step-task .location-drop-zone {
+    min-height: 72px !important;
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #screen-16-1.m1-loc-step-task #location-pool {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-content: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    min-height: 88px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-16-1.m1-loc-step-task .location-pool-mobile-slot {
+    flex: 0 0 auto !important;
+    max-height: 30vh !important;
+    min-height: 80px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #screen-16-1.m1-loc-step-task .m1-loc-panel-rest {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    margin-top: 8px !important;
+    padding-top: 8px !important;
+    border-top: 1px solid #e2e8f0 !important;
+  }
+  #screen-16-1.m1-loc-step-task #location-pool-panel-anchor {
+    flex: 0 0 auto !important;
+    display: none !important;
+  }
+  #screen-16-1.m1-loc-step-task .m1-loc-panel-assignment {
+    display: none !important;
+  }
+  #screen-16-1.m1-loc-step-task .actions-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    margin-top: 10px !important;
+    padding-top: 8px !important;
+  }
+  #screen-16-1.m1-loc-step-task .actions-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  #screen-16-1.m1-loc-step-task .actions-row [data-prev] {
+    order: 2 !important;
+  }
+  #screen-16-1.m1-loc-step-task .actions-row #btn-locations-done {
+    order: 1 !important;
+    margin-left: 0 !important;
+  }
+
+  #screen-19:not(.m1-ms19-task) .scene {
+    display: none !important;
+  }
+  /* Теория визитки: одна колонка на всю ширину (перебиваем grid 3fr 2fr из module1.css) */
+  #screen-19:not(.m1-ms19-task) .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: calc(100dvh - 76px) !important;
+    flex: 1 1 auto !important;
+    padding: 12px 14px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-19:not(.m1-ms19-task) .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #screen-19:not(.m1-ms19-task) .m1-ms19-theory {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 16px !important;
+  }
+  #screen-19:not(.m1-ms19-task) .m1-ms19-task {
+    display: none !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-theory {
+    display: none !important;
+  }
+  /* Задание и кнопки — под сценой визитки, одна колонка */
+  #screen-19.m1-ms19-task .panel {
+    display: contents !important;
+  }
+  #screen-19.m1-ms19-task .scene {
+    order: -1 !important;
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task {
+    order: 1 !important;
+    width: 100% !important;
+    padding: 0 4px 16px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task-intro-mobile-hide {
+    display: none !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task .actions-row #btn-bizcard-check {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #screen-19.m1-ms19-task.active {
+    min-height: 100dvh !important;
+  }
+  #screen-19.m1-ms19-task .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    flex: 1 1 auto !important;
+    min-height: calc(100dvh - 76px) !important;
+    max-height: none !important;
+    overflow: visible !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task .actions-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-top: 12px !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task .actions-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task .actions-row #btn-bizcard-check {
+    order: -1 !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task .actions-row [data-prev] {
+    order: 0 !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task {
+    padding-bottom: max(24px, calc(12px + env(safe-area-inset-bottom, 0px))) !important;
+    box-sizing: border-box !important;
+  }
+  #screen-19.m1-ms19-task .m1-ms19-task .actions-row [data-prev] {
+    align-self: stretch !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #screen-20:not(.m1-ms20-task) .scene {
+    display: none !important;
+  }
+  #screen-20:not(.m1-ms20-task) .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: calc(100dvh - 88px) !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #screen-20:not(.m1-ms20-task) .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 12px 14px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  #screen-20:not(.m1-ms20-task) .m1-ms20-theory {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+  }
+  #screen-20:not(.m1-ms20-task) .m1-ms20-theory-nav-mobile {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+  }
+  #screen-20.m1-ms20-task .m1-ms20-theory-nav-mobile {
+    display: none !important;
+  }
+  #screen-20.m1-ms20-task .m1-ms20-theory {
+    display: none !important;
+  }
+  #screen-20.m1-ms20-task .m1-ms20-task-assignment-hide {
+    display: none !important;
+  }
+  #screen-20.m1-ms20-task .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #screen-20.m1-ms20-task .panel {
+    display: contents !important;
+  }
+  #screen-20.m1-ms20-task .scene {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #screen-20.m1-ms20-task .scene-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+  }
+  #screen-20.m1-ms20-task .photo-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #screen-20.m1-ms20-task .actions-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  #screen-20.m1-ms20-task .actions-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-20.m1-ms20-task .actions-row #btn-photo-check {
+    order: -1 !important;
+  }
+  #screen-20.m1-ms20-task .actions-row [data-prev] {
+    order: 0 !important;
+  }
+  #screen-20.m1-ms20-task .scene-main {
+    padding-bottom: max(24px, calc(12px + env(safe-area-inset-bottom, 0px))) !important;
+    box-sizing: border-box !important;
+  }
+  #screen-20.m1-ms20-task .actions-row [data-prev] {
+    align-self: stretch !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #screen-20-1:not(.m1-ms201-task) .scene {
+    display: none !important;
+  }
+  #screen-20-1:not(.m1-ms201-task) .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: calc(100dvh - 88px) !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #screen-20-1:not(.m1-ms201-task) .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 12px 14px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  #screen-20-1:not(.m1-ms201-task) .m1-ms201-theory {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+  }
+  #screen-20-1:not(.m1-ms201-task) .m1-ms201-theory-nav-mobile {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+  }
+  #screen-20-1.m1-ms201-task .m1-ms201-theory-nav-mobile {
+    display: none !important;
+  }
+  #screen-20-1.m1-ms201-task .m1-ms201-theory {
+    display: none !important;
+  }
+  #screen-20-1.m1-ms201-task .m1-ms201-task-assignment-hide {
+    display: none !important;
+  }
+  #screen-20-1.m1-ms201-task .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #screen-20-1.m1-ms201-task .panel {
+    display: contents !important;
+  }
+  #screen-20-1.m1-ms201-task .scene {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #screen-20-1.m1-ms201-task .scene-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+  }
+  #screen-20-1.m1-ms201-task .scene .actions-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  #screen-20-1.m1-ms201-task .scene .actions-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .m1-ms21-nav-back-inline {
+    display: none !important;
+  }
+  #screen-21:not(.m1-ms21-board) .m1-ms21-sticky-actions {
+    display: none !important;
+  }
+  .m1-ms21-board-back-mobile {
+    display: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    margin: 0 0 8px 0 !important;
+    box-sizing: border-box !important;
+  }
+  #screen-21 .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: calc(100dvh - 88px) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #screen-21:not(.m1-ms21-board) .scene {
+    display: none !important;
+  }
+  #screen-21:not(.m1-ms21-board) .panel {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 12px 14px max(24px, calc(16px + env(safe-area-inset-bottom, 0px))) !important;
+    box-sizing: border-box !important;
+  }
+  #screen-21:not(.m1-ms21-board) .m1-ms21-board-teaser {
+    display: none !important;
+  }
+  #screen-21:not(.m1-ms21-board) #btn-m21-attach {
+    display: none !important;
+  }
+  #screen-21:not(.m1-ms21-board) #btn-m21-theory-next {
+    display: flex !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  #screen-21:not(.m1-ms21-board) .m1-ms21-nav-back-solo {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    margin-top: 8px !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-21:not(.m1-ms21-board) .m1-ms21-sticky-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+  }
+  #screen-21:not(.m1-ms21-board) .m1-ms21-sticky-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  #screen-21:not(.m1-ms21-board) #btn-sticky-add {
+    display: none !important;
+  }
+  #screen-21.m1-ms21-board .m1-ms21-theory-block {
+    display: none !important;
+  }
+  #screen-21.m1-ms21-board #btn-m21-theory-next {
+    display: none !important;
+  }
+  #screen-21.m1-ms21-board .m1-ms21-compose,
+  #screen-21.m1-ms21-board #btn-m21-attach,
+  #screen-21.m1-ms21-board #my-sticky-preview,
+  #screen-21.m1-ms21-board #btn-sticky-add {
+    display: none !important;
+  }
+  #screen-21.m1-ms21-board #btn-sticky-next {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+    order: 0 !important;
+    background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35) !important;
+  }
+  #screen-21.m1-ms21-board .m1-ms21-nav-back-solo {
+    display: none !important;
+  }
+  #screen-21.m1-ms21-board .m1-ms21-sticky-actions .m1-ms21-nav-back-inline {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+    order: 1 !important;
+  }
+  #screen-21.m1-ms21-board .m1-ms21-sticky-actions {
+    order: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-top: 0 !important;
+  }
+  #screen-21.m1-ms21-board .scene {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 58vh !important;
+    max-height: none !important;
+    width: 100% !important;
+    order: -1 !important;
+  }
+  #screen-21.m1-ms21-board .scene-main {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    padding: 10px 12px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-21.m1-ms21-board .m1-ms21-board-back-mobile {
+    display: inline-flex !important;
+    flex-shrink: 0 !important;
+  }
+  #screen-21.m1-ms21-board #sticky-board {
+    flex: 1 1 auto !important;
+    min-height: 48vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #screen-21.m1-ms21-board .panel {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 10px 12px max(20px, calc(12px + env(safe-area-inset-bottom, 0px))) !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
+  }
+  #screen-21.m1-ms21-board .m1-ms21-sticky-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  #locations-modal .actions-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+  #locations-modal #locations-continue {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  #screen-11 .screen-layout {
+    flex-direction: column !important;
+  }
+  #screen-11 .scene {
+    order: -1;
+    max-height: 200px;
+  }
+  #screen-11 .scene-main,
+  #screen-11 .fake-illustration {
+    max-height: 180px;
+  }
+  #screen-11 .fake-illustration img {
+    max-height: 176px;
+    width: auto !important;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  #screen-13 #fear-masks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    justify-items: center;
+  }
+  #screen-13 #fears-step1 {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box;
+  }
+
+  #screen-zlata-ready .screen-layout {
+    flex-direction: column !important;
+  }
+  #screen-zlata-ready .scene {
+    order: -1;
+    flex: 0 0 auto !important;
+    max-height: none !important;
+  }
+  #screen-zlata-ready .scene-main {
+    max-height: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+  #screen-zlata-ready .fake-illustration {
+    max-height: 240px !important;
+    flex-shrink: 0 !important;
+  }
+  #screen-zlata-ready .fake-illustration img {
+    object-fit: cover !important;
+    max-height: 240px !important;
+  }
+  #screen-zlata-ready .m1-zlata-ready-mobile-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    padding: 4px 0 12px !important;
+    box-sizing: border-box !important;
+  }
+  #screen-zlata-ready .m1-zlata-ready-panel-desktop {
+    display: none !important;
+  }
+
+  /* Перебить «ядерный» grid module1.css для screen-zlata-ready — одна колонка на мобиле */
+  html body #app main #screen-container #screen-zlata-ready.active > .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex: 1 1 auto !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    align-items: stretch !important;
+  }
+  html body #app main #screen-container #screen-zlata-ready.active .scene {
+    grid-column: 1 / -1 !important;
+    grid-row: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex: 0 1 auto !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  html body #app main #screen-container #screen-zlata-ready.active .panel.m1-zlata-ready-panel-desktop {
+    display: none !important;
+  }
+  html body #app main #screen-container #screen-zlata-ready.active {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100dvh !important;
+    overflow: visible !important;
+  }
+  html body #app main #screen-container #screen-zlata-ready.active .scene-main {
+    flex-direction: column !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  html body #app main #screen-container #screen-zlata-ready.active .scene-main .fake-illustration {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: min(56vh, 360px) !important;
+    border-radius: 0 !important;
+  }
+  html body #app main #screen-container #screen-zlata-ready.active .scene-main .fake-illustration img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: min(56vh, 360px) !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+  }
+  html body #app main #screen-container #screen-zlata-ready.active .m1-zlata-ready-mobile-stack {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  #screen-container:has(#screen-zlata-ready.active) {
+    overflow: visible !important;
+  }
+
+  /* Экран 16-1 (теория на мобиле): текст в модалке; на экране — колонки, пул, «Далее» */
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-theory,
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-theory-assignment {
+    display: none !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-panel-assignment {
+    display: none !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .panel {
+    min-height: 0 !important;
+    max-height: none !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .m1-loc-panel-rest {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    flex: 0 1 auto !important;
+    min-height: 0 !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) #btn-m161-theory-next {
+    margin-top: 0 !important;
+  }
+  #screen-16-1:not(.m1-loc-step-task) .scene {
+    max-height: min(40vh, 320px) !important;
+    min-height: 160px !important;
+  }
+
+}
+
+/* Итоговая модалка локаций + экран Злата: до 899px (как media у module1-mobile.css в HTML) */
+@media (max-width: 899px) {
+  #locations-modal .m1-loc-modal-footer-static {
+    display: none !important;
+  }
+  /* Кнопка «Далее» теории не показывается в режиме задания (правило было только в @767 — на планшетах кнопка оставалась и ломала сценарий) */
+  #screen-16-1.m1-loc-step-task #btn-m161-theory-next {
+    display: none !important;
+  }
+
+  /* screen-zlata-ready: перебить module1.css #screen-zlata-ready .screen-layout { grid 3fr 2fr } — иначе пустая правая колонка при скрытой десктоп-панели */
+  #screen-zlata-ready.active > .screen-layout,
+  #screen-zlata-ready .screen-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    grid-template-rows: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex: 1 1 auto !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
+  }
+  #screen-zlata-ready.active .scene,
+  #screen-zlata-ready .scene {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  #screen-zlata-ready .scene-main .fake-illustration img {
+    border-radius: 0 !important;
+  }
+  #screen-zlata-ready .m1-zlata-ready-mobile-stack {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}

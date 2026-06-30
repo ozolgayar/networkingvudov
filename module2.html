@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Модуль 2 — Конференция</title>
+  <link rel="stylesheet" href="module2.css">
+</head>
+<body>
+
+<!-- ============================================================
+     HUD — фиксированная верхняя панель
+     Лежит снаружи контейнера экранов — всегда поверх всего
+     ============================================================ -->
+<div class="m2-hud hidden" id="m2-hud">
+    <button type="button" class="hud-map-btn" id="hud-hub-btn" title="Карта конференции">🗺️</button>
+  <div class="hud-energy">
+    <span class="hud-energy-icon">⚡</span>
+    <div class="hud-energy-bar-wrap">
+      <div class="hud-energy-bar" id="hud-energy-bar" style="width:100%"></div>
+    </div>
+    <span class="hud-energy-value" id="hud-energy-value">100%</span>
+  </div>
+  <div class="hud-meets">
+    <span class="hud-meets-icon">🤝</span>
+    <span id="hud-meets-value">0 / 5</span>
+  </div>
+  <button class="hud-notebook-btn" id="hud-notebook-btn" title="Открыть блокнот">
+    📓
+  </button>
+</div>
+
+
+<!-- ============================================================
+     КОНТЕЙНЕР ВСЕХ ЭКРАНОВ
+     position:fixed, занимает всё пространство под HUD
+     ============================================================ -->
+<div id="m2-screen-container">
+
+
+<!-- ============================================================
+     ЭКРАН 1: ОБЛОЖКА (m2-cover)
+     ============================================================ -->
+<div class="m2-screen active" id="m2-cover">
+  <div class="cover-wrap">
+    <a href="map.html" class="m2-back-btn">← Карта курса</a>
+    <div class="cover-m1-badge" id="cover-m1-link"></div>
+    <div class="cover-avatar">
+      <div class="cover-avatar-glow"></div>
+     <img src="img/m1/zlata.png" alt="Злата" class="cover-avatar-img">
+    </div>
+    <div class="cover-title">Модуль 2</div>
+    <div class="cover-subtitle">
+      Конференция фармтех-индустрии<br>
+      <span style="font-size:13px; opacity:0.7;">Злата учится знакомиться</span>
+    </div>
+    <div class="cover-player-name" id="cover-m1-name"></div>
+    <div class="cover-chapters-preview">
+      <div class="cover-chapter-pill">Первое впечатление</div>
+      <div class="cover-chapter-pill">Самопрезентация</div>
+      <div class="cover-chapter-pill">Small talk</div>
+      <div class="cover-chapter-pill">Быть запоминающимся</div>
+      <div class="cover-chapter-pill">Длительные отношения</div>
+    </div>
+    <button class="m2-btn m2-btn-primary m2-btn-full" id="btn-cover-start">
+      Начать конференцию 
+    </button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ЭКРАН 2: ИНТРО (m2-intro)
+     ============================================================ -->
+<div class="m2-screen" id="m2-intro">
+  <div class="intro-wrap">
+    <div class="intro-avatar-wrap">
+      <div class="intro-avatar-glow"></div>
+      <img src="img/m1/zlata.png" alt="Злата" class="intro-avatar-img">
+      <div class="intro-name-badge">Злата</div>
+    </div>
+    <div class="intro-bubble">
+      <div class="intro-bubble-text" id="intro-bubble-text">
+        Привет! Я Злата. Сегодня мы идём на конференцию.
+      </div>
+    </div>
+    <div class="intro-dots" id="intro-dots"></div>
+    <button class="m2-btn m2-btn-primary" id="btn-intro-next">
+      Далее →
+    </button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ЭКРАН 3: ХАБ — КАРТА КОНФЕРЕНЦИИ (m2-hub)
+     ============================================================ -->
+<div class="m2-screen" id="m2-hub">
+
+  <div class="hub-map-container">
+    <div class="hub-map-image" id="hub-map">
+
+      <img src="img/conference-map.png" alt="Карта конференции" class="hub-map-bg">
+
+      <!-- ═══ ГЛАВА 1: Кофейная стойка ═══ -->
+      <button class="map-hotspot map-hotspot-chapter"
+              data-zone="chapter1" id="hub-zone-chapter1"
+              style="left: 23%; top: 22%;">
+        <span class="hotspot-badge" id="zone-done-chapter1">✅</span>
+        <span class="hotspot-label">Кофейная стойка</span>
+      </button>
+
+      <!-- ═══ ГЛАВА 2: Стол с напитками ═══ -->
+      <button class="map-hotspot map-hotspot-chapter"
+              data-zone="chapter2" id="hub-zone-chapter2"
+              style="left: 13%; top: 38%;">
+        <span class="hotspot-badge" id="zone-done-chapter2">✅</span>
+        <span class="hotspot-label">Стол с напитками</span>
+      </button>
+
+      <!-- ═══ ГЛАВА 3: Буфет ═══ -->
+      <button class="map-hotspot map-hotspot-chapter"
+              data-zone="chapter3" id="hub-zone-chapter3"
+              style="left: 36%; top: 28%;">
+        <span class="hotspot-badge" id="zone-done-chapter3">✅</span>
+        <span class="hotspot-label">Буфет</span>
+      </button>
+
+      <!-- ═══ ГЛАВА 4: Сцена ═══ -->
+      <button class="map-hotspot map-hotspot-chapter"
+              data-zone="chapter4" id="hub-zone-chapter4"
+              style="left: 63%; top: 19%;">
+        <span class="hotspot-badge" id="zone-done-chapter4">✅</span>
+        <span class="hotspot-label">Сцена</span>
+      </button>
+
+      <!-- ═══ ГЛАВА 5: Зал конференции ═══ -->
+      <button class="map-hotspot map-hotspot-chapter"
+              data-zone="chapter5" id="hub-zone-chapter5"
+              style="left: 86%; top: 22%;">
+        <span class="hotspot-badge" id="zone-done-chapter5">✅</span>
+        <span class="hotspot-label">Зал конференции</span>
+      </button>
+
+      <!-- ═══ ЛОВУШКА: Туалет ═══ -->
+      <button class="map-hotspot map-hotspot-trap"
+              data-zone="toilet"
+              style="left: 48%; top: 7%;">
+        <span class="hotspot-label">Туалет</span>
+      </button>
+
+      <!-- ═══ ЛОВУШКА: Старый знакомый ═══ -->
+      <button class="map-hotspot map-hotspot-trap"
+              data-zone="oldFriend"
+              style="left: 52%; top: 48%;">
+        <span class="hotspot-label">Старый знакомый</span>
+      </button>
+
+      <!-- ═══ ЭНЕРГИЯ: Стол с закусками ═══ -->
+      <button class="map-hotspot map-hotspot-energy"
+              data-zone="refuel" id="hub-zone-refuel"
+              style="left: 24%; top: 55%;">
+        <span class="hotspot-label">Стол с закусками
+          <span class="hotspot-sublabel">+30% ⚡ (<span id="refuel-uses">2/2</span>)</span>
+        </span>
+      </button>
+
+      <!-- ═══ ЭНЕРГИЯ: Зона отдыха ═══ -->
+      <button class="map-hotspot map-hotspot-energy"
+              data-zone="rest" id="hub-zone-rest"
+              style="left: 75%; top: 72%;">
+        <span class="hotspot-label">Зона отдыха
+          <span class="hotspot-sublabel">+20% ⚡ (<span id="rest-uses">1/1</span>)</span>
+        </span>
+      </button>
+
+      <!-- ═══ ФИНАЛ ═══ -->
+      <button class="map-hotspot map-hotspot-final hidden"
+              data-zone="final" id="hub-zone-final"
+              style="left: 50%; top: 92%;">
+        <span class="hotspot-label" data-icon="🏆">Подведение итогов</span>
+      </button>
+
+
+ <!-- ═══ ИНСТРУКЦИЯ ВНУТРИ КАРТЫ ═══ -->
+      <div class="hub-map-instruction" id="hub-footer-hint">
+        Подойди к локации <strong>«Кофейная стойка»</strong>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ============================================================
+     ЭКРАН 4: ДИАЛОГ (m2-dialog)
+     ============================================================ -->
+<div class="m2-screen" id="m2-dialog">
+
+  <div class="dialog-header">
+    <div class="dialog-theme-label" id="dialog-theme-label">Первое впечатление</div>
+    <div class="dialog-situation-counter" id="dialog-situation-counter">Ситуация 1 / 3</div>
+  </div>
+
+  <div class="dialog-npc-zone">
+    <div class="dialog-npc-avatar-wrap">
+      <div class="dialog-npc-emoji" id="dialog-npc-emoji"></div>
+      <div class="dialog-npc-avatar" id="dialog-npc-avatar">
+        <div class="dialog-npc-avatar-icon" id="dialog-npc-avatar-icon">🧑‍⚕️</div>
+        <img class="dialog-npc-avatar-img" id="dialog-npc-avatar-img"
+             src="" alt="NPC" style="display:none;">
+      </div>
+    </div>
+    <div class="dialog-npc-name" id="dialog-npc-name">Андрей</div>
+    <div class="dialog-npc-role" id="dialog-npc-role">Медицинский советник</div>
+    <div class="dialog-scene-text" id="dialog-scene-text">
+      Андрей стоит у кофейной стойки и листает телефон.
+    </div>
+  </div>
+
+  <div class="dialog-answers-zone" id="dialog-answers-zone"></div>
+
+</div>
+
+
+<!-- ============================================================
+     ЭКРАН 5: ПОПОЛНЕНИЕ ЭНЕРГИИ (m2-refuel)
+     ============================================================ -->
+<div class="m2-screen" id="m2-refuel">
+  <div class="refuel-wrap">
+    <div class="refuel-scene">
+      <span>👩‍💼</span>
+      <span class="refuel-arrow">→</span>
+      <span>🥪</span>
+    </div>
+    <div class="refuel-title" id="refuel-title">Злата перекусила!</div>
+    <div class="refuel-desc" id="refuel-desc">Немного еды восстанавливает силы. +30% ⚡</div>
+    <div class="refuel-energy-bar-wrap">
+      <div class="refuel-energy-bar" id="refuel-energy-bar" style="width:0%"></div>
+    </div>
+    <div class="refuel-energy-text" id="refuel-energy-text">0% → 30%</div>
+    <button class="m2-btn m2-btn-success m2-btn-full" id="btn-refuel-continue">
+      Продолжить ⚡
+    </button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ЭКРАН 6: КОНЕЦ ГЛАВЫ (m2-chapter-end)
+     ============================================================ -->
+<div class="m2-screen" id="m2-chapter-end">
+  <div class="chapter-end-wrap">
+    <div class="chapter-end-celebration">🤝</div>
+    <div class="chapter-end-title" id="chapter-end-title">Знакомство состоялось!</div>
+    <div class="chapter-end-subtitle" id="chapter-end-subtitle">Злата познакомилась с Андреем</div>
+    <div class="chapter-end-learned">
+      <div class="chapter-end-learned-title">Что узнала Злата</div>
+      <div class="chapter-end-learned-list" id="chapter-end-learned-list"></div>
+    </div>
+    <div class="chapter-end-quote">
+      <span class="chapter-end-quote-icon">💭</span>
+      <span id="chapter-end-quote-text">«Цитата Златы»</span>
+    </div>
+    <div style="display:flex; gap:10px; width:100%;">
+        <button class="m2-btn m2-btn-secondary" style="flex:1"
+              id="btn-chapter-end-notebook">Блокнот</button>
+      <button class="m2-btn m2-btn-primary" style="flex:1"
+              id="btn-chapter-end-hub">На карту →</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ЭКРАН 7: ФИНАЛ (m2-final)
+     ============================================================ -->
+<div class="m2-screen" id="m2-final">
+  <div class="final-wrap">
+    <div class="final-celebration">🏆</div>
+    <div class="final-title">Конференция завершена!</div>
+    <div class="final-subtitle">Злата прошла все пять знакомств</div>
+    <div class="final-stats">
+      <div class="final-stat-item">
+        <div class="final-stat-value" id="final-meets-count">5</div>
+        <div class="final-stat-label">Знакомств</div>
+      </div>
+      <div class="final-stat-item">
+        <div class="final-stat-value" id="final-artifacts-count">5</div>
+        <div class="final-stat-label">Артефактов</div>
+      </div>
+      <div class="final-stat-item">
+        <div class="final-stat-value" id="final-energy-left">70%</div>
+        <div class="final-stat-label">Энергии осталось</div>
+      </div>
+    </div>
+    <div class="final-artifacts-title">Собранные артефакты</div>
+    <div class="final-artifacts-list" id="final-artifacts-list"></div>
+
+<div class="final-btns">
+      <button class="m2-btn m2-btn-pdf" id="btn-download-pdf">
+        Скачать PDF-памятку
+      </button>
+      <button class="m2-btn m2-btn-success" id="btn-final-complete">
+        Завершить модуль 2
+      </button>
+      <button class="m2-btn m2-btn-secondary" id="btn-final-restart" style="opacity:0.7;">
+        Начать заново
+      </button>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- конец #m2-screen-container -->
+
+
+<!-- ============================================================
+     МОДАЛЬНЫЕ ОКНА — снаружи контейнера
+     ============================================================ -->
+
+<div class="m2-modal-overlay hidden" id="modal-continue">
+  <div class="m2-modal">
+    <div class="m2-modal-header">
+      <span class="m2-modal-icon">💾</span>
+      <span class="m2-modal-title">Найден сохранённый прогресс</span>
+    </div>
+    <div class="m2-modal-body">
+      У тебя есть незавершённое прохождение.
+      Продолжить с того места или начать заново?
+    </div>
+    <div class="m2-modal-footer">
+      <button class="m2-btn m2-btn-primary m2-btn-full" id="btn-modal-continue">
+        Продолжить →
+      </button>
+      <button class="m2-btn m2-btn-secondary m2-btn-full" id="btn-modal-restart">
+        Начать заново
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="m2-modal-overlay hidden" id="modal-no-energy">
+  <div class="m2-modal">
+    <div class="m2-modal-header">
+      <span class="m2-modal-icon">⚡</span>
+      <span class="m2-modal-title">Энергия на нуле!</span>
+    </div>
+    <div class="m2-modal-body">
+      Злата устала. Нужно восстановить силы перед следующим знакомством.
+    </div>
+    <div class="m2-modal-footer">
+      <button class="m2-btn m2-btn-success m2-btn-full" id="btn-no-energy-refuel">
+        🥪 Восстановить энергию
+      </button>
+      <button class="m2-btn m2-btn-secondary m2-btn-full" id="btn-no-energy-hub">
+        ← На карту
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="m2-modal-overlay hidden" id="modal-trap">
+  <div class="m2-modal">
+    <div class="m2-modal-header">
+      <span class="m2-modal-icon" id="trap-icon">⚠️</span>
+      <span class="m2-modal-title" id="trap-title">Упс!</span>
+    </div>
+    <div class="m2-modal-body" id="trap-text">Что-то пошло не так...</div>
+    <div class="m2-modal-footer">
+      <button class="m2-btn m2-btn-primary m2-btn-full" id="btn-trap-ok">
+        Понятно
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="m2-modal-overlay hidden" id="modal-hint-confirm">
+  <div class="m2-modal">
+    <div class="m2-modal-header">
+      <span class="m2-modal-icon">💡</span>
+      <span class="m2-modal-title">Подсказка</span>
+      <button class="m2-modal-close" data-close-modal>✕</button>
+    </div>
+    <div class="m2-modal-body" id="hint-modal-text"></div>
+    <div class="m2-modal-footer">
+      <div class="hint-cost-warning">Использование подсказки стоит 10% ⚡</div>
+      <button class="m2-btn m2-btn-primary m2-btn-full" id="btn-use-hint">
+       Использовать (-10% ⚡)
+      </button>
+        </div>
+  </div>
+</div>
+
+<div class="m2-modal-overlay hidden" id="modal-artifact">
+  <div class="m2-modal">
+    <div class="m2-modal-header">
+      <span class="m2-modal-icon">🎁</span>
+      <span class="m2-modal-title">Новый артефакт!</span>
+    </div>
+    <div class="m2-modal-body">
+      <div class="artifact-preview">
+        <div class="artifact-preview-icon" id="artifact-modal-icon">📋</div>
+        <div class="artifact-preview-name" id="artifact-modal-name">Название</div>
+        <div class="artifact-preview-content" id="artifact-modal-preview">Описание</div>
+      </div>
+    </div>
+    <div class="m2-modal-footer">
+      <button class="m2-btn m2-btn-primary m2-btn-full" id="btn-artifact-to-notebook">
+        📓 Добавить в блокнот
+      </button>
+      <button class="m2-btn m2-btn-secondary m2-btn-full" id="btn-artifact-close">
+        Продолжить
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="m2-modal-overlay hidden" id="modal-notebook">
+  <div class="m2-modal m2-modal-wide">
+    <div class="m2-modal-header">
+      <span class="m2-modal-icon">📓</span>
+      <span class="m2-modal-title">Блокнот Златы</span>
+      <button class="m2-modal-close" data-close-modal>✕</button>
+    </div>
+    <div class="m2-modal-body" id="notebook-body"></div>
+  </div>
+</div>
+
+
+<!-- ── МОДАЛКА: Подтверждение сброса прогресса ─────────────── -->
+<div class="m2-modal-overlay hidden" id="modal-restart-confirm">
+  <div class="m2-modal">
+    <div class="m2-modal-header">
+       <span class="m2-modal-title">Начать заново?</span>
+    </div>
+    <div class="m2-modal-body">
+      Весь прогресс будет сброшен: главы, артефакты, энергия.
+      Это действие нельзя отменить.
+    </div>
+    <div class="m2-modal-footer">
+      <button class="m2-btn m2-btn-primary m2-btn-full"
+              id="btn-restart-confirm-yes">
+        Да, начать заново
+      </button>
+      <button class="m2-btn m2-btn-secondary m2-btn-full"
+              id="btn-restart-confirm-no">
+        Отмена
+      </button>
+    </div>
+  </div>
+</div>
+
+  
+<!-- Библиотека pdfMake для генерации PDF (с поддержкой кириллицы) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+<!-- Логика модуля 2 -->
+<script src="course-progress.js"></script>
+<script src="scorm-api.js"></script>
+<script>
+(function() {
+  var gate = CourseProgress.gateModule(2);
+  if (!gate.ok) {
+    alert(gate.message);
+    CourseProgress.navigate('map.html');
+  }
+})();
+</script>
+<script src="module2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>

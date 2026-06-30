@@ -1,0 +1,834 @@
+/* ================================================
+   MODULE 1 — DESKTOP OVERRIDES
+   Применяется при ширине >= 1024px
+   ================================================ */
+
+@media (min-width: 1024px) {
+
+  /* ===== БАЗОВЫЙ LAYOUT ===== */
+  body {
+    background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 50%, #fdf4ff 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+  }
+
+  .screen {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 620px;
+    height: auto;
+    border-radius: 24px;
+    box-shadow:
+      0 32px 80px rgba(0,0,0,0.12),
+      0 0 0 1px rgba(255,255,255,0.6);
+    overflow: hidden;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  /* ===== ХЕДЕР ===== */
+  .header {
+    padding: 14px 32px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .header-title {
+    font-size: 15px;
+  }
+
+  /* ===== ПРОГРЕСС-БАР ===== */
+  .progress-wrap {
+    padding: 0 32px 10px;
+  }
+
+  /* ===== LAYOUT ЭКРАНОВ ===== */
+  .screen-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    height: calc(100vh - 160px);
+    min-height: 500px;
+  }
+
+  .screen-layout.single {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-layout.wide-left {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .screen-layout.wide-right {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  .screen-layout.triple {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* ===== СЦЕНА ===== */
+  .scene {
+    padding: 28px 32px;
+    border-right: 1px solid rgba(226,232,240,0.6);
+    overflow-y: auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .scene:last-child {
+    border-right: none;
+  }
+
+  .scene::-webkit-scrollbar { width: 6px; }
+  .scene::-webkit-scrollbar-thumb {
+    background: rgba(148,163,184,0.35);
+    border-radius: 999px;
+  }
+
+  .scene-header {
+    margin-bottom: 16px;
+  }
+
+  .scene-header h2 {
+    font-size: 20px;
+  }
+
+  .scene-main {
+    gap: 14px;
+  }
+
+  /* ===== ПАНЕЛЬ ===== */
+  .panel {
+    padding: 24px 28px;
+    overflow-y: auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .panel::-webkit-scrollbar { width: 6px; }
+  .panel::-webkit-scrollbar-thumb {
+    background: rgba(148,163,184,0.35);
+    border-radius: 999px;
+  }
+
+  .panel-title {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  /* ===== КНОПКИ ===== */
+  .btn {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+
+  .btn-sm {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  .btn-lg {
+    padding: 16px 48px;
+    font-size: 17px;
+  }
+
+  /* ===== ИНПУТЫ ===== */
+  input, textarea, select {
+    font-size: 14px;
+  }
+
+  /* ===== КАРТОЧКИ ===== */
+  .card {
+    padding: 16px 20px;
+    border-radius: 16px;
+  }
+
+  /* ===== ЧИПЫ ===== */
+  .chip {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+
+  /* ===== ШКАЛА ===== */
+  .scale-wrap {
+    gap: 10px;
+  }
+
+  .scale-btn {
+    width: 46px;
+    height: 46px;
+    font-size: 16px;
+  }
+
+  /* ===== БУСИНЫ ===== */
+  .bead {
+    width: 50px;
+    height: 50px;
+    font-size: 17px;
+  }
+
+  .beads-pool,
+  .beads-target {
+    min-height: 80px;
+    padding: 14px 18px;
+    gap: 10px;
+    border-radius: 18px;
+  }
+
+  /* ===== МАСКИ СТРАХОВ ===== */
+  .fear-masks-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+  }
+
+  .fear-mask {
+    padding: 20px 14px 18px;
+    border-radius: 20px;
+  }
+
+  .fear-mask-face {
+    width: 100px;
+    height: 112px;
+  }
+
+  .fear-mask-text {
+    font-size: 13px;
+  }
+
+  /* ===== ЗЛАТА КАРТОЧКА ===== */
+  .zlata-card-wrapper {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .zlata-front,
+  .zlata-back {
+    padding: 28px 24px;
+    min-height: 560px;
+    border-radius: 20px;
+  }
+
+  .zlata-avatar-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .zlata-name {
+    font-size: 22px;
+  }
+
+  .zlata-inventory {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .zlata-inv-item {
+    padding: 12px 8px;
+    font-size: 24px;
+  }
+
+  /* ===== СМАРТ МАЙНД-КАРТА ===== */
+  .smart-mind-map {
+    max-width: 960px;
+    min-height: 560px;
+    gap: 20px;
+  }
+
+  .smart-center {
+    width: 160px;
+    height: 160px;
+  }
+
+  .smart-center-icon {
+    font-size: 42px;
+  }
+
+  .smart-center-label {
+    font-size: 13px;
+  }
+
+  .smart-letter {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .smart-branch-title {
+    font-size: 14px;
+  }
+
+  .smart-textarea {
+    min-height: 90px;
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  /* ===== ВИЗИТКА ===== */
+  .bizcard-template {
+    max-width: 480px;
+    padding: 20px;
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  .bizcard-template input.bc-field {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .bizcard-template input.bc-field:first-of-type {
+    font-size: 16px;
+  }
+
+  .bizcard-drop-zone {
+    width: 64px;
+    height: 64px;
+  }
+
+  .drag-el {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  /* ===== СТИКЕРЫ ===== */
+  .board {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .sticky {
+    border-radius: 6px;
+  }
+
+  .sticky > div:first-of-type {
+    font-size: 13px;
+  }
+
+  /* ===== ЧЕЛОВЕЧКИ ===== */
+  .person-avatar {
+    width: 60px;
+    height: 82px;
+  }
+
+  /* ===== СУМКА НЕТВОРКЕРА ===== */
+  .bag-shelf-visual {
+    gap: 12px;
+    padding: 16px 24px;
+  }
+
+  .bag-item-visual img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .bag-item-visual {
+    width: 76px;
+  }
+
+  /* ===== КАРТА МЕРОПРИЯТИЯ ===== */
+  .venue-obj {
+    padding: 12px 8px;
+  }
+
+  .venue-emoji {
+    font-size: 28px;
+  }
+
+  .venue-label,
+  .venue-label-sm {
+    font-size: 11px;
+  }
+
+  /* ===== ЛОКАЦИИ ===== */
+  .location-chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  /* ===== КВИЗ ===== */
+  .quiz-q {
+    padding: 16px 20px;
+    border-radius: 14px;
+  }
+
+  .quiz-q h3 {
+    font-size: 15px;
+  }
+
+  .quiz-q .quiz-opt {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  /* ===== ФОТО СЕТКА ===== */
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .photo-placeholder .ph-emoji {
+    font-size: 36px;
+  }
+
+  .photo-placeholder {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .photo-label {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  /* ===== КАРТОЧКИ СУДЕБ ===== */
+  .fate-card {
+    padding: 14px 16px;
+    min-width: 170px;
+    max-width: 200px;
+  }
+
+  .fate-title {
+    font-size: 14px;
+  }
+
+  .fate-metric {
+    font-size: 13px;
+  }
+
+  /* ===== ДОСКА ВАЖНОСТИ ===== */
+  .importance-row .imp-label {
+    width: 130px;
+    font-size: 13px;
+  }
+
+  .importance-row input[type="range"]::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+  }
+
+  .importance-row .imp-value {
+    font-size: 14px;
+    width: 32px;
+  }
+
+  /* ===== ОБЛОЖКА ЭКРАН 1 ===== */
+  #screen-1 {
+    height: auto !important;
+    overflow: hidden !important;
+    padding: 20px 0 !important;
+    border-radius: 24px !important;
+  }
+
+  .s1-cover {
+    height: 620px !important;
+    border-radius: 24px !important;
+  }
+
+  .s1-cover-img img {
+    object-position: center center !important;
+  }
+
+  .s1-cover-title {
+    font-size: 28px;
+  }
+
+  .s1-cover-subtitle {
+    font-size: 16px;
+  }
+
+  .s1-cover-btn {
+    font-size: 20px;
+    padding: 18px 60px;
+  }
+
+  /* ===== ПРЕДУПРЕЖДЕНИЕ ===== */
+  #mobile-warning {
+    display: none !important;
+  }
+
+  /* ===== ЭКРАН 2: ТЕСТ ===== */
+  #screen-2 .scene-main {
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  /* ===== ЭКРАН 3: ЗЛАТА ===== */
+  #screen-3 .screen-layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  /* ===== ЭКРАН 12: БУСИНЫ ===== */
+  #screen-12 .beads-pool,
+  #screen-12 .beads-target {
+    min-height: 90px;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  #screen-12 .bead {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+
+  /* ===== ЭКРАН 13: МАСКИ ===== */
+  .fear-fullscreen {
+    padding: 32px 48px;
+  }
+
+  .fears-validation-list,
+  .fears-strategy-list {
+    max-width: 800px;
+  }
+
+  .fear-validation-item {
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+
+  .fear-strategy-card {
+    padding: 20px 24px;
+  }
+
+  .fear-strategy-textarea {
+    min-height: 100px;
+    font-size: 15px;
+  }
+
+  /* ===== ЭКРАН 16: ЛОКАЦИИ ===== */
+  #screen-16 .panel {
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  /* ===== ЭКРАН 17: СМАРТ ===== */
+  .smart-fullscreen {
+    padding: 32px 40px 48px;
+  }
+
+  .smart-actions {
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  /* ===== ЭКРАН 19: ВИЗИТКА ===== */
+  #screen-19 .screen-layout {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  #screen-19 .scene,
+  #screen-19 .panel {
+    max-height: none !important;
+    overflow-y: auto !important;
+  }
+
+  /* ===== ЭКРАН 20: ФОТО ===== */
+  #screen-20 .panel {
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  /* ===== ЭКРАН 21: СТИКЕРЫ ===== */
+  #screen-21 .screen-layout {
+    min-height: 500px;
+  }
+
+  /* ===== ХЕДЕР СТАТИСТИКА ===== */
+  .header-chip {
+    font-size: 13px;
+    padding: 4px 10px;
+  }
+
+  .header-stat-label,
+  .header-stat-value {
+    font-size: 12px;
+  }
+
+  /* ===== НАВИГАЦИЯ ===== */
+  .nav-btn {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+
+  .nav-back {
+    font-size: 13px;
+    padding: 8px 18px;
+  }
+
+  .nav-row {
+    padding: 14px 32px;
+    gap: 12px;
+  }
+
+  /* ===== ТОСТ ===== */
+  .smart-saved-toast {
+    font-size: 15px;
+    padding: 12px 28px;
+    bottom: 36px;
+  }
+
+  /* ===== ЭМОДЗИ-СПРАЙТ ===== */
+  .map-indicator {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  /* ===== СКЕЙЛ ===== */
+  .scale-label {
+    font-size: 13px;
+  }
+
+  /* ===== ПЕРСОНАЖ ===== */
+  .character-dot {
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .character-tooltip {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+} /* конец @media (min-width: 1024px) */
+
+@media (min-width: 1024px) {
+
+  .s1-overlay-card {
+    max-width: 780px !important;
+    width: 85% !important;
+    max-height: 90% !important;
+  }
+
+  .s1-overlay-scroll {
+    padding: 28px 36px 24px !important;
+    gap: 10px !important;
+    overflow-y: visible !important; /* убираем скролл */
+  }
+
+  .s1-overlay-scroll h2 {
+    font-size: 24px !important;
+    margin-bottom: 2px !important;
+  }
+
+  /* Текст компактнее */
+  .s1-overlay-scroll p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+
+  /* Список в 2 колонки */
+  .s1-overlay-scroll ol {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 20px !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    counter-reset: ol-counter !important;
+  }
+
+  .s1-overlay-scroll ol li {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    padding: 10px 12px !important;
+    background: rgba(241, 245, 249, 0.8) !important;
+    border-radius: 10px !important;
+    border-left: 3px solid #22c55e !important;
+    counter-increment: ol-counter !important;
+    position: relative !important;
+    padding-left: 32px !important;
+  }
+
+  .s1-overlay-scroll ol li::before {
+    content: counter(ol-counter) !important;
+    position: absolute !important;
+    left: 10px !important;
+    top: 10px !important;
+    font-weight: 800 !important;
+    color: #22c55e !important;
+    font-size: 13px !important;
+  }
+
+  /* Маркер-хайлайт компактнее */
+  .marker-highlight {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+
+  /* Бокс готовности компактнее */
+  .s1-ready-box {
+    padding: 10px 16px !important;
+  }
+
+  .s1-ready-box p {
+    font-size: 15px !important;
+  }
+
+  /* Кнопка */
+  .s1-overlay-scroll .btn {
+    padding: 13px 48px !important;
+    font-size: 16px !important;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  #screen-1 {
+    min-height: 620px !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+    padding: 0 !important;
+  }
+
+  #screen-1 .s1-cover {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    border-radius: 24px !important;
+  }
+
+  #screen-1 .s1-cover-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+}
+
+  /* ===== РЕЗУЛЬТАТ ТЕСТА — десктоп ===== */
+  #screen-2 .qr-result-wrap {
+    padding: 24px 0 32px;
+  }
+
+  #screen-2 .qr-result-card {
+    max-width: 560px !important;
+    padding: 40px 48px 36px !important;
+    gap: 18px !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Эмодзи и счёт — рядом */
+  #screen-2 .qr-result-emoji {
+    font-size: 80px !important;
+    width: 100% !important;
+  }
+
+  #screen-2 .qr-result-score {
+    font-size: 80px !important;
+  }
+
+  /* Всё остальное — на всю ширину */
+  #screen-2 .qr-result-title,
+  #screen-2 .qr-result-badge,
+  #screen-2 .qr-result-bar-wrap,
+  #screen-2 .qr-result-pct,
+  #screen-2 .qr-result-desc,
+  #screen-2 .qr-result-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #screen-2 .qr-result-bar-wrap {
+    height: 12px !important;
+  }
+
+  #screen-2 .qr-result-pct {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+  }
+
+  #screen-2 .qr-result-desc {
+    font-size: 14px !important;
+    max-width: 460px !important;
+  }
+
+  #screen-2 .qr-result-btn {
+    max-width: 320px !important;
+    padding: 16px 40px !important;
+    font-size: 16px !important;
+    border-radius: 18px !important;
+  }
+
+@media (min-width: 1024px) {
+    /* ===== ЭКРАН 2: ТЕСТ десктоп ===== */
+
+  #screen-2 .panel {
+    padding: 24px 32px !important;
+  }
+
+  #screen-2 h2 {
+    font-size: 20px !important;
+  }
+
+  #screen-2 .quiz-q {
+    padding: 14px 18px !important;
+    border-radius: 14px !important;
+    margin-bottom: 10px !important;
+  }
+
+  #screen-2 .quiz-q h3 {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+  }
+
+  #screen-2 .quiz-opt {
+    padding: 9px 14px !important;
+    font-size: 13px !important;
+  }
+
+  #screen-2 .quiz-options {
+    gap: 6px !important;
+  }
+
+/* Плашка прогресса — компактная */
+#screen-2 #quiz-progress,
+#screen-2 .quiz-progress {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: fit-content !important;
+  padding: 4px 14px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: var(--text-soft) !important;
+  background: rgba(99,102,241,0.07) !important;
+  border: 1px solid rgba(99,102,241,0.15) !important;
+  border-radius: 999px !important;
+  margin: 8px 0 !important;
+  white-space: nowrap !important;
+}
+
+@media (min-width: 1024px) {
+  #screen-2 .panel {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+/* Убираем белую рамку и тень у экранов-карточек Златы */
+.screen.screen-card {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  min-height: 0 !important;
+  border-radius: 0 !important;
+}

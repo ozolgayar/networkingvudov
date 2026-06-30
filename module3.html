@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Модуль 3 — На связи</title>
+  <link rel="stylesheet" href="module3.css">
+</head>
+<body>
+
+<div class="m3-page">
+
+  <!-- ЭКРАН 1: ОБЛОЖКА МОДУЛЯ -->
+  <section class="m3-screen active" id="m3-cover">
+    <div class="m3-cover-card">
+      <a href="map.html" class="m3-back-link">← Карта курса</a>
+      <div class="m3-avatar-wrap">
+        <div class="m3-avatar-glow"></div>
+        <div class="m3-avatar">💬</div>
+      </div>
+      <div class="m3-kicker">Модуль 3</div>
+      <h1 class="m3-title">На связи</h1>
+      <p class="m3-subtitle">
+        Финальный модуль про поддержание контакта после знакомства.
+      </p>
+      <div class="m3-pill-row" id="m3-cover-lessons"></div>
+      <button type="button" class="m3-btn m3-btn-primary m3-btn-full" id="m3-start-btn"
+        onclick="window.m3StartFromCover && window.m3StartFromCover();">
+        Перейти к календарю →
+      </button>
+    </div>
+  </section>
+
+  <!-- ЭКРАН 2: КАЛЕНДАРЬ С ИКОНКАМИ УРОКОВ -->
+  <section class="m3-screen" id="m3-calendar">
+    <header class="m3-topbar">
+      <a href="map.html" class="m3-topbar-link">← Карта курса</a>
+      <div class="m3-topbar-title">
+        <span>Модуль 3</span>
+        <strong>Запланируй follow-up</strong>
+      </div>
+      <button class="m3-reset-btn" id="m3-reset-btn" type="button">Сбросить</button>
+    </header>
+
+    <main class="m3-calendar-layout">
+      <aside class="m3-task-panel">
+        <div class="m3-panel-card">
+          <div class="m3-panel-label">Иконки уроков</div>
+          <h2>
+            <span class="m3-only-desktop">Перенеси иконку на календарь</span>
+            <span class="m3-only-mobile">Открой урок по иконке</span>
+          </h2>
+          <p>
+            <span class="m3-only-desktop">
+              После переноса откроется урок в формате лонгрида. На телефоне можно просто нажать на активную иконку.
+            </span>
+            <span class="m3-only-mobile">
+              Уроки открываются по очереди: нажми на активную иконку. После урока ты вернёшься к этому списку.
+            </span>
+          </p>
+          <div class="m3-progress">
+            <div class="m3-progress-head">
+              <span>Прогресс модуля</span>
+              <strong id="m3-progress-text">0 / 0</strong>
+            </div>
+            <div class="m3-progress-track">
+              <div class="m3-progress-fill" id="m3-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="m3-icon-list" id="m3-icon-list"></div>
+      </aside>
+
+      <section class="m3-calendar-card">
+        <div class="m3-calendar-drop" id="m3-calendar-drop" aria-label="Календарь для уроков">
+          <!-- 
+            Если файл календаря называется иначе, поменяй путь в module3.js:
+            const MODULE3_CALENDAR_IMAGE = 'img/calendar.png';
+          -->
+          <img class="m3-calendar-img" id="m3-calendar-img" alt="Календарь модуля 3">
+          <div class="m3-calendar-fallback" id="m3-calendar-fallback">
+            <div class="m3-calendar-grid-title">Календарь follow-up</div>
+            <div class="m3-calendar-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="m3-drop-hint" id="m3-drop-hint">Перетащи сюда активную иконку</div>
+          <div class="m3-placed-icons" id="m3-placed-icons"></div>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <!-- ЭКРАН 3: ЛОНГРИД УРОКА -->
+  <section class="m3-screen" id="m3-lesson">
+    <header class="m3-lesson-header">
+      <button class="m3-topbar-link m3-button-link" id="m3-lesson-back" type="button">← К календарю</button>
+      <div class="m3-lesson-meta" id="m3-lesson-meta"></div>
+    </header>
+
+    <main class="m3-longread">
+      <div class="m3-longread-hero">
+        <div class="m3-longread-icon" id="m3-lesson-icon">💬</div>
+        <div>
+          <div class="m3-kicker" id="m3-lesson-kicker">Урок</div>
+          <h2 id="m3-lesson-title">Название урока</h2>
+          <p id="m3-lesson-intro"></p>
+        </div>
+      </div>
+
+      <div class="m3-longread-blocks" id="m3-longread-blocks"></div>
+
+      <div class="m3-longread-actions">
+        <button class="m3-btn m3-btn-primary" id="m3-next-block-btn" type="button">Далее ↓</button>
+        <button class="m3-btn m3-btn-success hidden" id="m3-complete-lesson-btn" type="button">
+          Завершить урок
+        </button>
+      </div>
+    </main>
+  </section>
+
+</div>
+
+<!-- МОДАЛКА ВХОДА (только узкий экран): пустой календарь + «Приступить» -->
+<div class="m3-modal-overlay hidden" id="m3-intro-modal" aria-hidden="true">
+  <div class="m3-modal m3-modal-intro">
+    <img class="m3-intro-calendar-img" id="m3-intro-calendar-img" alt="Календарь касаний">
+    <p class="m3-intro-lead">
+      Это календарь «касаний» — он помогает поддерживать контакты «тёплыми».
+      Тебе надо его заполнить.
+    </p>
+    <button type="button" class="m3-btn m3-btn-primary m3-btn-full" id="m3-intro-start-btn">
+      Приступить
+    </button>
+  </div>
+</div>
+
+<!-- МОДАЛКА ФИНАЛА МОДУЛЯ -->
+<div class="m3-modal-overlay hidden" id="m3-complete-modal">
+  <div class="m3-modal m3-modal-finish">
+    <div class="m3-modal-confetti" id="m3-modal-confetti" aria-hidden="true"></div>
+    <div id="m3-complete-modal-inner"></div>
+    <button class="m3-btn m3-btn-success m3-btn-full" id="m3-finish-module-btn" type="button">
+      Завершить модуль 3
+    </button>
+  </div>
+</div>
+
+<script src="course-progress.js"></script>
+<script src="scorm-api.js"></script>
+<script>
+(function() {
+  var gate = CourseProgress.gateModule(3);
+  if (!gate.ok) {
+    alert(gate.message);
+    CourseProgress.navigate('map.html');
+  }
+})();
+</script>
+<script src="module3.js"></script>
+</body>
+</html>

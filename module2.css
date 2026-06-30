@@ -1,0 +1,2514 @@
+/* ================================================================
+   MODULE 2 — СТИЛИ
+   
+   Структура файла:
+   1. CSS-переменные (цвета, размеры)
+   2. Сброс и базовые стили
+   3. Контейнер экранов и базовый экран
+   4. HUD (верхняя панель)
+   5. Экран: Обложка (m2-cover)
+   6. Экран: Интро (m2-intro)
+   7. Экран: Хаб (m2-hub)
+   8. Экран: Диалог (m2-dialog)
+   9. Экран: Пополнение энергии (m2-refuel)
+   10. Экран: Конец главы (m2-chapter-end)
+   11. Экран: Финал (m2-final)
+   12. Модалки
+   13. Кнопки
+   14. Адаптив (мобильная вертикаль)
+   15. Анимации
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   1. CSS-ПЕРЕМЕННЫЕ
+   Меняй здесь — изменится везде
+   ---------------------------------------------------------------- */
+:root {
+ /* ─── СВЕТЛАЯ ПАЛИТРА в стиле The Sims ─── */
+  --m2-bg:          #dbeafe;   /* светло-голубое "небо" */
+  --m2-bg-gradient: linear-gradient(180deg, #cfe8ff 0%, #d6f0e5 100%);
+  --m2-surface:     #ffffff;   /* карточки, панели */
+  --m2-surface-2:   #f1f5f9;   /* второстепенные поверхности */
+
+  --m2-text:        #0f2448;   /* тёмно-синий текст */
+  --m2-text-muted:  #64748b;   /* приглушённый серый */
+
+  --m2-accent:      #0ea5e9;   /* голубой акцент */
+  --m2-accent-2:    #22c55e;   /* зелёный акцент */
+  --m2-danger:      #ef4444;
+  --m2-warning:     #f59e0b;
+
+  --m2-border:      rgba(15, 36, 72, 0.12);
+  --m2-shadow:      0 4px 16px rgba(15, 36, 72, 0.1);
+  --m2-shadow-lg:   0 8px 30px rgba(15, 36, 72, 0.15);
+
+  --m2-radius:      14px;
+  --m2-radius-sm:   10px;
+
+  --m2-energy-color: #22c55e;
+}
+.hidden {
+  display: none !important;
+}
+/* ----------------------------------------------------------------
+   2. СБРОС И БАЗОВЫЕ СТИЛИ
+   ---------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+   /* ═══ Градиент карты курса: синий слева → зелёный справа ═══ */
+  background:
+    radial-gradient(ellipse 800px 600px at 50% 50%,
+                    rgba(255, 255, 255, 0.35) 0%,
+                    transparent 60%),
+    linear-gradient(90deg,
+                    #60a5fa 0%,
+                    #38bdf8 30%,
+                    #22d3ee 55%,
+                    #2dd4bf 80%,
+                    #34d399 100%);
+  background-attachment: fixed;
+
+  color: var(--m2-text);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+
+/* ----------------------------------------------------------------
+   3. КОНТЕЙНЕР ЭКРАНОВ И БАЗОВЫЙ ЭКРАН
+   ---------------------------------------------------------------- */
+#m2-screen-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+/* Базовый стиль каждого экрана */
+.m2-screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+  animation: m2ScreenFadeIn 0.3s ease forwards;
+}
+
+/* Только активный экран виден */
+.m2-screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes m2ScreenFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------------------------------------------------------
+   4. HUD — ВЕРХНЯЯ ПАНЕЛЬ
+   Всегда поверх всего контента
+   ---------------------------------------------------------------- */
+#m2-hud,
+.m2-hud {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 18px;
+
+  /* Полупрозрачное белое стекло — видно градиент снизу */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(15, 36, 72, 0.12);
+  box-shadow: 0 2px 10px rgba(15, 36, 72, 0.08);
+}
+
+#m2-hud.hidden,
+.m2-hud.hidden {
+  display: none;
+}
+
+/* ── Кнопка карты ── */
+.hud-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 36, 72, 0.12);
+  font-size: 16px;
+  text-decoration: none;
+  color: #0F2448;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(15, 36, 72, 0.08);
+}
+.hud-map-btn:hover {
+  background: #e0f2fe;
+  transform: translateY(-1px);
+}
+
+/* ── Энергия ── */
+.hud-energy {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.hud-energy-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.hud-energy-bar-wrap {
+  flex: 1;
+  height: 12px;
+  background: rgba(15, 36, 72, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 36, 72, 0.1);
+  min-width: 60px;
+}
+
+.hud-energy-bar {
+  height: 100%;
+  width: 100%;
+  background: #22c55e;
+  border-radius: 999px;
+  transition: width 0.5s ease, background 0.3s ease;
+}
+
+.hud-energy-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #22c55e;
+  min-width: 38px;
+  text-align: right;
+}
+
+/* ── Счётчик знакомств ── */
+.hud-meets {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 36, 72, 0.12);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F2448;
+  box-shadow: 0 2px 6px rgba(15, 36, 72, 0.06);
+}
+
+.hud-meets-icon { font-size: 14px; }
+
+/* ── Кнопка блокнота ── */
+.hud-notebook-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 36, 72, 0.12);
+  border-radius: 10px;
+  color: #0ea5e9;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(15, 36, 72, 0.08);
+  flex-shrink: 0;
+}
+.hud-notebook-btn:hover {
+  background: #e0f2fe;
+  transform: translateY(-1px);
+}
+
+/* ----------------------------------------------------------------
+   5. ЭКРАН: ОБЛОЖКА (m2-cover)
+   ---------------------------------------------------------------- */
+.m2-screen#m2-cover {
+  background: transparent;   /* прозрачный — виден градиент body */
+  justify-content: center;
+  align-items: center;
+}
+
+.cover-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  max-width: 480px;
+  width: 100%;
+  gap: 16px;
+}
+
+/* Бейдж «Модуль 1 пройден» */
+.cover-m1-badge {
+  font-size: 12px;
+  color: var(--m2-text);
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 36, 72, 0.15);
+  backdrop-filter: blur(6px);
+}
+.cover-m1-badge:empty { display: none; }
+
+/* Аватар Златы */
+.cover-avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.cover-avatar-glow {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+                              rgba(255, 255, 255, 0.6) 0%,
+                              transparent 70%);
+  filter: blur(16px);
+  z-index: 0;
+  animation: m2CoverGlow 3s ease-in-out infinite;
+}
+
+@keyframes m2CoverGlow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.1); }
+}
+
+.cover-avatar-icon {
+  position: relative;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid #ffffff;
+  box-shadow: 0 8px 28px rgba(15, 36, 72, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  line-height: 1;
+}
+
+/* Заголовок «Модуль 2» — цвет #0F2448 */
+.cover-title {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #0F2448;
+  /* Отключаем старый градиент */
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
+}
+
+.cover-subtitle {
+  font-size: 15px;
+  color: #0F2448;
+  opacity: 0.85;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.cover-player-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F2448;
+  padding: 4px 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+.cover-player-name:empty { display: none; }
+
+/* Превью глав — светлые пилюли на градиенте */
+.cover-chapters-preview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 4px 0 8px;
+}
+
+.cover-chapter-pill {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0F2448;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(15, 36, 72, 0.12);
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(15, 36, 72, 0.08);
+}
+
+/* ----------------------------------------------------------------
+   6. ЭКРАН: ИНТРО (m2-intro)
+   ---------------------------------------------------------------- */
+.m2-screen#m2-intro {
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.intro-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+}
+
+/* Аватар Златы в интро */
+.intro-avatar-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-avatar-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+                              rgba(14, 165, 233, 0.4) 0%,   /* ← было фиолетовое */
+                              transparent 70%);
+  filter: blur(12px);
+  z-index: 0;
+}
+
+.intro-avatar-icon {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--m2-surface);
+  border: 3px solid var(--m2-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  line-height: 1;
+  box-shadow: 0 0 24px rgba(168,85,247,0.3);
+  animation: m2ZlataBreathe 3s ease-in-out infinite;
+}
+
+@keyframes m2ZlataBreathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.03); }
+}
+
+/* Бейдж с именем под аватаром */
+
+.intro-name-badge {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: #0ea5e9;                         /* ← было var(--m2-primary) */
+  padding: 3px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.4);
+}
+
+/* Речевой пузырь */
+.intro-bubble {
+  position: relative;
+  background: var(--m2-surface);
+  border: 1px solid var(--m2-border);
+  border-radius: var(--m2-radius);
+  padding: 16px 20px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Стрелка пузыря вверх — рамка */
+.intro-bubble::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-bottom-color: var(--m2-border);
+  border-top: none;
+}
+
+/* Стрелка пузыря вверх — заливка */
+.intro-bubble::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-bottom-color: var(--m2-surface);
+  border-top: none;
+}
+
+.intro-bubble-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--m2-text);
+  text-align: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Точки прогресса */
+.intro-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.intro-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(15, 36, 72, 0.2);          /* серая "пустая" */
+  border: 1px solid rgba(15, 36, 72, 0.15);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.intro-dot.active {
+  background: #0ea5e9;                         /* голубой — текущий */
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+}
+
+.intro-dot.done {
+  background: #22c55e;                         /* зелёный — пройден */
+}
+
+/* ----------------------------------------------------------------
+   7. ЭКРАН: ХАБ (m2-hub) — заголовок и футер
+   (Сама карта теперь в секции "НОВАЯ КАРТА ХАБА" внизу файла)
+   ---------------------------------------------------------------- */
+.m2-screen#m2-hub {
+  background: transparent;
+   overflow: hidden; 
+}
+
+.m2-screen#m2-hub.active {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+
+/* ----------------------------------------------------------------
+   8. ЭКРАН: ДИАЛОГ (m2-dialog)
+   Основной игровой экран — как в The Sims
+   ---------------------------------------------------------------- */
+.m2-screen#m2-dialog {
+  background: transparent;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px 24px;
+  overflow-y: auto;
+}
+
+/* Шапку прижимаем к верху карточки, но всю группу центрируем */
+.m2-screen#m2-dialog .dialog-header {
+  margin-top: auto;                 /* отжимает шапку вниз от верха */
+}
+
+.m2-screen#m2-dialog .dialog-answers-zone {
+  margin-bottom: auto;              /* отжимает зону ответов вверх от низа */
+}
+
+/* ─── Шапка диалога (тема + счётчик) ─── */
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 640px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(15, 36, 72, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(15, 36, 72, 0.08);
+  gap: 8px;
+  flex-shrink: 0;
+  margin-bottom: 14px;
+}
+
+.dialog-theme-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(14, 165, 233, 0.12);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+
+.dialog-situation-counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* ─── КАРТОЧКА с NPC и ответами ─── */
+.dialog-npc-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 640px;
+  padding: 24px 22px 18px;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 36, 72, 0.1);
+  border-radius: 20px 20px 0 0;     /* верхние углы; низ клеится к ответам */
+  box-shadow: 0 8px 24px rgba(15, 36, 72, 0.1);
+  flex-shrink: 0;
+  max-height: none;
+  border-bottom: none;
+}
+
+/* Обёртка аватара */
+.dialog-npc-avatar-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Эмодзи-реакция */
+.dialog-npc-emoji {
+  position: absolute;
+  top: -10px;
+  right: -18px;
+  font-size: 32px;
+  z-index: 5;
+  transform: scale(0);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+}
+.dialog-npc-emoji.visible { transform: scale(1); }
+
+/* Аватар NPC */
+.dialog-npc-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 4px solid #ffffff;
+  box-shadow: 0 6px 20px rgba(15, 36, 72, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.dialog-npc-avatar.answer-correct { border-color: #22c55e; box-shadow: 0 6px 24px rgba(34,197,94,0.35); }
+.dialog-npc-avatar.answer-wrong   { border-color: #ef4444; box-shadow: 0 6px 24px rgba(239,68,68,0.35); }
+.dialog-npc-avatar.answer-partial { border-color: #f59e0b; box-shadow: 0 6px 24px rgba(245,158,11,0.35); }
+
+.dialog-npc-avatar-icon { font-size: 50px; line-height: 1; }
+.dialog-npc-avatar img  { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+.dialog-npc-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f2448;
+  margin-top: 4px;
+}
+
+.dialog-npc-role {
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+  margin-top: -6px;
+}
+
+/* Описание сцены */
+.dialog-scene-text {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.6;
+  text-align: center;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 36, 72, 0.08);
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 100%;
+  margin-top: 8px;
+  font-style: italic;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* ─── Зона ответов (продолжение карточки) ─── */
+.dialog-answers-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 640px;
+  padding: 16px 22px 22px;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 36, 72, 0.1);
+  border-top: 1px dashed rgba(15, 36, 72, 0.12);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 24px rgba(15, 36, 72, 0.1);
+  overflow: visible;
+}
+
+/* Вопрос */
+.dialog-question {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f2448;
+  line-height: 1.45;
+  padding: 4px 2px 6px;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.dialog-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ─── Вариант ответа ─── */
+.dialog-option {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(15, 36, 72, 0.1);
+  background: #ffffff;
+  color: #0f2448;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 3px rgba(15, 36, 72, 0.04);
+}
+
+.dialog-option-letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.dialog-option-text { flex: 1; }
+
+.dialog-option:hover:not(:disabled) {
+  border-color: #0ea5e9;
+  background: #f0f9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
+.dialog-option:hover:not(:disabled) .dialog-option-letter {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+/* Состояния */
+.dialog-option.correct {
+  border-color: #22c55e;
+  background: rgba(34,197,94,0.08);
+  pointer-events: none;
+}
+.dialog-option.correct .dialog-option-letter { background: #22c55e; color: #fff; }
+
+.dialog-option.wrong {
+  border-color: #ef4444;
+  background: rgba(239,68,68,0.08);
+  pointer-events: none;
+}
+.dialog-option.wrong .dialog-option-letter { background: #ef4444; color: #fff; }
+
+.dialog-option.partial {
+  border-color: #f59e0b;
+  background: rgba(245,158,11,0.08);
+  pointer-events: none;
+}
+.dialog-option.partial .dialog-option-letter { background: #f59e0b; color: #fff; }
+
+.dialog-option.dimmed { opacity: 0.4; pointer-events: none; }
+
+/* Панель реакции NPC */
+.dialog-reaction {
+padding: 16px 18px;
+  border-radius: 12px;
+  background: #ffffff;                        /* было #f8fafc — теперь чистый белый */
+  border: 1px solid rgba(15, 36, 72, 0.15);   /* чуть темнее рамка */
+  box-shadow: 0 2px 8px rgba(15, 36, 72, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: m2FadeIn 0.3s ease;
+}
+
+.dialog-reaction-icon { font-size: 22px; }
+.dialog-reaction-text {
+  font-size: 13.5px;
+  color: #0f2448;
+  line-height: 1.55;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.dialog-retry-btn, .dialog-next-btn { align-self: flex-end; }
+
+.dialog-divider {
+  height: 1px;
+  background: rgba(15, 36, 72, 0.1);
+  margin: 4px 0;
+  flex-shrink: 0;
+}
+
+/* ─── КНОПКА ПОДСКАЗКИ ─── */
+.dialog-hint-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  align-self: center;
+  margin-top: 4px;
+  padding: 10px 20px;
+  width: auto;
+  min-width: 200px;
+
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1.5px solid #f59e0b;
+  border-radius: 999px;
+  color: #78350f;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.25);
+  flex-shrink: 0;
+}
+
+.dialog-hint-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+  background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+}
+
+.dialog-hint-btn.used {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dialog-hint-cost {
+  font-size: 11px;
+  opacity: 0.85;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------
+   9. ЭКРАН: ПОПОЛНЕНИЕ ЭНЕРГИИ (m2-refuel)
+   ---------------------------------------------------------------- */
+.m2-screen#m2-refuel {
+background: transparent;
+  justify-content: center;
+  align-items: center;
+}
+
+.refuel-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 32px 24px;
+  max-width: 420px;
+  width: 100%;
+}
+
+/* Сцена с анимацией Златы → стол */
+.refuel-scene {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 64px;
+}
+
+.refuel-arrow {
+  font-size: 32px;
+  color: var(--m2-text-muted);
+  /* Анимация движения стрелки */
+  animation: m2ArrowMove 1s ease-in-out infinite;
+}
+
+@keyframes m2ArrowMove {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(8px); }
+}
+
+.refuel-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--m2-text);
+}
+
+.refuel-desc {
+  font-size: 14px;
+  color: var(--m2-text-muted);
+  line-height: 1.6;
+}
+
+/* Полоска энергии в экране пополнения */
+.refuel-energy-bar-wrap {
+  width: 100%;
+  height: 12px;
+  background: var(--m2-surface2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.refuel-energy-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--m2-success);
+  transition: width 1.5s ease;
+  /* Начальная ширина задаётся из JS */
+}
+
+.refuel-energy-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--m2-success);
+}
+
+/* ----------------------------------------------------------------
+   10. ЭКРАН: КОНЕЦ ГЛАВЫ (m2-chapter-end)
+   ---------------------------------------------------------------- */
+.m2-screen#m2-chapter-end {
+ background: transparent;
+  justify-content: center;
+  align-items: center;
+}
+.chapter-end-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 32px 24px;
+  max-width: 480px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.chapter-end-celebration {
+  font-size: 64px;
+  animation: m2Bounce 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes m2Bounce {
+  0%   { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.chapter-end-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--m2-text);
+}
+
+.chapter-end-subtitle {
+  font-size: 14px;
+  color: var(--m2-text-muted);
+}
+
+/* Список того, что узнал */
+.chapter-end-learned {
+  width: 100%;
+  background: var(--m2-surface);
+  border: 1px solid var(--m2-border);
+  border-radius: var(--m2-radius);
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.chapter-end-learned-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--m2-text-muted);
+  margin-bottom: 10px;
+}
+
+.chapter-end-learned-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chapter-end-learned-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--m2-text);
+  line-height: 1.45;
+}
+
+.chapter-end-learned-item::before {
+  content: '✓';
+  color: var(--m2-success);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Цитата Златы */
+.chapter-end-quote {
+  width: 100%;
+  background: rgba(168,85,247,0.06);
+  border: 1px solid rgba(168,85,247,0.2);
+  border-radius: var(--m2-radius);
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+}
+
+.chapter-end-quote-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.chapter-end-quote span:last-child {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--m2-text-muted);
+  line-height: 1.55;
+}
+
+/* ----------------------------------------------------------------
+   11. ЭКРАН: ФИНАЛ (m2-final)
+   ---------------------------------------------------------------- */
+.m2-screen#m2-final {
+  background: transparent;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 16px;
+  overflow-y: auto;
+}
+
+.m2-screen#m2-final .final-wrap {
+  margin: auto;
+}
+
+.final-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 32px 24px;
+  max-width: 520px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.final-celebration {
+  font-size: 72px;
+  animation: m2Bounce 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.final-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--m2-text);
+}
+
+.final-subtitle {
+  font-size: 14px;
+  color: var(--m2-text-muted);
+}
+
+/* Статистика итогов */
+.final-stats {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.final-stat-item {
+  flex: 1;
+  background: var(--m2-surface);
+  border: 1px solid var(--m2-border);
+  border-radius: var(--m2-radius);
+  padding: 14px 10px;
+}
+
+.final-stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--m2-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.final-stat-label {
+  font-size: 11px;
+  color: var(--m2-text-muted);
+  font-weight: 600;
+}
+
+/* Список артефактов в финале */
+.final-artifacts-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--m2-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  align-self: flex-start;
+}
+
+.final-artifacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.final-artifact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--m2-surface);
+  border: 1px solid var(--m2-border);
+  border-radius: var(--m2-radius-sm);
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.final-artifact-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.final-artifact-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--m2-text);
+}
+
+.final-btns {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ----------------------------------------------------------------
+   12. МОДАЛКИ
+   ---------------------------------------------------------------- */
+
+/* Оверлей модалки */
+.m2-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: m2FadeIn 0.2s ease;
+}
+
+@keyframes m2FadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Само окно модалки */
+.m2-modal {
+  background: var(--m2-surface);
+  border: 1px solid var(--m2-border);
+  border-radius: var(--m2-radius-lg);
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  animation: m2ModalSlideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* Широкая модалка (блокнот) */
+.m2-modal-wide {
+  max-width: 560px;
+}
+
+@keyframes m2ModalSlideUp {
+  from { transform: translateY(30px) scale(0.95); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Шапка модалки */
+.m2-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--m2-border);
+}
+
+.m2-modal-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.m2-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--m2-text);
+  flex: 1;
+}
+
+/* Кнопка закрытия */
+.m2-modal-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--m2-border);
+  background: var(--m2-surface2);
+  color: var(--m2-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.m2-modal-close:hover {
+  background: var(--m2-danger);
+  color: #fff;
+  border-color: var(--m2-danger);
+}
+
+/* Тело модалки */
+.m2-modal-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--m2-text-muted);
+  line-height: 1.6;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Подвал модалки */
+.m2-modal-footer {
+  padding: 12px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--m2-border);
+}
+
+/* Предупреждение о стоимости подсказки */
+.hint-cost-warning {
+  font-size: 12px;
+  color: var(--m2-warning);
+  text-align: center;
+}
+
+/* Артефакт в модалке */
+.artifact-preview {
+  background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(168,85,247,0.05));
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: var(--m2-radius);
+  padding: 16px;
+}
+
+.artifact-preview-icon {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.artifact-preview-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--m2-text);
+  margin-bottom: 8px;
+}
+
+.artifact-preview-content {
+  font-size: 13px;
+  color: var(--m2-text-muted);
+  line-height: 1.6;
+}
+
+/* Артефакт в блокноте */
+.notebook-artifact-item {
+  padding: 14px 16px;
+  border-radius: var(--m2-radius);
+  border: 1px solid var(--m2-border);
+  background: var(--m2-bg);
+  margin-bottom: 10px;
+}
+
+.notebook-artifact-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.notebook-artifact-icon {
+  font-size: 24px;
+}
+
+.notebook-artifact-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--m2-text);
+}
+
+.notebook-artifact-body {
+  font-size: 13px;
+  color: var(--m2-text-muted);
+  line-height: 1.6;
+}
+
+.notebook-artifact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.notebook-artifact-list li::before {
+  content: '→ ';
+  color: var(--m2-primary);
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------------
+   13. КНОПКИ
+   ---------------------------------------------------------------- */
+.m2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 24px;
+  border-radius: var(--m2-radius);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  transition: all 0.18s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Основная кнопка (фиолетовая) */
+.m2-btn-primary {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.m2-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(14, 165, 233, 0.55);
+}
+
+.m2-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Вторичная кнопка */
+.m2-btn-secondary {
+  background: var(--m2-surface2);
+  color: var(--m2-text);
+  border: 1px solid var(--m2-border);
+}
+
+.m2-btn-secondary:hover {
+  background: var(--m2-border);
+  transform: translateY(-1px);
+}
+
+/* Кнопка успеха (зелёная) */
+.m2-btn-success {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(34,197,94,0.35);
+}
+
+.m2-btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34,197,94,0.5);
+}
+
+/* Кнопка на весь экран */
+.m2-btn-full {
+  width: 100%;
+}
+
+/* ----------------------------------------------------------------
+   14. АДАПТИВ — МОБИЛЬНАЯ ВЕРТИКАЛЬ
+   Все экраны адаптированы под телефон (portrait)
+   ---------------------------------------------------------------- */
+@media (max-width: 600px) {
+
+  /* HUD компактнее */
+  .m2-hud {
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .hud-energy-bar-wrap {
+    min-width: 40px;
+  }
+
+  .hud-energy-value {
+    font-size: 11px;
+  }
+
+  .hud-meets {
+    font-size: 12px;
+  }
+
+  /* Обложка */
+  .cover-title {
+    font-size: 28px;
+  }
+
+  .cover-subtitle {
+    font-size: 13px;
+  }
+
+  /* Диалог — NPC сверху, ответы снизу */
+  .dialog-npc-zone {
+    padding: 12px 12px 8px;
+    max-height: 38vh;
+  }
+
+  .dialog-npc-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .dialog-npc-avatar-icon {
+    font-size: 40px;
+  }
+
+  .dialog-npc-name {
+    font-size: 13px;
+  }
+
+  .dialog-scene-text {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .dialog-answers-zone {
+    padding: 0 12px 16px;
+    gap: 6px;
+  }
+
+  .dialog-question {
+    font-size: 13px;
+  }
+
+  .dialog-option {
+    padding: 10px 12px;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .dialog-option-letter {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+
+  /* Модалки на мобиле */
+  .m2-modal {
+    border-radius: var(--m2-radius);
+  }
+
+  /* Кнопки */
+  .m2-btn {
+    padding: 11px 18px;
+    font-size: 13px;
+  }
+
+  /* Финал */
+  .final-stats {
+    gap: 8px;
+  }
+
+  .final-stat-value {
+    font-size: 22px;
+  }
+}
+
+/* Ландшафт на мобиле — компактный NPC */
+@media (max-height: 500px) and (orientation: landscape) {
+  .dialog-npc-zone {
+    flex-direction: row;
+    max-height: none;
+    padding: 8px 12px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .dialog-npc-avatar-wrap {
+    flex-shrink: 0;
+  }
+
+  .dialog-npc-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .dialog-npc-avatar-icon {
+    font-size: 32px;
+  }
+
+  .dialog-scene-text {
+    font-size: 12px;
+    text-align: left;
+  }
+
+}
+
+/* ----------------------------------------------------------------
+   15. АНИМАЦИИ (общие)
+   ---------------------------------------------------------------- */
+
+/* Появление эмодзи над NPC */
+@keyframes m2EmojiPop {
+  0%   { transform: scale(0) translateY(10px); }
+  60%  { transform: scale(1.3) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.dialog-npc-emoji.visible {
+  animation: m2EmojiPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
+/* Встряска при неверном ответе */
+@keyframes m2Shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.m2-shake {
+  animation: m2Shake 0.4s ease;
+}
+
+/* Пульсация успеха */
+@keyframes m2SuccessPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+.m2-success-pulse {
+  animation: m2SuccessPulse 0.6s ease;
+}
+
+/* Счётчик знакомств — анимация роста */
+@keyframes m2CounterPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.5); color: var(--m2-success); }
+  100% { transform: scale(1); }
+}
+
+.m2-counter-pop {
+  animation: m2CounterPop 0.4s ease;
+}
+
+/* Всплывающий тост */
+.m2-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--m2-surface);
+  border: 1px solid var(--m2-border);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--m2-text);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  z-index: 500;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.m2-toast.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ================================================================
+   КНОПКА «НАЗАД НА КАРТУ» — на обложке модуля 2
+   ================================================================ */
+.m2-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F2448;
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(15, 36, 72, 0.15);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(15, 36, 72, 0.1);
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+}
+
+.m2-back-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(15, 36, 72, 0.25);
+  transform: translateX(-2px);
+  box-shadow: 0 4px 12px rgba(15, 36, 72, 0.15);
+}
+
+/* ── Кнопка карты в HUD ── */
+.hud-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.hud-map-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+/* ================================================================
+   ИНСТРУКЦИЯ ВНУТРИ КАРТЫ — плавающая плашка снизу
+   ================================================================ */
+.hub-map-instruction {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  z-index: 10;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(15, 36, 72, 0.15);
+  border-radius: 14px;
+
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F2448;
+
+  box-shadow: 0 6px 20px rgba(15, 36, 72, 0.25);
+  animation: hubHintBreathe 2.5s ease-in-out infinite;
+
+  white-space: nowrap;
+  max-width: calc(100% - 40px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+
+.hub-map-instruction strong {
+  color: #0284c7;
+  font-weight: 800;
+}
+
+@keyframes hubHintBreathe {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(15, 36, 72, 0.25);
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    box-shadow: 0 8px 26px rgba(14, 165, 233, 0.4);
+    transform: translateX(-50%) translateY(-3px);
+  }
+}
+
+/* Мобильный — компактнее */
+@media (max-width: 700px) {
+  .hub-map-instruction {
+    bottom: 10px;
+    padding: 7px 14px;
+    font-size: 11px;
+    border-radius: 12px;
+  }
+}
+
+/* ================================================================
+   КАРТА ХАБА — карта по центру вертикали с отступом сверху и снизу
+   ================================================================ */
+.hub-map-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  padding: 16px 24px;        /* одинаково сверху/снизу — карта точно по центру */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+@media (max-width: 600px) {
+  .hub-map-container {
+    padding: 12px;
+  }
+}
+
+.hub-map-image {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  max-height: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(15, 36, 72, 0.25);
+  margin: auto;
+}
+.hub-map-bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* ← заполняет весь блок без пустоты */
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ─── ХОТСПОТ (кликабельная точка с подписью) ─── */
+.map-hotspot {
+  position: absolute;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  /* Стартовый размер — сама "точка" */
+  width: 0;
+  height: 0;
+  display: block;
+}
+
+/* ─── ПОДПИСЬ-ПИЛЮЛЯ (всегда видима) ─── */
+.hotspot-label {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #ffffff;
+  color: #0f2448;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  border: 1px solid rgba(15, 36, 72, 0.15);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+/* Хвостик подписи (тонкая ножка вниз) */
+.hotspot-label::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 10px;
+  background: rgba(15, 36, 72, 0.35);
+}
+
+/* Подсказка снизу (например, +30% ⚡) */
+.hotspot-sublabel {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-left: 4px;
+}
+
+/* Hover */
+.map-hotspot:hover .hotspot-label {
+  transform: translate(-50%, -3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Бейдж ✅ */
+.hotspot-badge {
+  position: absolute;
+  bottom: 100%;
+  left: calc(50% + 60px);
+  transform: translate(-50%, 50%);
+  font-size: 18px;
+  z-index: 4;
+  display: none;
+}
+
+/* ═══ ТИПЫ ПОДПИСЕЙ ═══ */
+
+
+/* Активная глава — пульсация ножки */
+.map-hotspot-chapter.hub-zone-active .hotspot-label {
+  border-color: #0ea5e9;
+  box-shadow: 0 3px 12px rgba(14, 165, 233, 0.5);
+  animation: labelPulse 2s ease-in-out infinite;
+}
+
+@keyframes labelPulse {
+  0%, 100% { box-shadow: 0 3px 12px rgba(14, 165, 233, 0.5); }
+  50%       { box-shadow: 0 3px 20px rgba(14, 165, 233, 0.9); }
+}
+
+/* Пройдена */
+.map-hotspot-chapter.hub-zone-completed .hotspot-label {
+  background: #d1fae5;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+/* Заблокирована */
+.map-hotspot-chapter.hub-zone-locked {
+  cursor: not-allowed;
+}
+.map-hotspot-chapter.hub-zone-locked .hotspot-label {
+  background: #e2e8f0;
+  color: #94a3b8;
+  border-color: rgba(100, 116, 139, 0.3);
+}
+.map-hotspot-chapter.hub-zone-locked .hotspot-label::before {
+  content: '🔒';
+  background: #cbd5e1;
+}
+
+/* Ловушка — красноватая пилюля */
+.map-hotspot-trap .hotspot-label {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+/* Энергия — зелёная пилюля */
+.map-hotspot-energy .hotspot-label {
+  background: #fef3c7;
+  color: #78350f;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.map-hotspot-energy.hub-zone-depleted {
+  cursor: not-allowed;
+}
+.map-hotspot-energy.hub-zone-depleted .hotspot-label {
+  opacity: 0.45;
+  background: #e2e8f0;
+  color: #64748b;
+  border-color: rgba(100, 116, 139, 0.3);
+}
+
+/* Финал — золотая пилюля */
+.map-hotspot-final .hotspot-label {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #fff;
+  border-color: #f59e0b;
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.5);
+  animation: labelPulseGold 2s ease-in-out infinite;
+}
+
+@keyframes labelPulseGold {
+  0%, 100% { box-shadow: 0 4px 14px rgba(251, 191, 36, 0.5); }
+  50%       { box-shadow: 0 4px 22px rgba(251, 191, 36, 0.9); }
+}
+
+/* Мобильный: подписи поменьше */
+@media (max-width: 700px) {
+  .hotspot-label {
+    font-size: 11px;
+    padding: 4px 10px 4px 6px;
+  }
+  .hotspot-label::before {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 11px !important;
+  }
+  .hotspot-sublabel {
+    font-size: 9px;
+  }
+}
+
+/* ─── Красивая модалка подсказки ─── */
+#modal-hint-confirm .m2-modal {
+  border-top: 4px solid #f59e0b;
+}
+
+#modal-hint-confirm .m2-modal-icon {
+  background: linear-gradient(135deg, #fde68a, #fbbf24);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 3px 8px rgba(245, 158, 11, 0.35);
+}
+
+.hint-cost-warning {
+  font-size: 12px;
+  color: #78350f;
+  text-align: center;
+  background: #fef3c7;
+  border: 1px dashed #f59e0b;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  font-weight: 600;
+white-space: pre-line;
+}
+
+/* Диалог на мобиле */
+  .m2-screen#m2-dialog {
+    padding: 14px 12px 20px;
+  }
+
+  .dialog-header {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+  }
+
+  .dialog-npc-zone {
+    padding: 18px 16px 14px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .dialog-npc-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .dialog-npc-avatar-icon { font-size: 42px; }
+
+  .dialog-npc-name  { font-size: 15px; }
+  .dialog-npc-role  { font-size: 11px; }
+
+  .dialog-scene-text {
+    font-size: 12.5px;
+    padding: 10px 12px;
+  }
+
+  .dialog-answers-zone {
+    padding: 12px 16px 18px;
+    border-radius: 0 0 16px 16px;
+    gap: 8px;
+  }
+
+  .dialog-question { font-size: 13.5px; }
+
+  .dialog-option {
+    padding: 11px 12px;
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .dialog-option-letter {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .dialog-hint-btn {
+    min-width: 0;
+    width: 100%;
+    padding: 10px 16px;
+  }
+
+/* ================================================================
+   АВАТАРКА ЗЛАТЫ — замена эмодзи на изображение
+   ================================================================ */
+
+/* ── Обложка (большая аватарка 120×120) ── */
+.cover-avatar-img {
+  position: relative;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 8px 28px rgba(15, 36, 72, 0.25);
+  object-fit: cover;       /* обрезает картинку без искажения */
+  background: #ffffff;
+  display: block;
+}
+
+/* ── Интро (поменьше, 100×100) ── */
+.intro-avatar-img {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #0ea5e9;
+  box-shadow: 0 0 24px rgba(14, 165, 233, 0.3);
+  object-fit: cover;
+  background: #ffffff;
+  display: block;
+  animation: m2ZlataBreathe 3s ease-in-out infinite;
+}
+
+.hotspot-label {
+  padding: 6px 12px;
+}
+
+.dialog-npc-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* ----------------------------------------------------------------
+   10. ЭКРАН: КОНЕЦ ГЛАВЫ (m2-chapter-end)
+   ---------------------------------------------------------------- */
+.m2-screen#m2-chapter-end {
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+}
+
+.chapter-end-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 32px 24px;
+  max-width: 480px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.chapter-end-celebration {
+  font-size: 64px;
+  animation: m2Bounce 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes m2Bounce {
+  0%   { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* ── Заголовок «Знакомство состоялось!» ── */
+.chapter-end-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0F2448;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+  line-height: 1.2;
+}
+
+/* ── Подзаголовок «Злата познакомилась с …» ── */
+.chapter-end-subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0F2448;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(15, 36, 72, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+/* ── Карточка «Что узнала Злата» ── */
+.chapter-end-learned {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(15, 36, 72, 0.1);
+  border-radius: 16px;
+  padding: 16px 18px;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(15, 36, 72, 0.12);
+}
+
+.chapter-end-learned-title {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0284c7;
+  margin-bottom: 12px;
+}
+
+.chapter-end-learned-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chapter-end-learned-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0F2448;
+  line-height: 1.5;
+}
+
+.chapter-end-learned-item::before {
+  content: '✓';
+  color: #22c55e;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+/* ── Цитата Златы ── */
+.chapter-end-quote {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  border-left: 4px solid #0ea5e9;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  box-shadow: 0 4px 14px rgba(15, 36, 72, 0.08);
+}
+
+.chapter-end-quote-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.chapter-end-quote span:last-child {
+  font-size: 14px;
+  font-style: italic;
+  color: #0F2448;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+/* ================================================================
+   СКРЫТЬ ИКОНКИ АРТЕФАКТОВ (если поле icon удалено)
+   ================================================================ */
+.notebook-artifact-icon,
+.artifact-preview-icon,
+.final-artifact-icon {
+  display: none !important;
+}
+
+/* ================================================================
+   HUD на экране хаба — компактный плавающий стиль
+   ================================================================ */
+body.m2-on-hub #m2-hud {
+  display: none !important;
+}
+
+body.m2-on-hub #m2-hud .hud-energy {
+  flex: 0 0 160px;
+}
+
+@media (max-width: 600px) {
+  body.m2-on-hub #m2-hud {
+    top: 8px;
+    padding: 5px 10px;
+    gap: 8px;
+  }
+  body.m2-on-hub #m2-hud .hud-energy {
+    flex: 0 0 100px;
+  }
+}
+
+/* ================================================================
+   КНОПКА «БЛОКНОТ» НА ЭКРАНЕ КОНЦА ГЛАВЫ — янтарный акцент
+   ================================================================ */
+#btn-chapter-end-notebook {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #78350f;
+  border: 1.5px solid #f59e0b;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  position: relative;
+}
+
+#btn-chapter-end-notebook::before {
+  content: '📓';
+  font-size: 16px;
+  margin-right: 2px;
+}
+
+#btn-chapter-end-notebook:hover {
+  background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+  border-color: #d97706;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+}
+
+/* Маленькая красная точка-индикатор «новый артефакт» */
+#btn-chapter-end-notebook::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  background: #ef4444;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  animation: notebookBadgePulse 2s ease-in-out infinite;
+}
+
+@keyframes notebookBadgePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+    transform: scale(1.15);
+  }
+}
+
+/* ================================================================
+   КНОПКА «СКАЧАТЬ PDF» в блокноте
+   ================================================================ */
+.m2-btn-pdf {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+  width: 100%;
+}
+
+.m2-btn-pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.m2-btn-pdf:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================================================================
+   ФИНАЛ — финальная версия с гарантированной прокруткой
+   ================================================================ */
+
+/* Сам экран — занимает всё пространство и прокручивается */
+.m2-screen#m2-final {
+  background: transparent;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.m2-screen#m2-final.active {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 12px 32px;
+}
+
+/* Карточка финала */
+.final-wrap {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 12px 40px rgba(15, 36, 72, 0.18);
+  border: 1px solid rgba(15, 36, 72, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* Уменьшаем элементы чтобы влезало */
+.final-celebration {
+  font-size: 48px;
+  margin-bottom: -4px;
+  line-height: 1;
+}
+
+.final-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F2448;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.final-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Статистика */
+.final-stats {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin: 4px 0 2px;
+}
+
+.final-stat-item {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(15, 36, 72, 0.1);
+  border-radius: 10px;
+  padding: 10px 6px;
+  box-shadow: 0 2px 8px rgba(15, 36, 72, 0.06);
+}
+
+.final-stat-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F2448;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.final-stat-label {
+  font-size: 10.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* Заголовок «Собранные артефакты» */
+.final-artifacts-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+/* Список артефактов */
+.final-artifacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.final-artifact-item {
+  background: #ffffff;
+  border: 1px solid rgba(15, 36, 72, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0F2448;
+}
+
+.final-artifact-name {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+/* Кнопки финала */
+.final-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.final-btns .m2-btn {
+  width: 100%;
+  padding: 11px 18px;
+  font-size: 13.5px;
+}
+
+/* PDF-кнопка */
+.m2-btn-pdf {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+  font-weight: 700;
+}
+.m2-btn-pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+.m2-btn-pdf:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Мобильный — ещё компактнее */
+@media (max-width: 600px) {
+  .m2-screen#m2-final.active {
+    padding: 10px 10px 24px;
+  }
+  .final-wrap {
+    padding: 18px 16px 16px;
+    gap: 8px;
+  }
+  .final-celebration { font-size: 42px; }
+  .final-title       { font-size: 19px; }
+  .final-subtitle    { font-size: 12px; }
+  .final-stat-value  { font-size: 18px; }
+  .final-stat-label  { font-size: 9.5px; }
+  .final-artifact-item { padding: 7px 11px; font-size: 12px; }
+}
